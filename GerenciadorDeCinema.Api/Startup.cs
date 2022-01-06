@@ -28,14 +28,20 @@ namespace GerenciadorDeCinema.Api
 
         public IConfiguration Configuration { get; }
 
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DbContext, CinemaContext>();
+
             services.AddScoped<IFilmeRepositorio, FilmeRepositorio>();
             services.AddScoped<IFilmeService, FilmeService>();
+
             services.AddScoped<ISessaoRepositorio, SessaoRepositorio>();
             services.AddScoped<ISessaoService, SessaoService>();
+
+            services.AddScoped<ISalaRepositorio, SalaRepositorio>();
+            services.AddScoped<ISalaService, SalaService>();
 
             services.AddMvc();
             services.AddControllers();

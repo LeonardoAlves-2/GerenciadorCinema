@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 namespace GerenciadorDeCinema.Api.Controllers
 {
     [ApiController]
-    [Route("sessao")]
-    public class SessaoController : Controller
+    [Route("sala")]
+    public class SalaController : Controller
     {
-        private readonly ISessaoService _sessaoService;
+        private readonly ISalaService _salaService;
 
-        public SessaoController(ISessaoService sessaoService)
+        public SalaController(ISalaService salaService)
         {
-            _sessaoService = sessaoService;
+            _salaService = salaService;
         }
 
         public IActionResult Index()
@@ -30,9 +30,9 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                var sessoes = _sessaoService.ListarSessoes();
+                var salas = _salaService.ListarSalas();
 
-                return Ok(sessoes);
+                return Ok(salas);
             }
             catch (Exception)
             {
@@ -43,34 +43,16 @@ namespace GerenciadorDeCinema.Api.Controllers
 
         [HttpPost]
         [Route("adicionar")]
-        public IActionResult Adicionar([FromBody] Sessao sessao)
+        public IActionResult Adicionar([FromBody] Sala sala)
         {
             try
             {
-                sessao.FinalSessao = sessao.CalcularFinalSessao(sessao.FilmeSessao);
-                _sessaoService.Adicionar(sessao);
+                _salaService.Adicionar(sala);
                 return Ok();
             }
             catch (Exception)
             {
 
-                throw;
-            }
-        }
-
-        [HttpPut]
-        [Route("editar/{id}")]
-        public IActionResult Editar([FromBody] Sessao sessaoEditada, [FromRoute] Guid id)
-        {
-            try
-            {
-                var sessao = new Sessao { Id = id };
-
-                _sessaoService.Editar(sessao);
-                return Ok();
-            }
-            catch (Exception)
-            {
                 throw;
             }
         }
@@ -81,9 +63,9 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                var sessao = new Sessao { Id = id };
+                var sala = new Sala { Id = id };
 
-                _sessaoService.Remover(sessao);
+                _salaService.Remover(sala);
 
                 return Ok();
             }

@@ -12,11 +12,5 @@ namespace GerenciadorDeCinema.Dominio.Entidades
         public string Sinopse { get; set; }
         public EAnimacao Animacao { get; set; }
         public EAudio Audio { get; set; }
-
-        public DateTime CalcularFinalSessão(DateTime dataSessao)
-        {
-            var finalSessão = dataSessao.AddHours(Duracao.Hour).AddMinutes(Duracao.Minute);
-            return finalSessão;
-        }
     }
 }

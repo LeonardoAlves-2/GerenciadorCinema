@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciadorDeCinema.Infraestrutura.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20220105114332_Inicial")]
+    [Migration("20220106230923_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,8 +76,8 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("FilmeSessaoId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("FilmeSessao")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FinalSessao")
                         .HasColumnType("datetime2");
@@ -85,27 +85,24 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     b.Property<DateTime>("InicioSessao")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("SalaSessaoId")
+                    b.Property<Guid?>("SalaId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("SalaSessao")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FilmeSessaoId");
-
-                    b.HasIndex("SalaSessaoId");
+                    b.HasIndex("SalaId");
 
                     b.ToTable("Sessao");
                 });
 
             modelBuilder.Entity("GerenciadorDeCinema.Dominio.Entidades.Sessao", b =>
                 {
-                    b.HasOne("GerenciadorDeCinema.Dominio.Entidades.Filme", "FilmeSessao")
-                        .WithMany()
-                        .HasForeignKey("FilmeSessaoId");
-
-                    b.HasOne("GerenciadorDeCinema.Dominio.Entidades.Sala", "SalaSessao")
+                    b.HasOne("GerenciadorDeCinema.Dominio.Entidades.Sala", null)
                         .WithMany("Sessoes")
-                        .HasForeignKey("SalaSessaoId");
+                        .HasForeignKey("SalaId");
                 });
 #pragma warning restore 612, 618
         }
