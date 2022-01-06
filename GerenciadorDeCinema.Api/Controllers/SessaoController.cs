@@ -2,19 +2,21 @@
 using GerenciadorDeCinema.Servico.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GerenciadorDeCinema.Api.Controllers
 {
     [ApiController]
-    [Route("filme")]
-    public class FilmeController : Controller
+    [Route("sessao")]
+    public class SessaoController : Controller
     {
-        private readonly IFilmeService _filmeService;
+        private readonly ISessaoService _sessaoService;
 
-        public FilmeController(IFilmeService filmeService)
+        public SessaoController(ISessaoService sessaoService)
         {
-            _filmeService = filmeService;
+            _sessaoService = sessaoService;
         }
 
         public IActionResult Index()
@@ -28,9 +30,9 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                var filmes = _filmeService.ListarFilmes();
+                var sessoes = _sessaoService.ListarSessoes();
 
-                return Ok(filmes);
+                return Ok(sessoes);
             }
             catch (Exception)
             {
@@ -41,11 +43,11 @@ namespace GerenciadorDeCinema.Api.Controllers
 
         [HttpPost]
         [Route("adicionar")]
-        public IActionResult Adicionar([FromBody] Filme filme)
+        public IActionResult Adicionar([FromBody] Sessao sessao)
         {
             try
             {
-                _filmeService.Adicionar(filme);
+                _sessaoService.Adicionar(sessao);
                 return Ok();
             }
             catch (Exception)
@@ -57,14 +59,14 @@ namespace GerenciadorDeCinema.Api.Controllers
 
         [HttpPut]
         [Route("editar/{id}")]
-        public IActionResult Editar([FromBody] Filme filmeEditado, [FromRoute] Guid id)
+        public IActionResult Editar([FromBody] Sessao filmeEditado, [FromRoute] Guid id)
         {
             try
             {
-                var filme = new Filme { Id = id };
-                filme = filmeEditado;
+                var sessao = new Sessao { Id = id };
+                sessao = filmeEditado;
 
-                _filmeService.Editar(filme);
+                _sessaoService.Editar(sessao);
                 return Ok();
             }
             catch (Exception)
@@ -75,13 +77,13 @@ namespace GerenciadorDeCinema.Api.Controllers
 
         [HttpDelete]
         [Route("deletar/{id}")]
-        public IActionResult Remover([FromRoute]Guid id)
+        public IActionResult Remover([FromRoute] Guid id)
         {
             try
             {
-                var filme = new Filme { Id = id };
-                
-                _filmeService.Remover(filme);
+                var sessao = new Sessao { Id = id };
+
+                _sessaoService.Remover(sessao);
 
                 return Ok();
             }

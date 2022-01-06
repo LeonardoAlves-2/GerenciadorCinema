@@ -34,6 +34,8 @@ namespace GerenciadorDeCinema.Api
             services.AddDbContext<DbContext, CinemaContext>();
             services.AddScoped<IFilmeRepositorio, FilmeRepositorio>();
             services.AddScoped<IFilmeService, FilmeService>();
+            services.AddScoped<ISessaoRepositorio, SessaoRepositorio>();
+            services.AddScoped<ISessaoService, SessaoService>();
 
             services.AddMvc();
             services.AddControllers();

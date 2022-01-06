@@ -8,7 +8,6 @@ namespace GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces
         void Adicionar(T item);
         void Remover(T item);
         void Editar(T item);
-        void ListarPorTitulo(T item);
         IEnumerable<T> Listar();
     }
 }
