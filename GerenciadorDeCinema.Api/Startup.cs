@@ -5,17 +5,12 @@ using GerenciadorDeCinema.Servico;
 using GerenciadorDeCinema.Servico.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using FluentValidation.AspNetCore;
+using Cinema.Domain.Validators;
 
 namespace GerenciadorDeCinema.Api
 {
@@ -42,6 +37,11 @@ namespace GerenciadorDeCinema.Api
 
             services.AddScoped<ISalaRepositorio, SalaRepositorio>();
             services.AddScoped<ISalaService, SalaService>();
+
+            services.AddMvc()
+            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<FilmeValidator>());
+            services.AddMvc()
+            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<SessaoValidator>());
 
             services.AddMvc();
             services.AddControllers();

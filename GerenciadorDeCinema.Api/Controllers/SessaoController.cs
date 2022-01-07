@@ -48,8 +48,14 @@ namespace GerenciadorDeCinema.Api.Controllers
             try
             {
                 sessao.FinalSessao = sessao.CalcularFinalSessao(sessao.FilmeSessao);
+
+                if (ModelState.IsValid)
+                {
                 _sessaoService.Adicionar(sessao);
-                return Ok();
+                    return Ok();
+                }
+
+                throw new Exception();
             }
             catch (Exception)
             {
@@ -65,9 +71,15 @@ namespace GerenciadorDeCinema.Api.Controllers
             try
             {
                 var sessao = new Sessao { Id = id };
+                if (ModelState.IsValid)
+                {
+                    sessao = sessaoEditada;
 
-                _sessaoService.Editar(sessao);
-                return Ok();
+                    _sessaoService.Editar(sessao);
+                    return Ok();
+                }
+
+                throw new Exception();
             }
             catch (Exception)
             {

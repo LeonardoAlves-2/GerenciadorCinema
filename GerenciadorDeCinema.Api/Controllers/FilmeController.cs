@@ -45,8 +45,13 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                _filmeService.Adicionar(filme);
-                return Ok();
+                if (ModelState.IsValid)
+                {
+                    _filmeService.Adicionar(filme);
+                    return Ok();
+                }
+
+                throw new Exception();
             }
             catch (Exception)
             {
@@ -64,8 +69,14 @@ namespace GerenciadorDeCinema.Api.Controllers
                 var filme = new Filme { Id = id };
                 filme = filmeEditado;
 
-                _filmeService.Editar(filme);
-                return Ok();
+                if (ModelState.IsValid)
+                {
+                    _filmeService.Editar(filme);
+                    return Ok();
+                }
+
+                throw new Exception();
+
             }
             catch (Exception)
             {

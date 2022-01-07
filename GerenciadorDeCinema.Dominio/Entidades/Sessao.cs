@@ -13,6 +13,7 @@ namespace GerenciadorDeCinema.Dominio.Entidades
         {
             var filmeSessao = new Filme { Titulo = filmeSessaoTitulo};
 
+
             var finalSessao = InicioSessao.AddHours(filmeSessao.Duracao.Hour).AddMinutes(filmeSessao.Duracao.Minute).AddSeconds(filmeSessao.Duracao.Second);
             return finalSessao;
         }

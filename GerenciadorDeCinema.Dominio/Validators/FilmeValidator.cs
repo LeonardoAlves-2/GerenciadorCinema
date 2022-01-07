@@ -12,11 +12,11 @@ namespace Cinema.Domain.Validators
             .WithMessage("O {PropertyName} não pode estar vazia.");
 
             RuleFor(p => p.Categoria)
-            .IsInEnum()
-            .WithMessage("A {PropertyName} precisa ter um valir válido.");
+            .IsInEnum().NotEmpty().NotNull()
+            .WithMessage("A {PropertyName} precisa ter um valor válido.");
 
             RuleFor(p => p.Classificacao_Indicativa)
-            .IsInEnum()
+            .IsInEnum().NotEmpty().NotNull()
             .WithMessage("A {PropertyName} precisa ter um valor válido.");
 
             RuleFor(p => p.Duracao)
@@ -28,11 +28,11 @@ namespace Cinema.Domain.Validators
             .WithMessage("A {PropertyName} não pode estar vazia.");
 
             RuleFor(p => p.Animacao)
-            .IsInEnum()
+            .IsInEnum().NotEmpty().NotNull()
             .WithMessage("O tipo de {PropertyName} precisa ter um valor válido.");
 
             RuleFor(p => p.Audio)
-            .IsInEnum()
+            .IsInEnum().NotEmpty().NotNull()
             .WithMessage("O tipo de {PropertyName} precisa ser um valor válido.");
         }
     }
