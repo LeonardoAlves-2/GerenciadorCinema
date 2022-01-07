@@ -5,16 +5,13 @@ namespace GerenciadorDeCinema.Dominio.Entidades
     public class Sessao : EntidadeBase
     {
         public DateTime InicioSessao { get; set; }
-        public string FilmeSessao { get; set; }
+        public Guid FilmeSessao { get; set; }
         public DateTime FinalSessao { get; set; }
-        public string SalaSessao { get; set; }
+        public Guid SalaSessao { get; set; }
 
-        public DateTime CalcularFinalSessao(string filmeSessaoTitulo)
+        public DateTime CalcularFinalSessao(TimeSpan filmeSessaoDuracao)
         {
-            var filmeSessao = new Filme { Titulo = filmeSessaoTitulo};
-
-
-            var finalSessao = InicioSessao.AddHours(filmeSessao.Duracao.Hour).AddMinutes(filmeSessao.Duracao.Minute).AddSeconds(filmeSessao.Duracao.Second);
+            var finalSessao = InicioSessao.Add(filmeSessaoDuracao);
             return finalSessao;
         }
     }

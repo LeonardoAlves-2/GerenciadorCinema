@@ -11,6 +11,9 @@ namespace Cinema.Domain.Validators
             RuleFor(p => p.InicioSessao)
             .GreaterThan(DateTime.UtcNow.AddDays(10))
             .WithMessage("A sessão precisa ser criada com mais de 10 dias de antecedência.");
+
+            /*RuleFor(p => p.InicioSessao)
+            .GreatherThan(Sessao.)*/
         }
     }
 }

@@ -37,8 +37,8 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     b.Property<int>("Classificacao_Indicativa")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Duracao")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("Duracao")
+                        .HasColumnType("time");
 
                     b.Property<string>("Sinopse")
                         .HasColumnType("nvarchar(max)");
@@ -74,8 +74,8 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("FilmeSessao")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("FilmeSessao")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("FinalSessao")
                         .HasColumnType("datetime2");
@@ -86,8 +86,8 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     b.Property<Guid?>("SalaId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("SalaSessao")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("SalaSessao")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 

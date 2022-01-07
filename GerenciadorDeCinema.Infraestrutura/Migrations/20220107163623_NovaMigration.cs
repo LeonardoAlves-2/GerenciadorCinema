@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GerenciadorDeCinema.Infraestrutura.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class NovaMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     Titulo = table.Column<string>(nullable: true),
                     Categoria = table.Column<int>(nullable: false),
                     Classificacao_Indicativa = table.Column<int>(nullable: false),
-                    Duracao = table.Column<DateTime>(nullable: false),
+                    Duracao = table.Column<TimeSpan>(nullable: false),
                     Sinopse = table.Column<string>(nullable: true),
                     Animacao = table.Column<int>(nullable: false),
                     Audio = table.Column<int>(nullable: false)
@@ -44,9 +44,9 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     InicioSessao = table.Column<DateTime>(nullable: false),
-                    FilmeSessao = table.Column<string>(nullable: true),
+                    FilmeSessao = table.Column<Guid>(nullable: false),
                     FinalSessao = table.Column<DateTime>(nullable: false),
-                    SalaSessao = table.Column<string>(nullable: true),
+                    SalaSessao = table.Column<Guid>(nullable: false),
                     SalaId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>

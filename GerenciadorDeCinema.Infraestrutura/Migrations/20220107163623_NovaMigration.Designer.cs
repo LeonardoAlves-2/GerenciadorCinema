@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciadorDeCinema.Infraestrutura.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20220106230923_Inicial")]
-    partial class Inicial
+    [Migration("20220107163623_NovaMigration")]
+    partial class NovaMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,8 +39,8 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     b.Property<int>("Classificacao_Indicativa")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Duracao")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeSpan>("Duracao")
+                        .HasColumnType("time");
 
                     b.Property<string>("Sinopse")
                         .HasColumnType("nvarchar(max)");
@@ -76,8 +76,8 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("FilmeSessao")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("FilmeSessao")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("FinalSessao")
                         .HasColumnType("datetime2");
@@ -88,8 +88,8 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     b.Property<Guid?>("SalaId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("SalaSessao")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("SalaSessao")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 

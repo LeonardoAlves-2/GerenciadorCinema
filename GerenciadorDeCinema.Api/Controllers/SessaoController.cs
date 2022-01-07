@@ -47,12 +47,13 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                sessao.FinalSessao = sessao.CalcularFinalSessao(sessao.FilmeSessao);
+                var sessaoFilme = new Filme { Id = sessao.FilmeSessao };
+                sessao.FinalSessao = sessao.CalcularFinalSessao(sessaoFilme.Duracao);
 
                 if (ModelState.IsValid)
                 {
-                _sessaoService.Adicionar(sessao);
-                    return Ok();
+                    _sessaoService.Adicionar(sessao);
+                        return Ok();
                 }
 
                 throw new Exception();

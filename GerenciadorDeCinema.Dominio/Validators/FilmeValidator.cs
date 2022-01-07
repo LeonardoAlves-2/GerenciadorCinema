@@ -1,10 +1,13 @@
 using FluentValidation;
 using GerenciadorDeCinema.Dominio.Entidades;
+using System.Collections.Generic;
 
 namespace Cinema.Domain.Validators
 {
     public class FilmeValidator : AbstractValidator<Filme>
     {
+        private readonly IEnumerable<Filme> _filmes;
+
         public FilmeValidator()
         {
             RuleFor(p => p.Titulo)
@@ -34,6 +37,13 @@ namespace Cinema.Domain.Validators
             RuleFor(p => p.Audio)
             .IsInEnum().NotEmpty().NotNull()
             .WithMessage("O tipo de {PropertyName} precisa ser um valor válido.");
+
+
+        }
+        public bool IsNameUnique(Filme filmes, string newValue)
+        {
+            return _filmes.Listar(player =>
+              player.Equals(editedPlayer) || player.Name != newValue);
         }
     }
 }
