@@ -47,16 +47,16 @@ namespace GerenciadorDeCinema.Servico.Validators
 
         }
 
-        private bool IsUnique(Filme filme, string titulo)
+        private bool IsUnique(string titulo)
         {
             var filmeUnico = _filmeRepositorio.Listar()
-                                .Where(x => x.Titulo.ToLower() == titulo.ToLower())
-                                .SingleOrDefault();
+                .Where(x => x.Titulo.ToLower() == titulo.ToLower())
+                .SingleOrDefault();
 
             if (filmeUnico == null)
                 return true;
-            
-            return filmeUnico.Id == filme.Id;
+
+            return false;
         }
     }
 }

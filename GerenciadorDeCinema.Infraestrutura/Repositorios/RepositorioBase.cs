@@ -29,7 +29,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces
 
         public virtual void Editar(T item)
         {
-            _context.Entry(item).State = EntityState.Modified;
+            _context.Set<T>().Update(item);
             _context.SaveChanges();
         }
 

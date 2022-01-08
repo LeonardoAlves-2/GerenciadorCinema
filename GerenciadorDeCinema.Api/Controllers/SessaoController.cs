@@ -77,7 +77,12 @@ namespace GerenciadorDeCinema.Api.Controllers
             try
             {
                 var sessao = _sessaoService.ListarPeloId(id);
-                    sessao = sessaoEditada;
+                sessao = sessaoEditada;
+
+                var filme = _filmeService.ListarPeloId(sessao.FilmeSessao);
+                var duracao = filme.DuracaoEmMinutos;
+
+                sessao.FinalSessao = sessao.CalcularFinalSessao(duracao);
 
                 if (ModelState.IsValid)
                 {

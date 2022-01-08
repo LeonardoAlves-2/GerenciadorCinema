@@ -68,6 +68,9 @@ namespace GerenciadorDeCinema.Api.Controllers
             {
                 var filme = new Filme { Id = id };
                 filme = filmeEditado;
+                filme.Id = id;
+
+                var validator = new Validators
 
                 if (ModelState.IsValid)
                 {

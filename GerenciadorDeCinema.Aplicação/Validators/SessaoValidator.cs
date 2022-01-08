@@ -19,7 +19,7 @@ namespace GerenciadorDeCinema.Servico.Validators
             RuleFor(p => p.InicioSessao)
             .GreaterThan(DateTime.UtcNow.AddDays(10))
             .WithMessage("A sessão precisa ser criada com mais de 10 dias de antecedência.")
-            .Must(DataSessaoValidar);
+            .Must(DataSessaoValidar).WithMessage("A sala já está ocupada neste horário.");
 
             
         }
@@ -27,8 +27,8 @@ namespace GerenciadorDeCinema.Servico.Validators
         public bool DataSessaoValidar(Sessao sessao, DateTime inicioSessao)
         {
             var sessaoValida = _sessaoRepositorio.Listar()
-                                .Where(x => x.InicioSessao >= inicioSessao && x.FinalSessao <= inicioSessao)
-                                .SingleOrDefault();
+                .Where(x => x.InicioSessao >= inicioSessao && x.FinalSessao <= inicioSessao && x.SalaSessao == sessao.SalaSessao)
+                .SingleOrDefault();
 
             if (sessaoValida == null)
                 return true;
