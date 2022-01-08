@@ -11,10 +11,12 @@ namespace GerenciadorDeCinema.Api.Controllers
     public class FilmeController : Controller
     {
         private readonly IFilmeService _filmeService;
+        private readonly IFilmeValidator _filmeValidator;
 
-        public FilmeController(IFilmeService filmeService)
+        public FilmeController(IFilmeService filmeService, IFilmeValidator filmeValidator)
         {
             _filmeService = filmeService;
+            _filmeValidator = filmeValidator;
         }
 
         public IActionResult Index()
@@ -45,7 +47,7 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                if (string.IsNullOrWhiteSpace(_filmeValidator.ValidarFilme(filme)))
                 {
                     _filmeService.Adicionar(filme);
                     return Ok();
@@ -70,7 +72,7 @@ namespace GerenciadorDeCinema.Api.Controllers
                 filme = filmeEditado;
                 filme.Id = id;
 
-                var validator = new Validators
+
 
                 if (ModelState.IsValid)
                 {

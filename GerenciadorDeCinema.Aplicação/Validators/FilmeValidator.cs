@@ -1,6 +1,7 @@
 using FluentValidation;
 using GerenciadorDeCinema.Dominio.Entidades;
 using GerenciadorDeCinema.Infraestrutura;
+using GerenciadorDeCinema.Infraestrutura.Repositorios;
 using GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces;
 using System.Collections.Generic;
 using System.Linq;

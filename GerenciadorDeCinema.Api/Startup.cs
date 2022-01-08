@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using FluentValidation.AspNetCore;
-using GerenciadorDeCinema.Servico.Validators;
+
 
 namespace GerenciadorDeCinema.Api
 {
@@ -38,10 +38,12 @@ namespace GerenciadorDeCinema.Api
             services.AddScoped<ISalaRepositorio, SalaRepositorio>();
             services.AddScoped<ISalaService, SalaService>();
 
-            services.AddMvc()
-            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<FilmeValidator>());
-            services.AddMvc()
-            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<SessaoValidator>());
+            services.AddScoped<IFilmeValidator, FilmeValidator>();
+
+            //services.AddMvc()
+            //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<FilmeValidator>());
+            //services.AddMvc()
+            //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<SessaoValidator>());
 
             services.AddMvc();
             services.AddControllers();
