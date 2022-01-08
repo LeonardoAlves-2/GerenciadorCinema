@@ -11,6 +11,7 @@ namespace GerenciadorDeCinema.Servico
     {
         public string ValidarFilme(Filme filme)
         {
+
             var filmeValidator = new Validators.FilmeValidator();
 
             var resultValidation = filmeValidator.Validate(filme);

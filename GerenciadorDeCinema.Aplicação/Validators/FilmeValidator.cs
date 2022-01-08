@@ -14,9 +14,8 @@ namespace GerenciadorDeCinema.Servico.Validators
         public FilmeValidator(IFilmeRepositorio filmeRepositorio)
         {
             _filmeRepositorio = filmeRepositorio;
-        }
-        public FilmeValidator()
-        {
+
+
             RuleFor(p => p.Titulo)
             .NotEmpty().Must(IsUnique)
             .WithMessage("O {PropertyName} não pode estar vazia.");
