@@ -9,6 +9,7 @@ namespace GerenciadorDeCinema.Servico.Interfaces
         public IEnumerable<Filme> ListarFilmes();
         public void Adicionar(Filme filme);
         public void Remover(Filme filme);
+        public Filme ListarPeloId(Guid filmeId);
         public void Editar(Filme filme);
     }
 }

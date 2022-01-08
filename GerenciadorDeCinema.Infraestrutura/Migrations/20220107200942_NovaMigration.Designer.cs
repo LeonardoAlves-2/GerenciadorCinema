@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciadorDeCinema.Infraestrutura.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20220107163623_NovaMigration")]
+    [Migration("20220107200942_NovaMigration")]
     partial class NovaMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,8 +39,8 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     b.Property<int>("Classificacao_Indicativa")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan>("Duracao")
-                        .HasColumnType("time");
+                    b.Property<int>("DuracaoEmMinutos")
+                        .HasColumnType("int");
 
                     b.Property<string>("Sinopse")
                         .HasColumnType("nvarchar(max)");

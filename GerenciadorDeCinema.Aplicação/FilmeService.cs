@@ -1,6 +1,7 @@
 ﻿using GerenciadorDeCinema.Dominio.Entidades;
 using GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces;
 using GerenciadorDeCinema.Servico.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace GerenciadorDeCinema.Servico
@@ -33,5 +34,11 @@ namespace GerenciadorDeCinema.Servico
         {
             _filmeRepositorio.Remover(filme);
         }
+
+        public Filme ListarPeloId(Guid itemId)
+        {
+            return _filmeRepositorio.ListarPeloId(itemId);
+        }
+
     }
 }

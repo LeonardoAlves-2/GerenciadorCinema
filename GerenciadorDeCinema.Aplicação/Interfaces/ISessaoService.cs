@@ -10,6 +10,7 @@ namespace GerenciadorDeCinema.Servico.Interfaces
         public IEnumerable<Sessao> ListarSessoes();
         public void Adicionar(Sessao sessao);
         public void Remover(Sessao sessao);
+        public Sessao ListarPeloId(Guid sessaoId);
         public void Editar(Sessao sessao);
     }
 }

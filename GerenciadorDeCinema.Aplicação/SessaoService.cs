@@ -35,5 +35,9 @@ namespace GerenciadorDeCinema.Servico
         {
             _sessaoRepositorio.Remover(sessao);
         }
+        public Sessao ListarPeloId(Guid itemId)
+        {   
+            return _sessaoRepositorio.ListarPeloId(itemId);
+        }
     }
 }

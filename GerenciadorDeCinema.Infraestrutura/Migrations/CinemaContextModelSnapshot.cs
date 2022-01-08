@@ -37,8 +37,8 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     b.Property<int>("Classificacao_Indicativa")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan>("Duracao")
-                        .HasColumnType("time");
+                    b.Property<int>("DuracaoEmMinutos")
+                        .HasColumnType("int");
 
                     b.Property<string>("Sinopse")
                         .HasColumnType("nvarchar(max)");

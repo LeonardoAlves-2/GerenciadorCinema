@@ -15,7 +15,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     Titulo = table.Column<string>(nullable: true),
                     Categoria = table.Column<int>(nullable: false),
                     Classificacao_Indicativa = table.Column<int>(nullable: false),
-                    Duracao = table.Column<TimeSpan>(nullable: false),
+                    DuracaoEmMinutos = table.Column<int>(nullable: false),
                     Sinopse = table.Column<string>(nullable: true),
                     Animacao = table.Column<int>(nullable: false),
                     Audio = table.Column<int>(nullable: false)

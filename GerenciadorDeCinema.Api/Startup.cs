@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using FluentValidation.AspNetCore;
-using Cinema.Domain.Validators;
+using GerenciadorDeCinema.Servico.Validators;
 
 namespace GerenciadorDeCinema.Api
 {

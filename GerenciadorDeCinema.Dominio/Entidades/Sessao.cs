@@ -9,9 +9,9 @@ namespace GerenciadorDeCinema.Dominio.Entidades
         public DateTime FinalSessao { get; set; }
         public Guid SalaSessao { get; set; }
 
-        public DateTime CalcularFinalSessao(TimeSpan filmeSessaoDuracao)
+        public DateTime CalcularFinalSessao(int filmeSessaoDuracao)
         {
-            var finalSessao = InicioSessao.Add(filmeSessaoDuracao);
+            var finalSessao = InicioSessao.AddMinutes(filmeSessaoDuracao);
             return finalSessao;
         }
     }

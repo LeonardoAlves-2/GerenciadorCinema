@@ -13,11 +13,14 @@ namespace GerenciadorDeCinema.Api.Controllers
     public class SessaoController : Controller
     {
         private readonly ISessaoService _sessaoService;
+        private readonly IFilmeService _filmeService;
 
-        public SessaoController(ISessaoService sessaoService)
+        public SessaoController(ISessaoService sessaoService, IFilmeService filmeService)
         {
             _sessaoService = sessaoService;
+            _filmeService = filmeService;
         }
+
 
         public IActionResult Index()
         {
@@ -47,8 +50,10 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                var sessaoFilme = new Filme { Id = sessao.FilmeSessao };
-                sessao.FinalSessao = sessao.CalcularFinalSessao(sessaoFilme.Duracao);
+                var filme = _filmeService.ListarPeloId(sessao.FilmeSessao);
+                var duracao = filme.DuracaoEmMinutos;
+
+                sessao.FinalSessao = sessao.CalcularFinalSessao(duracao);
 
                 if (ModelState.IsValid)
                 {
@@ -71,11 +76,11 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                var sessao = new Sessao { Id = id };
-                if (ModelState.IsValid)
-                {
+                var sessao = _sessaoService.ListarPeloId(id);
                     sessao = sessaoEditada;
 
+                if (ModelState.IsValid)
+                {
                     _sessaoService.Editar(sessao);
                     return Ok();
                 }
@@ -94,7 +99,7 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                var sessao = new Sessao { Id = id };
+                var sessao = _sessaoService.ListarPeloId(id);
 
                 _sessaoService.Remover(sessao);
 

@@ -1,28 +1,34 @@
 using FluentValidation;
 using GerenciadorDeCinema.Dominio.Entidades;
+using GerenciadorDeCinema.Infraestrutura;
+using GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace Cinema.Domain.Validators
+namespace GerenciadorDeCinema.Servico.Validators
 {
     public class FilmeValidator : AbstractValidator<Filme>
     {
-        private readonly IEnumerable<Filme> _filmes;
-
+        private readonly IFilmeRepositorio _filmeRepositorio;
+        public FilmeValidator(IFilmeRepositorio filmeRepositorio)
+        {
+            _filmeRepositorio = filmeRepositorio;
+        }
         public FilmeValidator()
         {
             RuleFor(p => p.Titulo)
-            .NotEmpty().NotNull()
+            .NotEmpty().Must(IsUnique)
             .WithMessage("O {PropertyName} não pode estar vazia.");
 
             RuleFor(p => p.Categoria)
-            .IsInEnum().NotEmpty().NotNull()
+            .IsInEnum().NotEmpty()
             .WithMessage("A {PropertyName} precisa ter um valor válido.");
 
             RuleFor(p => p.Classificacao_Indicativa)
-            .IsInEnum().NotEmpty().NotNull()
+            .IsInEnum().NotEmpty()
             .WithMessage("A {PropertyName} precisa ter um valor válido.");
 
-            RuleFor(p => p.Duracao)
+            RuleFor(p => p.DuracaoEmMinutos)
             .NotEmpty().NotNull()
             .WithMessage("A {PropertyName} não pode estar vazia.");
 
@@ -31,19 +37,26 @@ namespace Cinema.Domain.Validators
             .WithMessage("A {PropertyName} não pode estar vazia.");
 
             RuleFor(p => p.Animacao)
-            .IsInEnum().NotEmpty().NotNull()
+            .IsInEnum().NotEmpty()
             .WithMessage("O tipo de {PropertyName} precisa ter um valor válido.");
 
             RuleFor(p => p.Audio)
-            .IsInEnum().NotEmpty().NotNull()
+            .IsInEnum().NotEmpty()
             .WithMessage("O tipo de {PropertyName} precisa ser um valor válido.");
 
 
         }
-        public bool IsNameUnique(Filme filmes, string newValue)
+
+        private bool IsUnique(Filme filme, string titulo)
         {
-            return _filmes.Listar(player =>
-              player.Equals(editedPlayer) || player.Name != newValue);
+            var filmeUnico = _filmeRepositorio.Listar()
+                                .Where(x => x.Titulo.ToLower() == titulo.ToLower())
+                                .SingleOrDefault();
+
+            if (filmeUnico == null)
+                return true;
+            
+            return filmeUnico.Id == filme.Id;
         }
     }
 }
