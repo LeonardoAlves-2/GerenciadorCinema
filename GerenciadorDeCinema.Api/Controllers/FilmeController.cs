@@ -3,6 +3,7 @@ using GerenciadorDeCinema.Servico.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GerenciadorDeCinema.Api.Controllers
 {
@@ -43,28 +44,29 @@ namespace GerenciadorDeCinema.Api.Controllers
 
         [HttpPost]
         [Route("adicionar")]
-        public IActionResult Adicionar([FromBody] Filme filme)
+        public async Task<IActionResult> Adicionar([FromBody] Filme filme)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(_filmeValidator.ValidarFilme(filme)))
+                var resultValidation = _filmeValidator.ValidarFilme(filme);
+
+                if (string.IsNullOrWhiteSpace(resultValidation))
                 {
-                    _filmeService.Adicionar(filme);
-                    return Ok();
+                    await _filmeService.Adicionar(filme);
+                    return Ok(filme);
                 }
 
-                throw new Exception();
+                return BadRequest(resultValidation);
             }
             catch (Exception)
             {
-
-                throw;
+                return BadRequest();
             }
         }
 
         [HttpPut]
         [Route("editar/{id}")]
-        public IActionResult Editar([FromBody] Filme filmeEditado, [FromRoute] Guid id)
+        public async Task<IActionResult> Editar([FromBody] Filme filmeEditado, [FromRoute] Guid id)
         {
             try
             {
@@ -72,39 +74,39 @@ namespace GerenciadorDeCinema.Api.Controllers
                 filme = filmeEditado;
                 filme.Id = id;
 
+                var resultValidation = _filmeValidator.ValidarFilme(filme);
 
-
-                if (ModelState.IsValid)
+                if(string.IsNullOrWhiteSpace(resultValidation))
                 {
-                    _filmeService.Editar(filme);
+                    await _filmeService.Editar(filme);
                     return Ok();
                 }
 
-                throw new Exception();
+                return BadRequest(resultValidation);
 
             }
             catch (Exception)
             {
-                throw;
+                return BadRequest();
             }
         }
 
         [HttpDelete]
         [Route("deletar/{id}")]
-        public IActionResult Remover([FromRoute]Guid id)
+        public async Task<IActionResult> Remover([FromRoute]Guid id)
         {
             try
             {
                 var filme = new Filme { Id = id };
                 
-                _filmeService.Remover(filme);
+                await _filmeService.Remover(filme);
 
                 return Ok();
             }
             catch (Exception)
             {
 
-                throw;
+                return BadRequest();
             }
         }
     }

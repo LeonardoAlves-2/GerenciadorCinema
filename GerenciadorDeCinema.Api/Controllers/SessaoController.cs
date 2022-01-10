@@ -46,18 +46,18 @@ namespace GerenciadorDeCinema.Api.Controllers
 
         [HttpPost]
         [Route("adicionar")]
-        public IActionResult Adicionar([FromBody] Sessao sessao)
+        public async Task<IActionResult> Adicionar([FromBody] Sessao sessao)
         {
             try
             {
-                var filme = _filmeService.ListarPeloId(sessao.FilmeSessao);
+                var filme = await _filmeService.ListarPeloId(sessao.FilmeSessao);
                 var duracao = filme.DuracaoEmMinutos;
 
                 sessao.FinalSessao = sessao.CalcularFinalSessao(duracao);
 
                 if (ModelState.IsValid)
                 {
-                    _sessaoService.Adicionar(sessao);
+                    await _sessaoService.Adicionar(sessao);
                         return Ok();
                 }
 
@@ -72,21 +72,21 @@ namespace GerenciadorDeCinema.Api.Controllers
 
         [HttpPut]
         [Route("editar/{id}")]
-        public IActionResult Editar([FromBody] Sessao sessaoEditada, [FromRoute] Guid id)
+        public async Task<IActionResult> Editar([FromBody] Sessao sessaoEditada, [FromRoute] Guid id)
         {
             try
             {
-                var sessao = _sessaoService.ListarPeloId(id);
+                var sessao = await _sessaoService.ListarPeloId(id);
                 sessao = sessaoEditada;
 
-                var filme = _filmeService.ListarPeloId(sessao.FilmeSessao);
+                var filme = await _filmeService.ListarPeloId(sessao.FilmeSessao);
                 var duracao = filme.DuracaoEmMinutos;
 
                 sessao.FinalSessao = sessao.CalcularFinalSessao(duracao);
 
                 if (ModelState.IsValid)
                 {
-                    _sessaoService.Editar(sessao);
+                    await _sessaoService.Editar(sessao);
                     return Ok();
                 }
 
@@ -100,13 +100,13 @@ namespace GerenciadorDeCinema.Api.Controllers
 
         [HttpDelete]
         [Route("deletar/{id}")]
-        public IActionResult Remover([FromRoute] Guid id)
+        public async Task<IActionResult> Remover([FromRoute] Guid id)
         {
             try
             {
-                var sessao = _sessaoService.ListarPeloId(id);
+                var sessao = await _sessaoService.ListarPeloId(id);
 
-                _sessaoService.Remover(sessao);
+                await _sessaoService.Remover(sessao);
 
                 return Ok();
             }

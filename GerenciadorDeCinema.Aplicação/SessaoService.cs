@@ -4,6 +4,7 @@ using GerenciadorDeCinema.Servico.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GerenciadorDeCinema.Servico
 {
@@ -21,23 +22,23 @@ namespace GerenciadorDeCinema.Servico
             return filmes;
         }
 
-        public void Adicionar(Sessao sessao)
+        public async Task Adicionar(Sessao sessao)
         {
-            _sessaoRepositorio.Adicionar(sessao);
+            await _sessaoRepositorio.Adicionar(sessao);
         }
 
-        public void Editar(Sessao sessao)
+        public async Task Editar(Sessao sessao)
         {
-            _sessaoRepositorio.Editar(sessao);
+            await _sessaoRepositorio.Editar(sessao);
         }
 
-        public void Remover(Sessao sessao)
+        public async Task Remover(Sessao sessao)
         {
-            _sessaoRepositorio.Remover(sessao);
+            await _sessaoRepositorio.Remover(sessao);
         }
-        public Sessao ListarPeloId(Guid itemId)
+        public async Task<Sessao> ListarPeloId(Guid itemId)
         {   
-            return _sessaoRepositorio.ListarPeloId(itemId);
+            return await _sessaoRepositorio.ListarPeloId(itemId);
         }
     }
 }

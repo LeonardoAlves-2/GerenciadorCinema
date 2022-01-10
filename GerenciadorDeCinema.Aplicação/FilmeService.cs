@@ -3,6 +3,7 @@ using GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces;
 using GerenciadorDeCinema.Servico.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GerenciadorDeCinema.Servico
 {
@@ -20,24 +21,25 @@ namespace GerenciadorDeCinema.Servico
             return filmes;
         }
 
-        public void Adicionar(Filme filme)
+        public async Task Adicionar(Filme filme)
         {
-            _filmeRepositorio.Adicionar(filme);
+            await _filmeRepositorio.Adicionar(filme);
         }
 
-        public void Editar(Filme filme)
+        public async Task Editar(Filme filme)
         {
-            _filmeRepositorio.Editar(filme);
+            await _filmeRepositorio.Editar(filme);
         }
 
-        public void Remover(Filme filme)
+        public async Task Remover(Filme filme)
         {
-            _filmeRepositorio.Remover(filme);
+            await _filmeRepositorio.Remover(filme);
+            return;
         }
 
-        public Filme ListarPeloId(Guid itemId)
+        public async Task<Filme> ListarPeloId(Guid itemId)
         {
-            return _filmeRepositorio.ListarPeloId(itemId);
+            return await _filmeRepositorio.ListarPeloId(itemId);
         }
 
     }
