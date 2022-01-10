@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces
 {
     public interface IRepositorioBase<T> where T : class
     {
-        void Adicionar(T item);
-        void Remover(T item);
-        void Editar(T item);
+        Task Adicionar(T item);
+        Task Remover(T item);
+        Task Editar(T item);
         IEnumerable<T> Listar();
     }
 }

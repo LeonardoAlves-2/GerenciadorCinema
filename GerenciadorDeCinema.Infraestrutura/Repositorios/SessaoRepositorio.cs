@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GerenciadorDeCinema.Infraestrutura.Repositorios
 {
@@ -14,9 +15,9 @@ namespace GerenciadorDeCinema.Infraestrutura.Repositorios
             : base(context)
         { }
 
-        public virtual Sessao ListarPeloId(Guid itemId)
+        public async virtual Task<Sessao> ListarPeloId(Guid itemId)
         {
-            Sessao itemSessao = _context.Set<Sessao>().SingleOrDefault(e => e.Id == itemId);
+            Sessao itemSessao = await _context.Set<Sessao>().SingleOrDefaultAsync(e => e.Id == itemId);
             return itemSessao;
         }
     }
