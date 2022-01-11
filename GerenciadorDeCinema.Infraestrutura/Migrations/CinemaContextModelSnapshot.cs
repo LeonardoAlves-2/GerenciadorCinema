@@ -86,9 +86,6 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     b.Property<Guid>("SalaId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<decimal>("ValorIngresso")
-                        .HasColumnType("decimal(18,2)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Sessao");

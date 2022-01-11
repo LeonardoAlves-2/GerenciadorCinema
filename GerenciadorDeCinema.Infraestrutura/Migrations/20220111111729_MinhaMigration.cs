@@ -46,8 +46,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     Inicio = table.Column<DateTime>(nullable: false),
                     FilmeId = table.Column<Guid>(nullable: false),
                     Final = table.Column<DateTime>(nullable: false),
-                    SalaId = table.Column<Guid>(nullable: false),
-                    ValorIngresso = table.Column<decimal>(nullable: false)
+                    SalaId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {

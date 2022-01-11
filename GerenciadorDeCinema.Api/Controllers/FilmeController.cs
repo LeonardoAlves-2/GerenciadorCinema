@@ -15,10 +15,11 @@ namespace GerenciadorDeCinema.Api.Controllers
         private readonly IFilmeValidator _filmeValidator;
         private readonly ISessaoService _sessaoService;
 
-        public FilmeController(IFilmeService filmeService, IFilmeValidator filmeValidator)
+        public FilmeController(IFilmeService filmeService, IFilmeValidator filmeValidator, ISessaoService sessaoService)
         {
             _filmeService = filmeService;
             _filmeValidator = filmeValidator;
+            _sessaoService = sessaoService;
         }
 
         public IActionResult Index()

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciadorDeCinema.Infraestrutura.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20220111052711_MinhaMigration")]
+    [Migration("20220111111729_MinhaMigration")]
     partial class MinhaMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,9 +87,6 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
 
                     b.Property<Guid>("SalaId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("ValorIngresso")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 

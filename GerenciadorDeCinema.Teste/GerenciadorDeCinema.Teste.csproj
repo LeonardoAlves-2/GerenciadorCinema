@@ -14,11 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GerenciadorDeCinema.Dominio\GerenciadorDeCinema.Dominio.csproj" />
     <ProjectReference Include="..\GerenciadorDeCinema.Infraestrutura\GerenciadorDeCinema.Infraestrutura.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Repositorios\" />
   </ItemGroup>
 
 </Project>
