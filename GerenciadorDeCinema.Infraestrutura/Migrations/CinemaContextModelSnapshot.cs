@@ -34,10 +34,10 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     b.Property<int>("Categoria")
                         .HasColumnType("int");
 
-                    b.Property<int>("Classificacao_Indicativa")
+                    b.Property<int>("ClassificacaoIndicativa")
                         .HasColumnType("int");
 
-                    b.Property<int>("DuracaoEmMinutos")
+                    b.Property<int>("Duracao")
                         .HasColumnType("int");
 
                     b.Property<string>("Sinopse")
@@ -74,33 +74,21 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("FilmeSessao")
+                    b.Property<Guid>("FilmeId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("FinalSessao")
+                    b.Property<DateTime>("Final")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("InicioSessao")
+                    b.Property<DateTime>("Inicio")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("SalaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SalaSessao")
+                    b.Property<Guid>("SalaId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SalaId");
-
                     b.ToTable("Sessao");
-                });
-
-            modelBuilder.Entity("GerenciadorDeCinema.Dominio.Entidades.Sessao", b =>
-                {
-                    b.HasOne("GerenciadorDeCinema.Dominio.Entidades.Sala", null)
-                        .WithMany("Sessoes")
-                        .HasForeignKey("SalaId");
                 });
 #pragma warning restore 612, 618
         }

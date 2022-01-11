@@ -13,11 +13,13 @@ namespace GerenciadorDeCinema.Api.Controllers
     public class SessaoController : Controller
     {
         private readonly ISessaoService _sessaoService;
+        private readonly ISessaoValidator _sessaoValidator;
         private readonly IFilmeService _filmeService;
 
-        public SessaoController(ISessaoService sessaoService, IFilmeService filmeService)
+        public SessaoController(ISessaoService sessaoService, ISessaoValidator sessaoValidator, IFilmeService filmeService)
         {
             _sessaoService = sessaoService;
+            _sessaoValidator = sessaoValidator;
             _filmeService = filmeService;
         }
 
@@ -40,80 +42,86 @@ namespace GerenciadorDeCinema.Api.Controllers
             catch (Exception)
             {
 
-                throw;
+                return BadRequest();
             }
         }
 
         [HttpPost]
         [Route("adicionar")]
-        public IActionResult Adicionar([FromBody] Sessao sessao)
+        public async Task<IActionResult> Adicionar([FromBody] Sessao sessao)
         {
             try
             {
-                var filme = _filmeService.ListarPeloId(sessao.FilmeSessao);
-                var duracao = filme.DuracaoEmMinutos;
+                var filme = await _filmeService.ListarPeloId(sessao.FilmeId);
+                var duracao = filme.Duracao;
 
-                sessao.FinalSessao = sessao.CalcularFinalSessao(duracao);
+                sessao.Final = sessao.CalcularFinalSessao(duracao);
 
-                if (ModelState.IsValid)
+                var resultValidation = _sessaoValidator.ValidarSessao(sessao);
+
+                if (string.IsNullOrWhiteSpace(resultValidation))
                 {
-                    _sessaoService.Adicionar(sessao);
-                        return Ok();
+                    await _sessaoService.Adicionar(sessao);
+                    return Ok(sessao);
                 }
 
-                throw new Exception();
+                return BadRequest(resultValidation);
             }
             catch (Exception)
             {
 
-                throw;
+                return BadRequest();
             }
         }
 
         [HttpPut]
         [Route("editar/{id}")]
-        public IActionResult Editar([FromBody] Sessao sessaoEditada, [FromRoute] Guid id)
+        public async Task<IActionResult> Editar([FromBody] Sessao sessaoEditada, [FromRoute] Guid id)
         {
             try
             {
-                var sessao = _sessaoService.ListarPeloId(id);
+                var sessao = new Sessao { Id = id };
                 sessao = sessaoEditada;
+                sessao.Id = id;
 
-                var filme = _filmeService.ListarPeloId(sessao.FilmeSessao);
-                var duracao = filme.DuracaoEmMinutos;
+                var filme = await _filmeService.ListarPeloId(sessao.FilmeId);
+                sessao.Final = sessao.CalcularFinalSessao(filme.Duracao);
 
-                sessao.FinalSessao = sessao.CalcularFinalSessao(duracao);
+                var resultValidation = _sessaoValidator.ValidarSessao(sessao);
 
-                if (ModelState.IsValid)
+                if (string.IsNullOrWhiteSpace(resultValidation))
                 {
-                    _sessaoService.Editar(sessao);
+                    await _sessaoService.Editar(sessao);
                     return Ok();
                 }
 
-                throw new Exception();
+                return BadRequest(resultValidation);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return BadRequest(ex);
             }
         }
 
         [HttpDelete]
         [Route("deletar/{id}")]
-        public IActionResult Remover([FromRoute] Guid id)
+        public async Task<IActionResult> Remover([FromRoute] Guid id)
         {
             try
             {
-                var sessao = _sessaoService.ListarPeloId(id);
+                var sessao = await _sessaoService.ListarPeloId(id);
 
-                _sessaoService.Remover(sessao);
-
-                return Ok();
+                if(sessao.Inicio>DateTime.UtcNow.AddDays(10))
+                {
+                    await _sessaoService.Remover(sessao);
+                    return Ok();
+                }
+                return BadRequest("A sessão não pode ser deletada, faltam menos de 10 dias para ela ocorrer.");
             }
             catch (Exception)
             {
 
-                throw;
+                return BadRequest();
             }
         }
     }

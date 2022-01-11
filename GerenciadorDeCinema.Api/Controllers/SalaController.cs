@@ -43,12 +43,12 @@ namespace GerenciadorDeCinema.Api.Controllers
 
         [HttpPost]
         [Route("adicionar")]
-        public IActionResult Adicionar([FromBody] Sala sala)
+        public async Task<IActionResult> Adicionar([FromBody] Sala sala)
         {
             try
             {
-                _salaService.Adicionar(sala);
-                return Ok();
+                await _salaService.Adicionar(sala);
+                return Ok(sala);
             }
             catch (Exception)
             {
@@ -59,13 +59,13 @@ namespace GerenciadorDeCinema.Api.Controllers
 
         [HttpDelete]
         [Route("deletar/{id}")]
-        public IActionResult Remover([FromRoute] Guid id)
+        public async Task<IActionResult> Remover([FromRoute] Guid id)
         {
             try
             {
                 var sala = new Sala { Id = id };
 
-                _salaService.Remover(sala);
+                await _salaService.Remover(sala);
 
                 return Ok();
             }

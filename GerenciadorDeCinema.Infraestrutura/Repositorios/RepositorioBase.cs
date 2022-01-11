@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces
 {
@@ -15,27 +16,27 @@ namespace GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces
             _context = context;
         }
           
-        public virtual void Adicionar(T item)
+        public async virtual Task Adicionar(T item)
         {
-            _context.Set<T>().Add(item);
-            _context.SaveChanges();
+            await _context.Set<T>().AddAsync(item);
+            await _context.SaveChangesAsync();
         }
 
-        public virtual void Remover(T item)
+        public async virtual Task Remover(T item)
         {
             _context.Set<T>().Remove(item);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public virtual void Editar(T item)
+        public async virtual Task Editar(T item)
         {
             _context.Set<T>().Update(item);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public virtual IEnumerable<T> Listar()
+        public  virtual IEnumerable<T> Listar()
         {
-            return _context.Set<T>();
+            return  _context.Set<T>().AsNoTracking();
         }
     }
 }

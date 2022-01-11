@@ -1,11 +1,12 @@
 using GerenciadorDeCinema.Dominio.Entidades;
 using System;
+using System.Threading.Tasks;
 
 namespace GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces
 {
     public interface IFilmeRepositorio : IRepositorioBase<Filme>
     {
-        Filme ListarPeloId(Guid itemId);
+        Task<Filme> ListarPeloId(Guid itemId);
 
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GerenciadorDeCinema.Infraestrutura.Migrations
 {
-    public partial class NovaMigration : Migration
+    public partial class MinhaMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +14,8 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Titulo = table.Column<string>(nullable: true),
                     Categoria = table.Column<int>(nullable: false),
-                    Classificacao_Indicativa = table.Column<int>(nullable: false),
-                    DuracaoEmMinutos = table.Column<int>(nullable: false),
+                    ClassificacaoIndicativa = table.Column<int>(nullable: false),
+                    Duracao = table.Column<int>(nullable: false),
                     Sinopse = table.Column<string>(nullable: true),
                     Animacao = table.Column<int>(nullable: false),
                     Audio = table.Column<int>(nullable: false)
@@ -43,27 +43,15 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    InicioSessao = table.Column<DateTime>(nullable: false),
-                    FilmeSessao = table.Column<Guid>(nullable: false),
-                    FinalSessao = table.Column<DateTime>(nullable: false),
-                    SalaSessao = table.Column<Guid>(nullable: false),
-                    SalaId = table.Column<Guid>(nullable: true)
+                    Inicio = table.Column<DateTime>(nullable: false),
+                    FilmeId = table.Column<Guid>(nullable: false),
+                    Final = table.Column<DateTime>(nullable: false),
+                    SalaId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sessao", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Sessao_Sala_SalaId",
-                        column: x => x.SalaId,
-                        principalTable: "Sala",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Sessao_SalaId",
-                table: "Sessao",
-                column: "SalaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -72,10 +60,10 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                 name: "Filme");
 
             migrationBuilder.DropTable(
-                name: "Sessao");
+                name: "Sala");
 
             migrationBuilder.DropTable(
-                name: "Sala");
+                name: "Sessao");
         }
     }
 }

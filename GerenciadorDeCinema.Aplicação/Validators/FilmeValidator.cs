@@ -11,52 +11,48 @@ namespace GerenciadorDeCinema.Servico.Validators
     public class FilmeValidator : AbstractValidator<Filme>
     {
         private readonly IFilmeRepositorio _filmeRepositorio;
+
         public FilmeValidator(IFilmeRepositorio filmeRepositorio)
         {
             _filmeRepositorio = filmeRepositorio;
 
-
             RuleFor(p => p.Titulo)
-            .NotEmpty().Must(IsUnique)
-            .WithMessage("O {PropertyName} não pode estar vazia.");
+            .NotEmpty().WithMessage("O {PropertyName} não pode estar vazio.")
+            .Must(IsUnique).WithMessage("O {PropertyName} já existe.");
 
             RuleFor(p => p.Categoria)
-            .IsInEnum().NotEmpty()
-            .WithMessage("A {PropertyName} precisa ter um valor válido.");
+            .IsInEnum().WithMessage("A {PropertyName} precisa ter um valor válido.")
+            .NotEmpty().WithMessage("A {PropertyName} não pode estar vazia."); ;
 
-            RuleFor(p => p.Classificacao_Indicativa)
-            .IsInEnum().NotEmpty()
-            .WithMessage("A {PropertyName} precisa ter um valor válido.");
+            RuleFor(p => p.ClassificacaoIndicativa)
+            .IsInEnum().WithMessage("A {PropertyName} precisa ter um valor válido.")
+            .NotEmpty().WithMessage("A {PropertyName} não pode estar vazia.");
 
-            RuleFor(p => p.DuracaoEmMinutos)
-            .NotEmpty().NotNull()
-            .WithMessage("A {PropertyName} não pode estar vazia.");
+            RuleFor(p => p.Duracao)
+            .NotEmpty().WithMessage("A {PropertyName} não pode estar vazia.")
+            .GreaterThan(0).WithMessage("A {PropertyName} precisa ser maior que zero");
 
             RuleFor(p => p.Sinopse)
-            .NotEmpty().NotNull()
-            .WithMessage("A {PropertyName} não pode estar vazia.");
+            .NotEmpty().WithMessage("A {PropertyName} não pode estar vazia.");
 
             RuleFor(p => p.Animacao)
-            .IsInEnum().NotEmpty()
-            .WithMessage("O tipo de {PropertyName} precisa ter um valor válido.");
+            .IsInEnum().WithMessage("O tipo de {PropertyName} precisa ter um valor válido.")
+            .NotEmpty().WithMessage("A {PropertyName} não pode estar vazia.");
 
             RuleFor(p => p.Audio)
-            .IsInEnum().NotEmpty()
-            .WithMessage("O tipo de {PropertyName} precisa ser um valor válido.");
-
-
+            .IsInEnum().WithMessage("O tipo de {PropertyName} precisa ser um valor válido.")
+            .NotEmpty().WithMessage("O {PropertyName} não pode estar vazia.");
         }
 
-        private bool IsUnique(string titulo)
+        private bool IsUnique(Filme filme, string titulo)
         {
             var filmeUnico = _filmeRepositorio.Listar()
-                .Where(x => x.Titulo.ToLower() == titulo.ToLower())
-                .SingleOrDefault();
+                .FirstOrDefault(x => x.Titulo.ToLower() == titulo.ToLower());
 
             if (filmeUnico == null)
                 return true;
 
-            return false;
+            return filme.Id == filmeUnico.Id;
         }
     }
 }

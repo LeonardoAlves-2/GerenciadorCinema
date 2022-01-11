@@ -8,20 +8,20 @@ using GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces;
 
 namespace GerenciadorDeCinema.Servico
 {
-    public class FilmeValidator : IFilmeValidator
+    public class SessaoValidator : ISessaoValidator
     {
-        private readonly IFilmeRepositorio _filmeRepositorio;
+        private readonly ISessaoRepositorio _sessaoRepositorio;
 
-        public FilmeValidator(IFilmeRepositorio filmeRepositorio)
+        public SessaoValidator(ISessaoRepositorio sessaoRepositorio)
         {
-            _filmeRepositorio = filmeRepositorio;
+            _sessaoRepositorio = sessaoRepositorio;
         }
 
-        public string ValidarFilme(Filme filme)
+        public string ValidarSessao(Sessao sessao)
         {
-            var filmeValidator = new Validators.FilmeValidator(_filmeRepositorio);
+            var sessaoValidator = new Validators.SessaoValidator(_sessaoRepositorio);
 
-            var resultValidation = filmeValidator.Validate(filme);
+            var resultValidation = sessaoValidator.Validate(sessao);
 
             if (resultValidation.Errors.Any())
             {

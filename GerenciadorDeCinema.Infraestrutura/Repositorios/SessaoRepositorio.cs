@@ -2,8 +2,9 @@
 using GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Linq;
+using System.Collections.Generic;
 using System.Text;
 
 namespace GerenciadorDeCinema.Infraestrutura.Repositorios
@@ -14,9 +15,9 @@ namespace GerenciadorDeCinema.Infraestrutura.Repositorios
             : base(context)
         { }
 
-        public virtual Sessao ListarPeloId(Guid itemId)
+        public async virtual Task<Sessao> ListarPeloId(Guid itemId)
         {
-            Sessao itemSessao = _context.Set<Sessao>().SingleOrDefault(e => e.Id == itemId);
+            Sessao itemSessao = await _context.Set<Sessao>().FirstOrDefaultAsync(e => e.Id == itemId);
             return itemSessao;
         }
     }

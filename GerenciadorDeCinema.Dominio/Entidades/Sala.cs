@@ -7,6 +7,5 @@ namespace GerenciadorDeCinema.Dominio.Entidades
     {
         public string Nome { get; set; }
         public int QuantidadeMaxima { get; set; }
-        public IList<Sessao> Sessoes { get; set; }
     }
 }
