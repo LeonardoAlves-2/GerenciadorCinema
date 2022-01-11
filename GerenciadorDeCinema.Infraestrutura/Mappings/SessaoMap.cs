@@ -14,12 +14,12 @@ namespace GerenciadorDeCinema.Infraestrutura.Mappings
             base.Configure(builder);
             builder.ToTable("Sessao");
 
-            builder.HasKey(c => c.InicioSessao);
+            builder.HasKey(c => c.Inicio);
 
-            builder.Property(c => c.InicioSessao).IsRequired().HasColumnName("Inicio-Sessao");
-            builder.Property(c => c.FilmeSessao).IsRequired().HasColumnName("Filme-Sessao");
-            builder.Property(c => c.FilmeSessao).IsRequired().HasColumnName("Final-Sessao");
-            builder.Property(c => c.SalaSessao).IsRequired().HasColumnName("Sala-Sessao");
+            builder.Property(c => c.Inicio).IsRequired().HasColumnName("Inicio-Sessao");
+            builder.Property(c => c.Filme).IsRequired().HasColumnName("Filme-Sessao");
+            builder.Property(c => c.Filme).IsRequired().HasColumnName("Final-Sessao");
+            builder.Property(c => c.Sala).IsRequired().HasColumnName("Sala-Sessao");
         }
     }
 }

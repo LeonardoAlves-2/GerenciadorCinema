@@ -39,6 +39,7 @@ namespace GerenciadorDeCinema.Api
             services.AddScoped<ISalaService, SalaService>();
 
             services.AddScoped<IFilmeValidator, FilmeValidator>();
+            services.AddScoped<ISessaoValidator, SessaoValidator>();
 
             services.AddMvc();
             services.AddControllers();

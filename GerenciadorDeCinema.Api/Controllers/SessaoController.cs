@@ -13,11 +13,13 @@ namespace GerenciadorDeCinema.Api.Controllers
     public class SessaoController : Controller
     {
         private readonly ISessaoService _sessaoService;
+        private readonly ISessaoValidator _sessaoValidator;
         private readonly IFilmeService _filmeService;
 
-        public SessaoController(ISessaoService sessaoService, IFilmeService filmeService)
+        public SessaoController(ISessaoService sessaoService, ISessaoValidator sessaoValidator, IFilmeService filmeService)
         {
             _sessaoService = sessaoService;
+            _sessaoValidator = sessaoValidator;
             _filmeService = filmeService;
         }
 
@@ -40,7 +42,7 @@ namespace GerenciadorDeCinema.Api.Controllers
             catch (Exception)
             {
 
-                throw;
+                return BadRequest();
             }
         }
 
@@ -50,23 +52,25 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                var filme = await _filmeService.ListarPeloId(sessao.FilmeSessao);
-                var duracao = filme.DuracaoEmMinutos;
+                var filme = await _filmeService.ListarPeloId(sessao.Filme);
+                var duracao = filme.Duracao;
 
-                sessao.FinalSessao = sessao.CalcularFinalSessao(duracao);
+                sessao.Final = sessao.CalcularFinalSessao(duracao);
 
-                if (ModelState.IsValid)
+                var resultValidation = _sessaoValidator.ValidarSessao(sessao);
+
+                if (string.IsNullOrWhiteSpace(resultValidation))
                 {
                     await _sessaoService.Adicionar(sessao);
-                        return Ok();
+                    return Ok(sessao);
                 }
 
-                throw new Exception();
+                return BadRequest(resultValidation);
             }
             catch (Exception)
             {
 
-                throw;
+                return BadRequest();
             }
         }
 
@@ -76,25 +80,26 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                var sessao = await _sessaoService.ListarPeloId(id);
+                var sessao = new Sessao { Id = id };
                 sessao = sessaoEditada;
+                sessao.Id = id;
 
-                var filme = await _filmeService.ListarPeloId(sessao.FilmeSessao);
-                var duracao = filme.DuracaoEmMinutos;
+                var filme = await _filmeService.ListarPeloId(sessao.Filme);
+                sessao.Final = sessao.CalcularFinalSessao(filme.Duracao);
 
-                sessao.FinalSessao = sessao.CalcularFinalSessao(duracao);
+                var resultValidation = _sessaoValidator.ValidarSessao(sessao);
 
-                if (ModelState.IsValid)
+                if (string.IsNullOrWhiteSpace(resultValidation))
                 {
                     await _sessaoService.Editar(sessao);
                     return Ok();
                 }
 
-                throw new Exception();
+                return BadRequest(resultValidation);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return BadRequest(ex);
             }
         }
 
@@ -113,7 +118,7 @@ namespace GerenciadorDeCinema.Api.Controllers
             catch (Exception)
             {
 
-                throw;
+                return BadRequest();
             }
         }
     }

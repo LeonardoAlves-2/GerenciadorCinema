@@ -15,7 +15,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Repositorios
 
         public async virtual Task<Filme> ListarPeloId(Guid itemId)
         {
-            Filme itemFilme = await _context.Set<Filme>().SingleOrDefaultAsync(e => e.Id == itemId);
+            Filme itemFilme = await _context.Set<Filme>().FirstOrDefaultAsync(e => e.Id == itemId);
             return itemFilme;
         }
     }

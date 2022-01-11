@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciadorDeCinema.Infraestrutura.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20220107200942_NovaMigration")]
-    partial class NovaMigration
+    [Migration("20220110192053_MinhaMigration")]
+    partial class MinhaMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,10 +36,10 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     b.Property<int>("Categoria")
                         .HasColumnType("int");
 
-                    b.Property<int>("Classificacao_Indicativa")
+                    b.Property<int>("ClassificacaoIndicativa")
                         .HasColumnType("int");
 
-                    b.Property<int>("DuracaoEmMinutos")
+                    b.Property<int>("Duracao")
                         .HasColumnType("int");
 
                     b.Property<string>("Sinopse")
@@ -76,19 +76,19 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("FilmeSessao")
+                    b.Property<Guid>("Filme")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("FinalSessao")
+                    b.Property<DateTime>("Final")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("InicioSessao")
+                    b.Property<DateTime>("Inicio")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid>("Sala")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("SalaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SalaSessao")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");

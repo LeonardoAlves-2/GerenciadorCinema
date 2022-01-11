@@ -24,11 +24,11 @@ namespace GerenciadorDeCinema.Servico.Validators
             .IsInEnum().WithMessage("A {PropertyName} precisa ter um valor válido.")
             .NotEmpty().WithMessage("A {PropertyName} não pode estar vazia."); ;
 
-            RuleFor(p => p.Classificacao_Indicativa)
+            RuleFor(p => p.ClassificacaoIndicativa)
             .IsInEnum().WithMessage("A {PropertyName} precisa ter um valor válido.")
             .NotEmpty().WithMessage("A {PropertyName} não pode estar vazia.");
 
-            RuleFor(p => p.DuracaoEmMinutos)
+            RuleFor(p => p.Duracao)
             .NotEmpty().WithMessage("A {PropertyName} não pode estar vazia.")
             .GreaterThan(0).WithMessage("A {PropertyName} precisa ser maior que zero");
 

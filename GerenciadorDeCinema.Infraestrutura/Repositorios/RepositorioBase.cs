@@ -34,9 +34,9 @@ namespace GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces
             await _context.SaveChangesAsync();
         }
 
-        public virtual IEnumerable<T> Listar()
+        public  virtual IEnumerable<T> Listar()
         {
-            return _context.Set<T>().AsNoTracking();
+            return  _context.Set<T>().AsNoTracking();
         }
     }
 }

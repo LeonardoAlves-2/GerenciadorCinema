@@ -4,6 +4,7 @@ using GerenciadorDeCinema.Servico.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GerenciadorDeCinema.Servico
 {
@@ -21,19 +22,19 @@ namespace GerenciadorDeCinema.Servico
             return salas;
         }
 
-        public void Adicionar(Sala sala)
+        public async Task Adicionar(Sala sala)
         {
-            _salaRepositorio.Adicionar(sala);
+            await _salaRepositorio.Adicionar(sala);
         }
 
-        public void Editar(Sala sala)
+        public async Task Editar(Sala sala)
         {
-            _salaRepositorio.Editar(sala);
+            await _salaRepositorio.Editar(sala);
         }
 
-        public void Remover(Sala sala)
+        public async Task Remover(Sala sala)
         {
-            _salaRepositorio.Remover(sala);
+            await _salaRepositorio.Remover(sala);
         }
     }
 }
