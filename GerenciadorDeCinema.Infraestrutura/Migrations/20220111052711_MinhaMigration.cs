@@ -44,26 +44,15 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Inicio = table.Column<DateTime>(nullable: false),
-                    Filme = table.Column<Guid>(nullable: false),
+                    FilmeId = table.Column<Guid>(nullable: false),
                     Final = table.Column<DateTime>(nullable: false),
-                    Sala = table.Column<Guid>(nullable: false),
-                    SalaId = table.Column<Guid>(nullable: true)
+                    SalaId = table.Column<Guid>(nullable: false),
+                    ValorIngresso = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sessao", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Sessao_Sala_SalaId",
-                        column: x => x.SalaId,
-                        principalTable: "Sala",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Sessao_SalaId",
-                table: "Sessao",
-                column: "SalaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -72,10 +61,10 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                 name: "Filme");
 
             migrationBuilder.DropTable(
-                name: "Sessao");
+                name: "Sala");
 
             migrationBuilder.DropTable(
-                name: "Sala");
+                name: "Sessao");
         }
     }
 }

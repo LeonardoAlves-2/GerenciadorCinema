@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GerenciadorDeCinema.Infraestrutura.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    [Migration("20220110192053_MinhaMigration")]
+    [Migration("20220111052711_MinhaMigration")]
     partial class MinhaMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -76,7 +76,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("Filme")
+                    b.Property<Guid>("FilmeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Final")
@@ -85,24 +85,15 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     b.Property<DateTime>("Inicio")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("Sala")
+                    b.Property<Guid>("SalaId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("SalaId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<decimal>("ValorIngresso")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SalaId");
-
                     b.ToTable("Sessao");
-                });
-
-            modelBuilder.Entity("GerenciadorDeCinema.Dominio.Entidades.Sessao", b =>
-                {
-                    b.HasOne("GerenciadorDeCinema.Dominio.Entidades.Sala", null)
-                        .WithMany("Sessoes")
-                        .HasForeignKey("SalaId");
                 });
 #pragma warning restore 612, 618
         }

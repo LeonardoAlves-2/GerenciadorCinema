@@ -52,7 +52,7 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                var filme = await _filmeService.ListarPeloId(sessao.Filme);
+                var filme = await _filmeService.ListarPeloId(sessao.FilmeId);
                 var duracao = filme.Duracao;
 
                 sessao.Final = sessao.CalcularFinalSessao(duracao);
@@ -84,7 +84,7 @@ namespace GerenciadorDeCinema.Api.Controllers
                 sessao = sessaoEditada;
                 sessao.Id = id;
 
-                var filme = await _filmeService.ListarPeloId(sessao.Filme);
+                var filme = await _filmeService.ListarPeloId(sessao.FilmeId);
                 sessao.Final = sessao.CalcularFinalSessao(filme.Duracao);
 
                 var resultValidation = _sessaoValidator.ValidarSessao(sessao);
@@ -111,9 +111,12 @@ namespace GerenciadorDeCinema.Api.Controllers
             {
                 var sessao = await _sessaoService.ListarPeloId(id);
 
-                await _sessaoService.Remover(sessao);
-
-                return Ok();
+                if(sessao.Inicio>DateTime.UtcNow.AddDays(10))
+                {
+                    await _sessaoService.Remover(sessao);
+                    return Ok();
+                }
+                return BadRequest("A sessão não pode ser deletada, faltam menos de 10 dias para ela ocorrer.");
             }
             catch (Exception)
             {

@@ -16,10 +16,11 @@ namespace GerenciadorDeCinema.Infraestrutura.Mappings
 
             builder.HasKey(c => c.Inicio);
 
-            builder.Property(c => c.Inicio).IsRequired().HasColumnName("Inicio-Sessao");
-            builder.Property(c => c.Filme).IsRequired().HasColumnName("Filme-Sessao");
-            builder.Property(c => c.Filme).IsRequired().HasColumnName("Final-Sessao");
-            builder.Property(c => c.Sala).IsRequired().HasColumnName("Sala-Sessao");
+            builder.Property(c => c.Inicio).IsRequired().HasColumnName("InicioSessao");
+            builder.Property(c => c.FilmeId).IsRequired().HasColumnName("FilmeSessao");
+            builder.Property(c => c.FilmeId).IsRequired().HasColumnName("FinalSessao");
+            builder.Property(c => c.SalaId).IsRequired().HasColumnName("SalaSessao");
+            builder.Property(c => c.ValorIngresso).IsRequired().HasColumnName("ValorIngresso");
         }
     }
 }

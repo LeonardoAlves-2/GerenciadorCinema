@@ -74,7 +74,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("Filme")
+                    b.Property<Guid>("FilmeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Final")
@@ -83,24 +83,15 @@ namespace GerenciadorDeCinema.Infraestrutura.Migrations
                     b.Property<DateTime>("Inicio")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("Sala")
+                    b.Property<Guid>("SalaId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("SalaId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<decimal>("ValorIngresso")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SalaId");
-
                     b.ToTable("Sessao");
-                });
-
-            modelBuilder.Entity("GerenciadorDeCinema.Dominio.Entidades.Sessao", b =>
-                {
-                    b.HasOne("GerenciadorDeCinema.Dominio.Entidades.Sala", null)
-                        .WithMany("Sessoes")
-                        .HasForeignKey("SalaId");
                 });
 #pragma warning restore 612, 618
         }

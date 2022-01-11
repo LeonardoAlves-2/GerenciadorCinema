@@ -13,6 +13,7 @@ namespace GerenciadorDeCinema.Api.Controllers
     {
         private readonly IFilmeService _filmeService;
         private readonly IFilmeValidator _filmeValidator;
+        private readonly ISessaoService _sessaoService;
 
         public FilmeController(IFilmeService filmeService, IFilmeValidator filmeValidator)
         {
@@ -98,10 +99,14 @@ namespace GerenciadorDeCinema.Api.Controllers
             try
             {
                 var filme = new Filme { Id = id };
-                
-                await _filmeService.Remover(filme);
+                Sessao sessao = _sessaoService.ListarSessoes().FirstOrDefault(x => x.FilmeId == id);
 
-                return Ok();
+                if(sessao==null)
+                { 
+                    await _filmeService.Remover(filme);
+                    return Ok();
+                }
+                return BadRequest("Filme está vinculado a pelo menos uma sessão.");
             }
             catch (Exception)
             {
