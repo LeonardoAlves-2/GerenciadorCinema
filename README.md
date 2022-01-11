@@ -9,7 +9,7 @@ O projeto foi dividido em camadas, sendo elas:
  - API
  - Domínio
  - Infraestrutura
- - Serviço
+ - Aplicação
 
 O projeto tem uma API, e na API foi desenvolvido 3 controladores, sendo eles:
 
