@@ -40,7 +40,7 @@ namespace GerenciadorDeCinema.Api.Controllers
             catch (Exception)
             {
 
-                throw;
+                return BadRequest();
             }
         }
 

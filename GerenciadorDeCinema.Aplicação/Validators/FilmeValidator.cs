@@ -16,19 +16,19 @@ namespace GerenciadorDeCinema.Servico.Validators
         {
             _filmeRepositorio = filmeRepositorio;
 
-            RuleFor(p => p.Imagem)
-            .NotEmpty().WithMessage("A {PropertyName} não pode estar vazia.");
+            RuleFor(p => p.Imagem).Cascade(CascadeMode.Stop)
+            .NotEmpty().WithMessage("Campo requirido.");
 
-            RuleFor(p => p.Titulo)
-            .NotEmpty().WithMessage("O {PropertyName} não pode estar vazio.")
+            RuleFor(p => p.Titulo).Cascade(CascadeMode.Stop)
+            .NotEmpty().WithMessage("Campo requirido.")
             .Must(IsUnique).WithMessage("O {PropertyName} já existe.");
 
-            RuleFor(p => p.Duracao)
-            .NotEmpty().WithMessage("A {PropertyName} não pode estar vazia.")
+            RuleFor(p => p.Duracao).Cascade(CascadeMode.Stop)
+            .NotEmpty().WithMessage("Campo requirido.")
             .GreaterThan(0).WithMessage("A {PropertyName} precisa ser maior que zero.");
 
-            RuleFor(p => p.Descricao)
-            .NotEmpty().WithMessage("A {PropertyName} não pode estar vazia.");
+            RuleFor(p => p.Descricao).Cascade(CascadeMode.Stop)
+            .NotEmpty().WithMessage("Campo requirido.");
         }
 
         private bool IsUnique(Filme filme, string titulo)

@@ -14,19 +14,19 @@ namespace GerenciadorDeCinema.Servico.Validators
         {
             _sessaoRepositorio = sessaoRepositorio;
 
-            RuleFor(p => p.Inicio)
+            RuleFor(p => p.Inicio).Cascade(CascadeMode.Stop)
             .GreaterThan(DateTime.UtcNow.AddDays(10)).WithMessage("A sessão precisa ser criada com mais de 10 dias de antecedência.")
             .Must(DataSessaoValidar).WithMessage("A sala já está ocupada neste horário.");
 
-            RuleFor(p => p.Animacao)
+            RuleFor(p => p.Animacao).Cascade(CascadeMode.Stop)
             .IsInEnum().WithMessage("O tipo de {PropertyName} precisa ter um valor válido.")
-            .NotEmpty().WithMessage("A {PropertyName} não pode estar vazia.");
+            .NotEmpty().WithMessage("Campo requirido.");
 
-            RuleFor(p => p.Audio)
+            RuleFor(p => p.Audio).Cascade(CascadeMode.Stop)
             .IsInEnum().WithMessage("O tipo de {PropertyName} precisa ser um valor válido.")
-            .NotEmpty().WithMessage("O {PropertyName} não pode estar vazia.");
+            .NotEmpty().WithMessage("Campo requirido.");
 
-            RuleFor(p => p.ValorIngresso)
+            RuleFor(p => p.ValorIngresso).Cascade(CascadeMode.Stop)
             .GreaterThan(0).WithMessage("O valor do ingresso não pode ser menor que R$0,00.");
         }
 
