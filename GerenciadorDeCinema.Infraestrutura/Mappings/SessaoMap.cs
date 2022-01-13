@@ -22,7 +22,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Mappings
             builder.Property(c => c.SalaId).IsRequired().HasColumnName("SalaId");
             builder.Property(c => c.Animacao).IsRequired().HasColumnName("Animacao");
             builder.Property(c => c.Audio).IsRequired().HasColumnName("Audio");
-            builder.Property(c => c.ValorIngresso).IsRequired().HasColumnName("ValorIngresso");
+            builder.Property(c => c.ValorIngresso).IsRequired().HasColumnType("decimal(01,5)").HasColumnName("ValorIngresso");
         }
     }
 }
