@@ -67,10 +67,10 @@ namespace GerenciadorDeCinema.Api.Controllers
 
                 return BadRequest(resultValidation);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return BadRequest();
+                return BadRequest(ex);
             }
         }
 
@@ -89,10 +89,10 @@ namespace GerenciadorDeCinema.Api.Controllers
                 }
                 return BadRequest("A sessão não pode ser deletada, faltam menos de 10 dias para ela ocorrer.");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return BadRequest();
+                return BadRequest(ex);
             }
         }
     }

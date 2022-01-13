@@ -34,10 +34,10 @@ namespace GerenciadorDeCinema.Api.Controllers
 
                 return Ok(salas);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return BadRequest();
+                return BadRequest(ex);
             }
         }
     }

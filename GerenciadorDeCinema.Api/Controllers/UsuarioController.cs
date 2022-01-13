@@ -1,4 +1,6 @@
-﻿using GerenciadorDeCinema.Servico;
+﻿using GerenciadorDeCinema.Dominio.Entidades;
+using GerenciadorDeCinema.Servico;
+using GerenciadorDeCinema.Servico.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,6 +13,13 @@ namespace GerenciadorDeCinema.Api.Controllers
     [Route("login")]
     public class UsuarioController : Controller
     {
+        private readonly IUsuarioService _usuarioService;
+
+        public UsuarioController(IUsuarioService usuarioService)
+        {
+            _usuarioService = usuarioService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -18,12 +27,14 @@ namespace GerenciadorDeCinema.Api.Controllers
 
         [HttpPost]
         [Route("")]
-        public IActionResult Login()
+        public async Task<IActionResult> Login([FromBody] Usuario usuario)
         {
-            var tokenService = new TokenService();
-            var token = tokenService.GenerateToken(null);
+            var loginValido = await _usuarioService.Logar(usuario);
 
-            return Ok(token);
+            if (loginValido)
+                return Ok();
+
+            return BadRequest();
         }
     }
 }

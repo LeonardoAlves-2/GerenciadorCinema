@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces
+namespace GerenciadorDeCinema.Servico.Interfaces
 {
-    public interface IUsuarioRepositorio
+    public interface IUsuarioService
     {
-        Task<bool> Logar(Usuario usuario);
+        public Task<bool> Logar(Usuario usuario);
     }
 }

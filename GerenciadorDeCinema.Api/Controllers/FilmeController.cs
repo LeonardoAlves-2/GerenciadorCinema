@@ -37,10 +37,10 @@ namespace GerenciadorDeCinema.Api.Controllers
 
                 return Ok(filmes);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return BadRequest();
+                return BadRequest(ex);
             }
         }
 
@@ -60,9 +60,9 @@ namespace GerenciadorDeCinema.Api.Controllers
 
                 return BadRequest(resultValidation);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex);
             }
         }
 
@@ -87,9 +87,9 @@ namespace GerenciadorDeCinema.Api.Controllers
                 return BadRequest(resultValidation);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return BadRequest();
+                return BadRequest(ex);
             }
         }
 
@@ -109,10 +109,10 @@ namespace GerenciadorDeCinema.Api.Controllers
                 }
                 return BadRequest("Filme está vinculado a pelo menos uma sessão.");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return BadRequest();
+                return BadRequest(ex);
             }
         }
     }
