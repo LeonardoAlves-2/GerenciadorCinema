@@ -9,5 +9,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces
     public interface IUsuarioRepositorio
     {
         Task<Usuario> ListarPeloId(Guid itemId);
+
+        //Task<> Logar(string email, string senha);
     }
 }
