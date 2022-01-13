@@ -27,11 +27,6 @@ namespace GerenciadorDeCinema.Servico
             await _sessaoRepositorio.Adicionar(sessao);
         }
 
-        public async Task Editar(Sessao sessao)
-        {
-            await _sessaoRepositorio.Editar(sessao);
-        }
-
         public async Task Remover(Sessao sessao)
         {
             await _sessaoRepositorio.Remover(sessao);

@@ -40,40 +40,5 @@ namespace GerenciadorDeCinema.Api.Controllers
                 throw;
             }
         }
-
-        [HttpPost]
-        [Route("adicionar")]
-        public async Task<IActionResult> Adicionar([FromBody] Sala sala)
-        {
-            try
-            {
-                await _salaService.Adicionar(sala);
-                return Ok(sala);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        [HttpDelete]
-        [Route("deletar/{id}")]
-        public async Task<IActionResult> Remover([FromRoute] Guid id)
-        {
-            try
-            {
-                var sala = new Sala { Id = id };
-
-                await _salaService.Remover(sala);
-
-                return Ok();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
     }
 }

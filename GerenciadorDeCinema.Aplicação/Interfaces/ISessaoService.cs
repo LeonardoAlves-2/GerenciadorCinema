@@ -9,9 +9,8 @@ namespace GerenciadorDeCinema.Servico.Interfaces
     public interface ISessaoService 
     {
         public IEnumerable<Sessao> ListarSessoes();
+        public Task<Sessao> ListarPeloId(Guid sessaoId);
         public Task Adicionar(Sessao sessao);
         public Task Remover(Sessao sessao);
-        public Task<Sessao> ListarPeloId(Guid sessaoId);
-        public Task Editar(Sessao sessao);
     }
 }

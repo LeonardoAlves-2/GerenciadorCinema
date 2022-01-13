@@ -21,20 +21,5 @@ namespace GerenciadorDeCinema.Servico
             var salas = _salaRepositorio.Listar();
             return salas;
         }
-
-        public async Task Adicionar(Sala sala)
-        {
-            await _salaRepositorio.Adicionar(sala);
-        }
-
-        public async Task Editar(Sala sala)
-        {
-            await _salaRepositorio.Editar(sala);
-        }
-
-        public async Task Remover(Sala sala)
-        {
-            await _salaRepositorio.Remover(sala);
-        }
     }
 }
