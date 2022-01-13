@@ -52,7 +52,7 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                var filme = await _filmeService.ListarPeloId(sessao.FilmeId);
+                var filme = await _filmeService.ObterPeloId(sessao.FilmeId);
                 var duracao = filme.Duracao;
 
                 sessao.Final = sessao.CalcularFinalSessao(duracao);
@@ -80,7 +80,7 @@ namespace GerenciadorDeCinema.Api.Controllers
         {
             try
             {
-                var sessao = await _sessaoService.ListarPeloId(id);
+                var sessao = await _sessaoService.ObterPeloId(id);
 
                 if(sessao.Inicio>DateTime.UtcNow.AddDays(10))
                 {
