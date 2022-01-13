@@ -67,38 +67,9 @@ namespace GerenciadorDeCinema.Api.Controllers
 
                 return BadRequest(resultValidation);
             }
-            catch (Exception)
-            {
-
-                return BadRequest();
-            }
-        }
-
-        [HttpPut]
-        [Route("editar/{id}")]
-        public async Task<IActionResult> Editar([FromBody] Sessao sessaoEditada, [FromRoute] Guid id)
-        {
-            try
-            {
-                var sessao = new Sessao { Id = id };
-                sessao = sessaoEditada;
-                sessao.Id = id;
-
-                var filme = await _filmeService.ListarPeloId(sessao.FilmeId);
-                sessao.Final = sessao.CalcularFinalSessao(filme.Duracao);
-
-                var resultValidation = _sessaoValidator.ValidarSessao(sessao);
-
-                if (string.IsNullOrWhiteSpace(resultValidation))
-                {
-                    await _sessaoService.Editar(sessao);
-                    return Ok();
-                }
-
-                return BadRequest(resultValidation);
-            }
             catch (Exception ex)
             {
+
                 return BadRequest(ex);
             }
         }
@@ -118,10 +89,10 @@ namespace GerenciadorDeCinema.Api.Controllers
                 }
                 return BadRequest("A sessão não pode ser deletada, faltam menos de 10 dias para ela ocorrer.");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return BadRequest();
+                return BadRequest(ex);
             }
         }
     }

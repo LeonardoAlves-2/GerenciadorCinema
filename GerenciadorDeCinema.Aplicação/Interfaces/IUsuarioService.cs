@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GerenciadorDeCinema.Servico.Interfaces
 {
-    public interface ISalaService
+    public interface IUsuarioService
     {
-        public IEnumerable<Sala> ListarSalas();
+        public Task<bool> Logar(Usuario usuario);
     }
 }

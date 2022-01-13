@@ -34,7 +34,6 @@ namespace GerenciadorDeCinema.Servico
         public async Task Remover(Filme filme)
         {
             await _filmeRepositorio.Remover(filme);
-            return;
         }
 
         public async Task<Filme> ListarPeloId(Guid itemId)

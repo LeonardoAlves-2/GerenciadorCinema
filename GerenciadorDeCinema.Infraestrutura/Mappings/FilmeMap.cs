@@ -14,12 +14,8 @@ namespace GerenciadorDeCinema.Infraestrutura.Mappings
             builder.HasKey(c => c.Titulo);
 
             builder.Property(c => c.Titulo).IsRequired().HasColumnName("Titulo").HasMaxLength(100);
-            builder.Property(c => c.Categoria).IsRequired().HasColumnName("Categoria");
-            builder.Property(c => c.ClassificacaoIndicativa).IsRequired().HasDefaultValue(0).HasColumnName("Classificacao_Indicativa");
             builder.Property(c => c.Duracao).IsRequired().HasColumnName("Duracao");
-            builder.Property(c => c.Sinopse).IsRequired().HasColumnName("Sinopse");
-            builder.Property(c => c.Animacao).IsRequired().HasColumnName("Animacao");
-            builder.Property(c => c.Audio).IsRequired().HasColumnName("Audio");
+            builder.Property(c => c.Descricao).IsRequired().HasColumnName("Descricao");
         }
     }
 }

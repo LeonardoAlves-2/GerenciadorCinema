@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GerenciadorDeCinema.Servico.Interfaces
+namespace GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces
 {
-    public interface ISalaService
+    public interface IUsuarioRepositorio
     {
-        public IEnumerable<Sala> ListarSalas();
+        Task<bool> Logar(Usuario usuario);
     }
 }

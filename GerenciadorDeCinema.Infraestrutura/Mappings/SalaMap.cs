@@ -17,7 +17,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Mappings
             builder.HasKey(c => c.Nome);
 
             builder.Property(c => c.Nome).IsRequired().HasColumnName("Nome");
-            builder.Property(c => c.QuantidadeMaxima).IsRequired().HasColumnName("Quantidade-Maxima");
+            builder.Property(c => c.QuantidadeDeAssentos).IsRequired().HasColumnName("QuantidadeDeAssentos");
         }
     }
 }
