@@ -28,6 +28,8 @@ namespace GerenciadorDeCinema.Api
         {
             services.AddDbContext<DbContext, CinemaContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("connectionString")));
 
+
+
             services.AddScoped<IFilmeRepositorio, FilmeRepositorio>();
             services.AddScoped<IFilmeService, FilmeService>();
 
