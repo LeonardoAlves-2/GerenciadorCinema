@@ -12,7 +12,7 @@ namespace GerenciadorDeCinema.Servico.Validators
         {
             RuleFor(p => p.Email).Cascade(CascadeMode.Stop)
             .NotEmpty().WithMessage("Campo requirido.")
-            .EmailAddress().WithMessage("O {PropertyName} está inválido.");
+            .EmailAddress().WithMessage("Campo inválido.");
 
             RuleFor(p => p.PasswordHash).Cascade(CascadeMode.Stop)
             .NotEmpty().WithMessage("Campo requirido.");

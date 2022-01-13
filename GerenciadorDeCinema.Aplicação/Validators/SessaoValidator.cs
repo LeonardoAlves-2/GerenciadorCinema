@@ -19,11 +19,11 @@ namespace GerenciadorDeCinema.Servico.Validators
             .Must(DataSessaoValidar).WithMessage("A sala já está ocupada neste horário.");
 
             RuleFor(p => p.Animacao).Cascade(CascadeMode.Stop)
-            .IsInEnum().WithMessage("O tipo de {PropertyName} precisa ter um valor válido.")
+            .IsInEnum().WithMessage("Campo inválido.")
             .NotEmpty().WithMessage("Campo requirido.");
 
             RuleFor(p => p.Audio).Cascade(CascadeMode.Stop)
-            .IsInEnum().WithMessage("O tipo de {PropertyName} precisa ser um valor válido.")
+            .IsInEnum().WithMessage("Campo inválido.")
             .NotEmpty().WithMessage("Campo requirido.");
 
             RuleFor(p => p.ValorIngresso).Cascade(CascadeMode.Stop)
