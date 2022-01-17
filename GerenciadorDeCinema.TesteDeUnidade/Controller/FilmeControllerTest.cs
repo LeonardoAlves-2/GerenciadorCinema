@@ -15,6 +15,23 @@ namespace GerenciadorDeCinema.TesteDeUnidade.Controller
     public class FilmeControllerTest
     {
         [Fact]
+        public void Listar_deve_retornar_true()
+        {
+            //Arrange
+            var mockFilmeService = new Mock<IFilmeService>();
+            var mockFilmeValidator = new Mock<IFilmeValidator>();
+            var mockSessaoService = new Mock<ISessaoService>();
+            mockFilmeService.Setup(repo => repo.ListarFilmes()).Verifiable();
+            var controller = new FilmeController(mockFilmeService.Object, mockFilmeValidator.Object, mockSessaoService.Object);
+
+            //Act
+            _ = controller.Listar();
+
+            //Assert
+            mockFilmeService.Verify();
+        }
+
+        [Fact]
         public void Adicionar_deve_retornar_true_quando_filme_for_valido()
         {
             //Arrange

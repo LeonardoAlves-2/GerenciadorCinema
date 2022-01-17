@@ -27,6 +27,7 @@ namespace GerenciadorDeCinema.Servico.Validators
             .NotEmpty().WithMessage("Campo requirido.");
 
             RuleFor(p => p.ValorIngresso).Cascade(CascadeMode.Stop)
+            .NotEmpty().WithMessage("Campo requirido.")
             .GreaterThan(0).WithMessage("O valor do ingresso não pode ser menor que R$0,00.");
         }
 
