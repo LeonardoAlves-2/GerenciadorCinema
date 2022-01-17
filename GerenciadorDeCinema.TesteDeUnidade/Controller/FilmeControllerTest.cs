@@ -14,25 +14,58 @@ namespace GerenciadorDeCinema.TesteDeUnidade.Controller
 {
     public class FilmeControllerTest
     {
-        private readonly FilmeController _filmeController;
-        public FilmeControllerTest(FilmeController filmeController)
-        {
-            _filmeController = filmeController;
-        }
-
-        /*[Fact]
-        public void Deve_retornar_true_quando_filme_for_valido()
+        [Fact]
+        public void Adicionar_deve_retornar_true_quando_filme_for_valido()
         {
             //Arrange
             Filme f = new FilmeBuilder().filme;
-            var mockRepo = new Mock<IFilmeRepositorio>();
-            mockRepo.Setup(repo => repo.Adicionar(It.IsAny<Filme>())).Verifiable();
+            var mockFilmeService = new Mock<IFilmeService>();
+            var mockFilmeValidator = new Mock<IFilmeValidator>();
+            var mockSessaoService = new Mock<ISessaoService>();
+            mockFilmeService.Setup(repo => repo.Adicionar(It.IsAny<Filme>())).Verifiable();
+            var controller = new FilmeController(mockFilmeService.Object, mockFilmeValidator.Object, mockSessaoService.Object);
 
             //Act
-            _ = _filmeController.Adicionar(f);
+            _ = controller.Adicionar(f);
 
             //Assert
-            mockRepo.Verify();
-        }*/
+            mockFilmeService.Verify();
+        }
+
+        [Fact]
+        public void Remover_deve_retornar_true_quando_filme_for_removido()
+        {
+            //Arrange
+            Filme f = new FilmeBuilder().filme;
+            var mockFilmeService = new Mock<IFilmeService>();
+            var mockFilmeValidator = new Mock<IFilmeValidator>();
+            var mockSessaoService = new Mock<ISessaoService>();
+            mockFilmeService.Setup(repo => repo.Remover(It.IsAny<Filme>())).Verifiable();
+            var controller = new FilmeController(mockFilmeService.Object, mockFilmeValidator.Object, mockSessaoService.Object);
+
+            //Act
+            _ = controller.Remover(f.Id);
+
+            //Assert
+            mockFilmeService.Verify();
+        }
+
+        [Fact]
+        public void Remover_deve_retornar_true_quando_filme_for_editado()
+        {
+            //Arrange
+            Filme f = new FilmeBuilder().filme;
+            var mockFilmeService = new Mock<IFilmeService>();
+            var mockFilmeValidator = new Mock<IFilmeValidator>();
+            var mockSessaoService = new Mock<ISessaoService>();
+            mockFilmeService.Setup(repo => repo.Editar(It.IsAny<Filme>())).Verifiable();
+            var controller = new FilmeController(mockFilmeService.Object, mockFilmeValidator.Object, mockSessaoService.Object);
+
+            //Act
+            _ = controller.Editar(f, f.Id);
+
+            //Assert
+            mockFilmeService.Verify();
+        }
     }
 }
