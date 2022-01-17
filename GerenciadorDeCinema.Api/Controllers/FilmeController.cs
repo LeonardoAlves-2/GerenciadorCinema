@@ -55,7 +55,7 @@ namespace GerenciadorDeCinema.Api.Controllers
                 if (string.IsNullOrWhiteSpace(resultValidation))
                 {
                     await _filmeService.Adicionar(filme);
-                    return Ok(filme);
+                    return Ok();
                 }
 
                 return BadRequest(resultValidation);
