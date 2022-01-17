@@ -51,7 +51,7 @@ namespace GerenciadorDeCinema.TesteDeUnidade.Controller
         }
 
         [Fact]
-        public void Remover_deve_retornar_true_quando_filme_for_editado()
+        public void Editar_deve_retornar_true_quando_filme_for_editado()
         {
             //Arrange
             Filme f = new FilmeBuilder().filme;
