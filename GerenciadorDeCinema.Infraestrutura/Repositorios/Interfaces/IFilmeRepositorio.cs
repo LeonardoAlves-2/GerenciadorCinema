@@ -6,7 +6,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Repositorios.Interfaces
 {
     public interface IFilmeRepositorio : IRepositorioBase<Filme>
     {
-        Task<Filme> ListarPeloId(Guid itemId);
+        Task<Filme> ObterPeloId(Guid itemId);
 
     }
 }

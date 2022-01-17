@@ -31,9 +31,9 @@ namespace GerenciadorDeCinema.Servico
         {
             await _sessaoRepositorio.Remover(sessao);
         }
-        public async Task<Sessao> ListarPeloId(Guid itemId)
-        {   
-            return await _sessaoRepositorio.ListarPeloId(itemId);
+        public async Task<Sessao> ObterPeloId(Guid itemId)
+        {
+            return await _sessaoRepositorio.ObterPeloId(itemId);
         }
     }
 }

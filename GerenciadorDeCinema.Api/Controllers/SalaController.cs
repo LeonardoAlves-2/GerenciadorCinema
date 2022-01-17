@@ -25,7 +25,7 @@ namespace GerenciadorDeCinema.Api.Controllers
         }
 
         [HttpGet]
-        [Route("listar")]
+        [Route("")]
         public IActionResult Listar()
         {
             try

@@ -13,6 +13,7 @@ namespace GerenciadorDeCinema.Infraestrutura
         public DbSet<Filme> Filme { get; set; }
         public DbSet<Sessao> Sessao { get; set; }
         public DbSet<Sala> Sala { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
@@ -23,6 +24,8 @@ namespace GerenciadorDeCinema.Infraestrutura
                 new Sala() { Id = Guid.NewGuid(), Nome = "Sala 2", QuantidadeDeAssentos = 50 },
                 new Sala() { Id = Guid.NewGuid(), Nome = "Sala 3", QuantidadeDeAssentos = 60 }
             );
+            mb.Entity<Usuario>().HasData(
+                new Usuario() { Id = Guid.NewGuid(), Email = "admin@cinema.com", Senha = "admin43" });
         }
     }
 }

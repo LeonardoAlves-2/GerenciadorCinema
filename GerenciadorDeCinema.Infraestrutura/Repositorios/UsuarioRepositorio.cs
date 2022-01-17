@@ -17,7 +17,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Repositorios
         }
         public async Task<bool> Logar(Usuario usuario)
         {
-            var loginValido = await _context.Set<Usuario>().FirstOrDefaultAsync(e => e.Email == usuario.Email && e.PasswordHash == usuario.PasswordHash);
+            var loginValido = await _context.Set<Usuario>().FirstOrDefaultAsync(e => e.Email == usuario.Email && e.Senha == usuario.Senha);
 
             return loginValido != null;
         }

@@ -55,7 +55,7 @@ namespace GerenciadorDeCinema.Api.Controllers
                 if (string.IsNullOrWhiteSpace(resultValidation))
                 {
                     await _filmeService.Adicionar(filme);
-                    return Ok(filme);
+                    return Ok();
                 }
 
                 return BadRequest(resultValidation);
@@ -94,7 +94,7 @@ namespace GerenciadorDeCinema.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("deletar/{id}")]
+        [Route("remover/{id}")]
         public async Task<IActionResult> Remover([FromRoute]Guid id)
         {
             try

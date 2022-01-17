@@ -17,7 +17,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Mappings
             builder.HasKey(c => c.Email);
 
             builder.Property(c => c.Email).IsRequired().HasColumnName("Email");
-            builder.Property(c => c.PasswordHash).IsRequired().HasColumnName("PasswordHash");
+            builder.Property(c => c.Senha).IsRequired().HasColumnName("Senha");
         }
     }
 }

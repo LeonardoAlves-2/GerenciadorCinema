@@ -15,7 +15,7 @@ namespace GerenciadorDeCinema.Infraestrutura.Repositorios
             : base(context)
         { }
 
-        public async virtual Task<Sessao> ListarPeloId(Guid itemId)
+        public async virtual Task<Sessao> ObterPeloId(Guid itemId)
         {
             Sessao itemSessao = await _context.Set<Sessao>().FirstOrDefaultAsync(e => e.Id == itemId);
             return itemSessao;
