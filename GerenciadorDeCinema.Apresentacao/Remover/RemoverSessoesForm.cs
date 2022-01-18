@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciadorDeCinema.Apresentacao
+namespace GerenciadorDeCinema.Apresentacao.Remover
 {
-    public partial class ListarSessoesForm : Form
+    public partial class RemoverSessoesForm : Form
     {
-        public ListarSessoesForm()
+        public RemoverSessoesForm()
         {
             InitializeComponent();
         }
 
-        private void ListarSessoesForm_Load(object sender, EventArgs e)
+        private void RemoverSessoesForm_Load(object sender, EventArgs e)
         {
 
         }

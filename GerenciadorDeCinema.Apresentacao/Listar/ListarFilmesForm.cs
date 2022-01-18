@@ -22,29 +22,30 @@ namespace GerenciadorDeCinema.Apresentacao
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ListarFilmesForm_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void FilmesBtn_Click(object sender, EventArgs e)
-        {
-            Application.Run(new ListarFilmesForm());
-        }
-
         private void SalasBtn_Click(object sender, EventArgs e)
         {
-            Application.Run(new ListarFilmesForm());
+            var newForm = new ListarSalasForm();
+            this.Hide();
+            newForm.Show();
+        }
+
+        private void FilmesBtn_Click(object sender, EventArgs e)
+        {
+            var newForm = new ListarFilmesForm();
+            this.Hide();
+            newForm.Show();
         }
 
         private void SessoesBtn_Click(object sender, EventArgs e)
         {
-            Application.Run(new ListarSessoesForm());
+            var newForm = new ListarSessoesForm();
+            this.Hide();
+            newForm.Show();
         }
     }
 }

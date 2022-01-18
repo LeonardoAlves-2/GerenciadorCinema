@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,6 +79,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Remover\RemoverFilmesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Remover\RemoverFilmesForm.Designer.cs">
+      <DependentUpon>RemoverFilmesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Remover\RemoverSessoesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Remover\RemoverSessoesForm.Designer.cs">
+      <DependentUpon>RemoverSessoesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +121,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Remover\RemoverFilmesForm.resx">
+      <DependentUpon>RemoverFilmesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Remover\RemoverSessoesForm.resx">
+      <DependentUpon>RemoverSessoesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsuarioForm.pt-BR.resx">
       <DependentUpon>UsuarioForm.cs</DependentUpon>
     </EmbeddedResource>

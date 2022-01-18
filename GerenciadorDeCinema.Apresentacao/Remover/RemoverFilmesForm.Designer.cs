@@ -1,7 +1,7 @@
 ﻿
-namespace GerenciadorDeCinema.Apresentacao
+namespace GerenciadorDeCinema.Apresentacao.Remover
 {
-    partial class ListarSalasForm
+    partial class RemoverFilmesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,26 +29,17 @@ namespace GerenciadorDeCinema.Apresentacao
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.FilmesBtn = new System.Windows.Forms.Button();
             this.SessoesBtn = new System.Windows.Forms.Button();
             this.SalasBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Cancelar = new System.Windows.Forms.Button();
+            this.Adicionar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cascadia Code", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Location = new System.Drawing.Point(170, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 44);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Salas";
             // 
             // panel1
             // 
@@ -59,7 +50,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.panel1.Location = new System.Drawing.Point(-3, -20);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(167, 532);
-            this.panel1.TabIndex = 20;
+            this.panel1.TabIndex = 21;
             // 
             // FilmesBtn
             // 
@@ -113,39 +104,95 @@ namespace GerenciadorDeCinema.Apresentacao
             this.SalasBtn.UseVisualStyleBackColor = false;
             this.SalasBtn.Click += new System.EventHandler(this.SalasBtn_Click);
             // 
-            // dataGridView1
+            // label1
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ScrollBar;
-            this.dataGridView1.Location = new System.Drawing.Point(216, 142);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(572, 291);
-            this.dataGridView1.TabIndex = 21;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cascadia Code", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label1.Location = new System.Drawing.Point(170, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 44);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Filmes";
             // 
-            // ListarSalasForm
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(182, 132);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(324, 27);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Qual filme deseja remover?";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(213, 185);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(313, 21);
+            this.comboBox1.TabIndex = 24;
+            // 
+            // Cancelar
+            // 
+            this.Cancelar.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Cancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Cancelar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
+            this.Cancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Cancelar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Cancelar.Location = new System.Drawing.Point(371, 413);
+            this.Cancelar.Name = "Cancelar";
+            this.Cancelar.Size = new System.Drawing.Size(171, 25);
+            this.Cancelar.TabIndex = 26;
+            this.Cancelar.Text = "Cancelar";
+            this.Cancelar.UseVisualStyleBackColor = false;
+            // 
+            // Adicionar
+            // 
+            this.Adicionar.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Adicionar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Adicionar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Adicionar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
+            this.Adicionar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Adicionar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Adicionar.Location = new System.Drawing.Point(617, 413);
+            this.Adicionar.Name = "Adicionar";
+            this.Adicionar.Size = new System.Drawing.Size(171, 25);
+            this.Adicionar.TabIndex = 25;
+            this.Adicionar.Text = "Remover";
+            this.Adicionar.UseVisualStyleBackColor = false;
+            // 
+            // RemoverFilmesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Cancelar);
+            this.Controls.Add(this.Adicionar);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "ListarSalasForm";
-            this.Text = "ListarSalasForm";
+            this.Controls.Add(this.panel1);
+            this.Name = "RemoverFilmesForm";
+            this.Text = "RemoverFilmesForm";
+            this.Load += new System.EventHandler(this.RemoverFilmesForm_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
+
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button FilmesBtn;
         private System.Windows.Forms.Button SessoesBtn;
         private System.Windows.Forms.Button SalasBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button Cancelar;
+        private System.Windows.Forms.Button Adicionar;
     }
 }

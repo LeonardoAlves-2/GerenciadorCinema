@@ -24,6 +24,9 @@ namespace GerenciadorDeCinema.Apresentacao
 
         private void Entrar_Click(object sender, EventArgs e)
         {
+            var newForm = new ListarSessoesForm();
+            this.Hide();
+            newForm.Show();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace GerenciadorDeCinema.Apresentacao
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(mainForm: new AdicionarFilmeForm());
+            Application.Run(mainForm: new UsuarioForm());
         }
     }
 }

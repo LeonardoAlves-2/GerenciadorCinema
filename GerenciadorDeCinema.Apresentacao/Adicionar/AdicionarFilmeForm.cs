@@ -22,14 +22,22 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
 
         }
 
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        private void FilmesBtn_Click(object sender, EventArgs e)
         {
-
+            var newForm = new ListarFilmesForm();
+            newForm.ShowDialog();
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void SalasBtn_Click(object sender, EventArgs e)
         {
+            var newForm = new ListarSalasForm();
+            newForm.ShowDialog();
+        }
 
+        private void SessoesBtn_Click(object sender, EventArgs e)
+        {
+            var newForm = new ListarSessoesForm();
+            newForm.ShowDialog();
         }
     }
 }
