@@ -1,9 +1,12 @@
-﻿using System;
+﻿using GerenciadorDeCinema.Apresentacao.Entidades;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,16 +18,31 @@ namespace GerenciadorDeCinema.Apresentacao
         public ListarFilmesForm()
         {
             InitializeComponent();
+            ListarFilmesAsync();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private readonly string URI = "https://localhost:5001/filme";
+        private async void ListarFilmesAsync()
         {
-
+            using (var client = new HttpClient())
+            {
+                using (var response = await client.GetAsync($"{URI}/listar"))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var ProdutoJsonString = await response.Content.ReadAsStringAsync();
+                        dataGridView1.DataSource = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não foi possível listar os filmes : " + response.StatusCode);
+                    }
+                }
+            }
         }
 
         private void ListarFilmesForm_Load(object sender, EventArgs e)
         {
-
         }
 
         private void SalasBtn_Click(object sender, EventArgs e)

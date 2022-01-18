@@ -133,6 +133,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.Controls.Add(this.label1);
             this.Name = "ListarSalasForm";
             this.Text = "ListarSalasForm";
+            this.Load += new System.EventHandler(this.ListarSalasForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

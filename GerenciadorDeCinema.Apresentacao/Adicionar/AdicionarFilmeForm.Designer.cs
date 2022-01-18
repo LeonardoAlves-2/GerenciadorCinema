@@ -36,14 +36,14 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.TBTitulo = new System.Windows.Forms.TextBox();
+            this.rTBDescricao = new System.Windows.Forms.RichTextBox();
+            this.nUDDuracao = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new System.Windows.Forms.Panel();
             this.FilmesBtn = new System.Windows.Forms.Button();
             this.SessoesBtn = new System.Windows.Forms.Button();
             this.SalasBtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDDuracao)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +72,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.Adicionar.TabIndex = 15;
             this.Adicionar.Text = "Adicionar";
             this.Adicionar.UseVisualStyleBackColor = false;
+            this.Adicionar.Click += new System.EventHandler(this.Adicionar_Click);
             // 
             // Cancelar
             // 
@@ -87,6 +88,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.Cancelar.TabIndex = 16;
             this.Cancelar.Text = "Cancelar";
             this.Cancelar.UseVisualStyleBackColor = false;
+            this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
             // 
             // label2
             // 
@@ -128,38 +130,39 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.label5.TabIndex = 20;
             this.label5.Text = "Imagem";
             // 
-            // textBox1
+            // TBTitulo
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Cascadia Code", 10F);
-            this.textBox1.Location = new System.Drawing.Point(175, 118);
-            this.textBox1.MaxLength = 100;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 23);
-            this.textBox1.TabIndex = 21;
+            this.TBTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TBTitulo.Font = new System.Drawing.Font("Cascadia Code", 10F);
+            this.TBTitulo.Location = new System.Drawing.Point(175, 118);
+            this.TBTitulo.MaxLength = 100;
+            this.TBTitulo.Name = "TBTitulo";
+            this.TBTitulo.Size = new System.Drawing.Size(174, 23);
+            this.TBTitulo.TabIndex = 21;
             // 
-            // richTextBox1
+            // rTBDescricao
             // 
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.richTextBox1.Font = new System.Drawing.Font("Cascadia Code", 10F);
-            this.richTextBox1.Location = new System.Drawing.Point(175, 239);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(233, 74);
-            this.richTextBox1.TabIndex = 22;
+            this.rTBDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rTBDescricao.Font = new System.Drawing.Font("Cascadia Code", 10F);
+            this.rTBDescricao.Location = new System.Drawing.Point(175, 239);
+            this.rTBDescricao.Name = "rTBDescricao";
+            this.rTBDescricao.Size = new System.Drawing.Size(233, 74);
+            this.rTBDescricao.TabIndex = 22;
+            this.rTBDescricao.Text = "";
             // 
-            // numericUpDown1
+            // nUDDuracao
             // 
-            this.numericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown1.Font = new System.Drawing.Font("Cascadia Code", 10F);
-            this.numericUpDown1.Location = new System.Drawing.Point(566, 118);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.nUDDuracao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nUDDuracao.Font = new System.Drawing.Font("Cascadia Code", 10F);
+            this.nUDDuracao.Location = new System.Drawing.Point(566, 118);
+            this.nUDDuracao.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(63, 23);
-            this.numericUpDown1.TabIndex = 23;
+            this.nUDDuracao.Name = "nUDDuracao";
+            this.nUDDuracao.Size = new System.Drawing.Size(63, 23);
+            this.nUDDuracao.TabIndex = 23;
             // 
             // panel1
             // 
@@ -187,6 +190,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.FilmesBtn.Text = "Filmes";
             this.FilmesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.FilmesBtn.UseVisualStyleBackColor = false;
+            this.FilmesBtn.Click += new System.EventHandler(this.FilmesBtn_Click);
             // 
             // SessoesBtn
             // 
@@ -203,6 +207,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.SessoesBtn.Text = "Sessões";
             this.SessoesBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SessoesBtn.UseVisualStyleBackColor = false;
+            this.SessoesBtn.Click += new System.EventHandler(this.SessoesBtn_Click);
             // 
             // SalasBtn
             // 
@@ -220,6 +225,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.SalasBtn.Text = "Salas";
             this.SalasBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SalasBtn.UseVisualStyleBackColor = false;
+            this.SalasBtn.Click += new System.EventHandler(this.SalasBtn_Click);
             // 
             // AdicionarFilmeForm
             // 
@@ -227,9 +233,9 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.nUDDuracao);
+            this.Controls.Add(this.rTBDescricao);
+            this.Controls.Add(this.TBTitulo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -242,7 +248,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.ShowIcon = false;
             this.Text = "AdicionarFilmeForm";
             this.Load += new System.EventHandler(this.AdicionarFilmeForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDDuracao)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -257,9 +263,9 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TextBox TBTitulo;
+        private System.Windows.Forms.RichTextBox rTBDescricao;
+        private System.Windows.Forms.NumericUpDown nUDDuracao;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button FilmesBtn;
         private System.Windows.Forms.Button SessoesBtn;
