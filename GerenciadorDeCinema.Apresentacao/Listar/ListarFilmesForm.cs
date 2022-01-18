@@ -1,4 +1,6 @@
-﻿using GerenciadorDeCinema.Apresentacao.Entidades;
+﻿using GerenciadorDeCinema.Apresentacao.Adicionar;
+using GerenciadorDeCinema.Apresentacao.Entidades;
+using GerenciadorDeCinema.Apresentacao.Remover;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -21,17 +23,17 @@ namespace GerenciadorDeCinema.Apresentacao
             ListarFilmesAsync();
         }
 
-        private readonly string URI = "https://localhost:5001/filme";
+        private readonly string URI = "https://localhost:5001/filme/listar";
         private async void ListarFilmesAsync()
         {
             using (var client = new HttpClient())
             {
-                using (var response = await client.GetAsync($"{URI}/listar"))
+                using (var response = await client.GetAsync($"{URI}"))
                 {
                     if (response.IsSuccessStatusCode)
                     {
-                        var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-                        dataGridView1.DataSource = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
+                        var JsonString = await response.Content.ReadAsStringAsync();
+                        dataGridView1.DataSource = JsonConvert.DeserializeObject<Filme[]>(JsonString).ToList();
                     }
                     else
                     {
@@ -62,6 +64,20 @@ namespace GerenciadorDeCinema.Apresentacao
         private void SessoesBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarSessoesForm();
+            this.Hide();
+            newForm.Show();
+        }
+
+        private void CriarNovo_Click(object sender, EventArgs e)
+        {
+            var newForm = new AdicionarFilmeForm();
+            this.Hide();
+            newForm.Show();
+        }
+
+        private void Remover_Click(object sender, EventArgs e)
+        {
+            var newForm = new RemoverFilmesForm();
             this.Hide();
             newForm.Show();
         }

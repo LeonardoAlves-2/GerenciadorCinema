@@ -43,6 +43,9 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.FilmesBtn = new System.Windows.Forms.Button();
             this.SessoesBtn = new System.Windows.Forms.Button();
             this.SalasBtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Path = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.nUDDuracao)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -227,11 +230,46 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.SalasBtn.UseVisualStyleBackColor = false;
             this.SalasBtn.Click += new System.EventHandler(this.SalasBtn_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Cascadia Code", 9F);
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button1.Location = new System.Drawing.Point(566, 239);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 38);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "Escolher";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Path
+            // 
+            this.Path.AutoSize = true;
+            this.Path.Font = new System.Drawing.Font("Cascadia Code", 12.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Path.Location = new System.Drawing.Point(638, 280);
+            this.Path.Name = "Path";
+            this.Path.Size = new System.Drawing.Size(50, 22);
+            this.Path.TabIndex = 26;
+            this.Path.Text = "Path";
+            this.Path.Visible = false;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "\"Apenas imagens (*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg; *.jpeg; *.gif; *.bmp; *.png\"";
+            this.openFileDialog1.InitialDirectory = "c://Desktop";
+            // 
             // AdicionarFilmeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Path);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.nUDDuracao);
             this.Controls.Add(this.rTBDescricao);
@@ -270,5 +308,8 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         private System.Windows.Forms.Button FilmesBtn;
         private System.Windows.Forms.Button SessoesBtn;
         private System.Windows.Forms.Button SalasBtn;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label Path;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
