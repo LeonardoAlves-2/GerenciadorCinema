@@ -17,6 +17,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
     public partial class EditarFilmeForm : Form
     {
         private IList<Filme> filmeEscolhido;
+        private readonly string URI = "https://localhost:5001/filme";
         public byte[] ImageBytes { get; set; }
 
         public EditarFilmeForm()
@@ -39,6 +40,31 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
                     {
                         CBFilme.Items.Add(filme.Titulo);
                     }
+                }
+            }
+        }
+
+        private async void EditarFilme()
+        {
+            var filmeId = filmeEscolhido.FirstOrDefault(c => c.Titulo.Equals(CBFilme.Text));
+            Filme filme = new Filme
+            {
+                Imagem = ImageBytes,
+                Titulo = TBTitulo.Text,
+                Descricao = rTBDescricao.Text,
+                Duracao = (int)nUDDuracao.Value
+            };
+
+            using (var client = new HttpClient())
+            {
+                HttpResponseMessage responseMessage = await client.PutAsJsonAsync($"{URI}/editar/{filmeId.Id}", filme);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Filme editado");
+                }
+                else
+                {
+                    MessageBox.Show("Falha ao editar o filme : " + responseMessage.StatusCode);
                 }
             }
         }
@@ -76,22 +102,28 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
                 MessageBox.Show("Nenhum filme para editar.");
                 return;
             }
-            CBFilme.Hide();
-            LBFilme.Hide();
-            Editar.Hide();
+            else if (CBFilme.Text?.Length != 0)
+            {
+                var filmeS = filmeEscolhido.FirstOrDefault(c => c.Titulo.Equals(CBFilme.Text));
+                CBFilme.Visible = false;
+                LBFilme.Visible = false;
+                Editar.Visible = false;
 
-            button1.Visible = true;
-            LBTitulo.Visible = true;
-            TBTitulo.Visible = true;
-            LBDescricao.Visible = true;
-            rTBDescricao.Visible = true;
-            LBDuracao.Visible = true;
-            nUDDuracao.Visible = true;
-            LBFilme.Visible = true;
-            CBFilme.Visible = true;
-            LBImagem.Visible = true;
-            button1.Visible = true;
-            Salvar.Visible = true;
+                LBTitulo.Visible = true;
+                TBTitulo.Visible = true;
+                TBTitulo.Text = filmeS.Titulo;
+                LBDescricao.Visible = true;
+                rTBDescricao.Visible = true;
+                rTBDescricao.Text = filmeS.Descricao;
+                LBDuracao.Visible = true;
+                nUDDuracao.Visible = true;
+                nUDDuracao.Value = filmeS.Duracao;
+                LBImagem.Visible = true;
+                button1.Visible = true;
+                Salvar.Visible = true;
+
+                ImageBytes = filmeS.Imagem;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -129,6 +161,18 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
                     throw;
                 }
             }
+        }
+
+        private void Salvar_Click(object sender, EventArgs e)
+        {
+            EditarFilme();
+        }
+
+        private void Cancelar_Click(object sender, EventArgs e)
+        {
+            var newForm = new ListarFilmesForm();
+            this.Hide();
+            newForm.Show();
         }
     }
 }

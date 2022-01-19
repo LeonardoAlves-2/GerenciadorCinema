@@ -29,64 +29,81 @@ namespace GerenciadorDeCinema.Apresentacao
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UsuarioForm));
-            this.EmailLabel = new System.Windows.Forms.Label();
-            this.SenhaLabel = new System.Windows.Forms.Label();
-            this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.Entrar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TBSenha = new System.Windows.Forms.TextBox();
+            this.TBEmail = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // EmailLabel
-            // 
-            resources.ApplyResources(this.EmailLabel, "EmailLabel");
-            this.EmailLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.EmailLabel.Name = "EmailLabel";
-            // 
-            // SenhaLabel
-            // 
-            resources.ApplyResources(this.SenhaLabel, "SenhaLabel");
-            this.SenhaLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.SenhaLabel.Name = "SenhaLabel";
-            // 
-            // EmailTextBox
-            // 
-            this.EmailTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.EmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.EmailTextBox, "EmailTextBox");
-            this.EmailTextBox.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.EmailTextBox.Name = "EmailTextBox";
             // 
             // Entrar
             // 
             this.Entrar.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Entrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.Entrar, "Entrar");
+            this.Entrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Entrar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
             this.Entrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Entrar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Entrar.Location = new System.Drawing.Point(100, 362);
             this.Entrar.Name = "Entrar";
+            this.Entrar.Size = new System.Drawing.Size(186, 41);
+            this.Entrar.TabIndex = 16;
+            this.Entrar.Text = "Entrar";
             this.Entrar.UseVisualStyleBackColor = false;
             this.Entrar.Click += new System.EventHandler(this.Entrar_Click);
             // 
-            // textBox1
+            // TBSenha
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
+            this.TBSenha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TBSenha.Font = new System.Drawing.Font("Cascadia Code", 10F);
+            this.TBSenha.Location = new System.Drawing.Point(100, 305);
+            this.TBSenha.Name = "TBSenha";
+            this.TBSenha.Size = new System.Drawing.Size(186, 23);
+            this.TBSenha.TabIndex = 17;
+            // 
+            // TBEmail
+            // 
+            this.TBEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TBEmail.Font = new System.Drawing.Font("Cascadia Code", 10F);
+            this.TBEmail.Location = new System.Drawing.Point(100, 242);
+            this.TBEmail.Name = "TBEmail";
+            this.TBEmail.Size = new System.Drawing.Size(186, 23);
+            this.TBEmail.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(95, 212);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 27);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "E-Mail";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(95, 275);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 27);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Senha";
             // 
             // UsuarioForm
             // 
-            resources.ApplyResources(this, "$this");
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(410, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.TBEmail);
+            this.Controls.Add(this.TBSenha);
             this.Controls.Add(this.Entrar);
-            this.Controls.Add(this.EmailTextBox);
-            this.Controls.Add(this.SenhaLabel);
-            this.Controls.Add(this.EmailLabel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "UsuarioForm";
             this.ShowIcon = false;
-            this.Load += new System.EventHandler(this.UsuarioForm_Load);
+            this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,10 +111,10 @@ namespace GerenciadorDeCinema.Apresentacao
 
         #endregion
 
-        private System.Windows.Forms.Label EmailLabel;
-        private System.Windows.Forms.Label SenhaLabel;
-        private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.Button Entrar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TBSenha;
+        private System.Windows.Forms.TextBox TBEmail;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

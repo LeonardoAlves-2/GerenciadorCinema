@@ -35,7 +35,6 @@ namespace GerenciadorDeCinema.Apresentacao
             this.SessoesBtn = new System.Windows.Forms.Button();
             this.SalasBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Editar = new System.Windows.Forms.Button();
             this.Remover = new System.Windows.Forms.Button();
             this.CriarNovo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -126,21 +125,6 @@ namespace GerenciadorDeCinema.Apresentacao
             this.dataGridView1.Size = new System.Drawing.Size(572, 291);
             this.dataGridView1.TabIndex = 21;
             // 
-            // Editar
-            // 
-            this.Editar.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Editar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Editar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
-            this.Editar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Editar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Editar.Location = new System.Drawing.Point(617, 85);
-            this.Editar.Name = "Editar";
-            this.Editar.Size = new System.Drawing.Size(171, 25);
-            this.Editar.TabIndex = 27;
-            this.Editar.Text = "Editar";
-            this.Editar.UseVisualStyleBackColor = false;
-            // 
             // Remover
             // 
             this.Remover.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -165,7 +149,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.CriarNovo.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
             this.CriarNovo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.CriarNovo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CriarNovo.Location = new System.Drawing.Point(617, 54);
+            this.CriarNovo.Location = new System.Drawing.Point(617, 85);
             this.CriarNovo.Name = "CriarNovo";
             this.CriarNovo.Size = new System.Drawing.Size(171, 25);
             this.CriarNovo.TabIndex = 25;
@@ -178,7 +162,6 @@ namespace GerenciadorDeCinema.Apresentacao
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Editar);
             this.Controls.Add(this.Remover);
             this.Controls.Add(this.CriarNovo);
             this.Controls.Add(this.dataGridView1);
@@ -202,7 +185,6 @@ namespace GerenciadorDeCinema.Apresentacao
         private System.Windows.Forms.Button SessoesBtn;
         private System.Windows.Forms.Button SalasBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button Editar;
         private System.Windows.Forms.Button Remover;
         private System.Windows.Forms.Button CriarNovo;
     }

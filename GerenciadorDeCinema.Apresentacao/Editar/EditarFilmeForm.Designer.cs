@@ -130,7 +130,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             // CBFilme
             // 
             this.CBFilme.FormattingEnabled = true;
-            this.CBFilme.Location = new System.Drawing.Point(305, 201);
+            this.CBFilme.Location = new System.Drawing.Point(325, 214);
             this.CBFilme.Name = "CBFilme";
             this.CBFilme.Size = new System.Drawing.Size(313, 21);
             this.CBFilme.TabIndex = 26;
@@ -139,7 +139,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             // 
             this.LBFilme.AutoSize = true;
             this.LBFilme.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.LBFilme.Location = new System.Drawing.Point(300, 142);
+            this.LBFilme.Location = new System.Drawing.Point(320, 155);
             this.LBFilme.Name = "LBFilme";
             this.LBFilme.Size = new System.Drawing.Size(312, 27);
             this.LBFilme.TabIndex = 25;
@@ -159,6 +159,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.Cancelar.TabIndex = 28;
             this.Cancelar.Text = "Cancelar";
             this.Cancelar.UseVisualStyleBackColor = false;
+            this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
             // 
             // Editar
             // 
@@ -191,6 +192,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.Salvar.Text = "Salvar";
             this.Salvar.UseVisualStyleBackColor = false;
             this.Salvar.Visible = false;
+            this.Salvar.Click += new System.EventHandler(this.Salvar_Click);
             // 
             // Path
             // 
@@ -310,6 +312,8 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.CBFilme);
+            this.Controls.Add(this.LBFilme);
             this.Controls.Add(this.Path);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.nUDDuracao);
@@ -322,8 +326,6 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.Controls.Add(this.Salvar);
             this.Controls.Add(this.Cancelar);
             this.Controls.Add(this.Editar);
-            this.Controls.Add(this.CBFilme);
-            this.Controls.Add(this.LBFilme);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "EditarFilmeForm";

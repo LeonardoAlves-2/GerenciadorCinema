@@ -155,6 +155,12 @@
     <Compile Include="Entidades\Sala.cs" />
     <Compile Include="Entidades\Sessao.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="UsuarioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsuarioForm.Designer.cs">
+      <DependentUpon>UsuarioForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Listar\ListarFilmesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,12 +194,6 @@
     <Compile Include="Remover\RemoverSessoesForm.Designer.cs">
       <DependentUpon>RemoverSessoesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UsuarioForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UsuarioForm.Designer.cs">
-      <DependentUpon>UsuarioForm.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Adicionar\AdicionarFilmeForm.resx">
       <DependentUpon>AdicionarFilmeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editar\EditarFilmeForm.resx">
       <DependentUpon>EditarFilmeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsuarioForm.resx">
+      <DependentUpon>UsuarioForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listar\ListarFilmesForm.resx">
       <DependentUpon>ListarFilmesForm.cs</DependentUpon>
@@ -226,12 +229,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Remover\RemoverSessoesForm.resx">
       <DependentUpon>RemoverSessoesForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsuarioForm.pt-BR.resx">
-      <DependentUpon>UsuarioForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UsuarioForm.resx">
-      <DependentUpon>UsuarioForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
