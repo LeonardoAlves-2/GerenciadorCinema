@@ -1,4 +1,5 @@
 ﻿using GerenciadorDeCinema.Apresentacao.Adicionar;
+using GerenciadorDeCinema.Apresentacao.Editar;
 using GerenciadorDeCinema.Apresentacao.Entidades;
 using GerenciadorDeCinema.Apresentacao.Remover;
 using Newtonsoft.Json;
@@ -78,6 +79,13 @@ namespace GerenciadorDeCinema.Apresentacao
         private void Remover_Click(object sender, EventArgs e)
         {
             var newForm = new RemoverFilmesForm();
+            this.Hide();
+            newForm.Show();
+        }
+
+        private void Editar_Click(object sender, EventArgs e)
+        {
+            var newForm = new EditarFilmeForm();
             this.Hide();
             newForm.Show();
         }

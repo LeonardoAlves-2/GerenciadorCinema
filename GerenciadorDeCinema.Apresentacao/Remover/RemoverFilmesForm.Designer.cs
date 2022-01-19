@@ -35,9 +35,9 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
             this.SalasBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CBFilme = new System.Windows.Forms.ComboBox();
             this.Cancelar = new System.Windows.Forms.Button();
-            this.Adicionar = new System.Windows.Forms.Button();
+            this.Remover = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,13 +125,14 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
             this.label2.TabIndex = 23;
             this.label2.Text = "Qual filme deseja remover?";
             // 
-            // comboBox1
+            // CBFilme
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(213, 185);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(313, 21);
-            this.comboBox1.TabIndex = 24;
+            this.CBFilme.FormattingEnabled = true;
+            this.CBFilme.Location = new System.Drawing.Point(213, 185);
+            this.CBFilme.Name = "CBFilme";
+            this.CBFilme.Size = new System.Drawing.Size(313, 21);
+            this.CBFilme.TabIndex = 24;
+            this.CBFilme.SelectedIndexChanged += new System.EventHandler(this.CBFilme_SelectedIndexChanged);
             // 
             // Cancelar
             // 
@@ -147,21 +148,23 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
             this.Cancelar.TabIndex = 26;
             this.Cancelar.Text = "Cancelar";
             this.Cancelar.UseVisualStyleBackColor = false;
+            this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
             // 
-            // Adicionar
+            // Remover
             // 
-            this.Adicionar.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Adicionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Adicionar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Adicionar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
-            this.Adicionar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Adicionar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Adicionar.Location = new System.Drawing.Point(617, 413);
-            this.Adicionar.Name = "Adicionar";
-            this.Adicionar.Size = new System.Drawing.Size(171, 25);
-            this.Adicionar.TabIndex = 25;
-            this.Adicionar.Text = "Remover";
-            this.Adicionar.UseVisualStyleBackColor = false;
+            this.Remover.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Remover.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Remover.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Remover.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
+            this.Remover.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Remover.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Remover.Location = new System.Drawing.Point(617, 413);
+            this.Remover.Name = "Remover";
+            this.Remover.Size = new System.Drawing.Size(171, 25);
+            this.Remover.TabIndex = 25;
+            this.Remover.Text = "Remover";
+            this.Remover.UseVisualStyleBackColor = false;
+            this.Remover.Click += new System.EventHandler(this.Adicionar_Click);
             // 
             // RemoverFilmesForm
             // 
@@ -169,8 +172,8 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Cancelar);
-            this.Controls.Add(this.Adicionar);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.Remover);
+            this.Controls.Add(this.CBFilme);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -191,8 +194,8 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
         private System.Windows.Forms.Button SalasBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CBFilme;
         private System.Windows.Forms.Button Cancelar;
-        private System.Windows.Forms.Button Adicionar;
+        private System.Windows.Forms.Button Remover;
     }
 }

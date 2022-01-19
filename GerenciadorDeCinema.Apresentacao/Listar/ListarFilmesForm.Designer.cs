@@ -172,6 +172,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.Editar.TabIndex = 24;
             this.Editar.Text = "Editar";
             this.Editar.UseVisualStyleBackColor = false;
+            this.Editar.Click += new System.EventHandler(this.Editar_Click);
             // 
             // ListarFilmesForm
             // 

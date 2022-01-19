@@ -30,8 +30,8 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
         private void InitializeComponent()
         {
             this.Cancelar = new System.Windows.Forms.Button();
-            this.Adicionar = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Remover = new System.Windows.Forms.Button();
+            this.CBSessao = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -56,28 +56,29 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
             this.Cancelar.Text = "Cancelar";
             this.Cancelar.UseVisualStyleBackColor = false;
             // 
-            // Adicionar
+            // Remover
             // 
-            this.Adicionar.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Adicionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Adicionar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Adicionar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
-            this.Adicionar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Adicionar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Adicionar.Location = new System.Drawing.Point(617, 413);
-            this.Adicionar.Name = "Adicionar";
-            this.Adicionar.Size = new System.Drawing.Size(171, 25);
-            this.Adicionar.TabIndex = 31;
-            this.Adicionar.Text = "Remover";
-            this.Adicionar.UseVisualStyleBackColor = false;
+            this.Remover.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Remover.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Remover.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Remover.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
+            this.Remover.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Remover.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.Remover.Location = new System.Drawing.Point(617, 413);
+            this.Remover.Name = "Remover";
+            this.Remover.Size = new System.Drawing.Size(171, 25);
+            this.Remover.TabIndex = 31;
+            this.Remover.Text = "Remover";
+            this.Remover.UseVisualStyleBackColor = false;
+            this.Remover.Click += new System.EventHandler(this.Adicionar_Click);
             // 
-            // comboBox1
+            // CBSessao
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(213, 185);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(313, 21);
-            this.comboBox1.TabIndex = 30;
+            this.CBSessao.FormattingEnabled = true;
+            this.CBSessao.Location = new System.Drawing.Point(213, 185);
+            this.CBSessao.Name = "CBSessao";
+            this.CBSessao.Size = new System.Drawing.Size(313, 21);
+            this.CBSessao.TabIndex = 30;
             // 
             // label2
             // 
@@ -169,8 +170,8 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Cancelar);
-            this.Controls.Add(this.Adicionar);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.Remover);
+            this.Controls.Add(this.CBSessao);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -186,8 +187,8 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
         #endregion
 
         private System.Windows.Forms.Button Cancelar;
-        private System.Windows.Forms.Button Adicionar;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button Remover;
+        private System.Windows.Forms.ComboBox CBSessao;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;

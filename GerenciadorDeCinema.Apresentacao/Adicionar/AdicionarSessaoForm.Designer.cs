@@ -33,19 +33,22 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.label2 = new System.Windows.Forms.Label();
             this.Cancelar = new System.Windows.Forms.Button();
             this.Adicionar = new System.Windows.Forms.Button();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
+            this.mTBIngresso = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.CBAudio = new System.Windows.Forms.ComboBox();
+            this.CBAnimacao = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.FilmesBtn = new System.Windows.Forms.Button();
             this.SessoesBtn = new System.Windows.Forms.Button();
             this.SalasBtn = new System.Windows.Forms.Button();
+            this.CBFilme = new System.Windows.Forms.ComboBox();
+            this.CBSala = new System.Windows.Forms.ComboBox();
+            this.DataInicio = new System.Windows.Forms.DateTimePicker();
+            this.HoraInicio = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,6 +87,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.Cancelar.TabIndex = 22;
             this.Cancelar.Text = "Cancelar";
             this.Cancelar.UseVisualStyleBackColor = false;
+            this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
             // 
             // Adicionar
             // 
@@ -99,18 +103,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.Adicionar.TabIndex = 21;
             this.Adicionar.Text = "Adicionar";
             this.Adicionar.UseVisualStyleBackColor = false;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.maskedTextBox1.Font = new System.Drawing.Font("Cascadia Code", 10F);
-            this.maskedTextBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.maskedTextBox1.Location = new System.Drawing.Point(182, 140);
-            this.maskedTextBox1.Mask = "00/00/0000 90:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(203, 23);
-            this.maskedTextBox1.TabIndex = 23;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.Adicionar.Click += new System.EventHandler(this.Adicionar_Click);
             // 
             // label3
             // 
@@ -122,17 +115,17 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.label3.TabIndex = 24;
             this.label3.Text = "Valor do ingresso";
             // 
-            // maskedTextBox2
+            // mTBIngresso
             // 
-            this.maskedTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.maskedTextBox2.Font = new System.Drawing.Font("Cascadia Code", 10F);
-            this.maskedTextBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.maskedTextBox2.Location = new System.Drawing.Point(182, 244);
-            this.maskedTextBox2.Mask = "$999.00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(203, 23);
-            this.maskedTextBox2.TabIndex = 25;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.mTBIngresso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mTBIngresso.Font = new System.Drawing.Font("Cascadia Code", 10F);
+            this.mTBIngresso.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.mTBIngresso.Location = new System.Drawing.Point(182, 244);
+            this.mTBIngresso.Mask = "999.00";
+            this.mTBIngresso.Name = "mTBIngresso";
+            this.mTBIngresso.Size = new System.Drawing.Size(203, 23);
+            this.mTBIngresso.TabIndex = 25;
+            this.mTBIngresso.ValidatingType = typeof(System.DateTime);
             // 
             // label4
             // 
@@ -174,27 +167,27 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.label7.TabIndex = 29;
             this.label7.Text = "Áudio";
             // 
-            // comboBox1
+            // CBAudio
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.CBAudio.FormattingEnabled = true;
+            this.CBAudio.Items.AddRange(new object[] {
             "Original",
             "Dublado"});
-            this.comboBox1.Location = new System.Drawing.Point(452, 242);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(126, 21);
-            this.comboBox1.TabIndex = 31;
+            this.CBAudio.Location = new System.Drawing.Point(452, 242);
+            this.CBAudio.Name = "CBAudio";
+            this.CBAudio.Size = new System.Drawing.Size(126, 21);
+            this.CBAudio.TabIndex = 31;
             // 
-            // comboBox2
+            // CBAnimacao
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.CBAnimacao.FormattingEnabled = true;
+            this.CBAnimacao.Items.AddRange(new object[] {
             "2d",
             "3d"});
-            this.comboBox2.Location = new System.Drawing.Point(453, 142);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(126, 21);
-            this.comboBox2.TabIndex = 32;
+            this.CBAnimacao.Location = new System.Drawing.Point(453, 142);
+            this.CBAnimacao.Name = "CBAnimacao";
+            this.CBAnimacao.Size = new System.Drawing.Size(126, 21);
+            this.CBAnimacao.TabIndex = 32;
             // 
             // panel1
             // 
@@ -259,21 +252,64 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.SalasBtn.UseVisualStyleBackColor = false;
             this.SalasBtn.Click += new System.EventHandler(this.SalasBtn_Click);
             // 
+            // CBFilme
+            // 
+            this.CBFilme.FormattingEnabled = true;
+            this.CBFilme.Location = new System.Drawing.Point(655, 142);
+            this.CBFilme.Name = "CBFilme";
+            this.CBFilme.Size = new System.Drawing.Size(126, 21);
+            this.CBFilme.TabIndex = 34;
+            // 
+            // CBSala
+            // 
+            this.CBSala.FormattingEnabled = true;
+            this.CBSala.Location = new System.Drawing.Point(655, 246);
+            this.CBSala.Name = "CBSala";
+            this.CBSala.Size = new System.Drawing.Size(126, 21);
+            this.CBSala.TabIndex = 35;
+            // 
+            // DataInicio
+            // 
+            this.DataInicio.CalendarFont = new System.Drawing.Font("Cascadia Code", 10F);
+            this.DataInicio.Font = new System.Drawing.Font("Cascadia Code", 9F);
+            this.DataInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DataInicio.Location = new System.Drawing.Point(182, 142);
+            this.DataInicio.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
+            this.DataInicio.Name = "DataInicio";
+            this.DataInicio.Size = new System.Drawing.Size(107, 21);
+            this.DataInicio.TabIndex = 36;
+            this.DataInicio.Value = new System.DateTime(2022, 1, 19, 0, 0, 0, 0);
+            // 
+            // HoraInicio
+            // 
+            this.HoraInicio.CalendarFont = new System.Drawing.Font("Cascadia Code", 10F);
+            this.HoraInicio.Font = new System.Drawing.Font("Cascadia Code", 9F);
+            this.HoraInicio.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.HoraInicio.Location = new System.Drawing.Point(295, 142);
+            this.HoraInicio.Name = "HoraInicio";
+            this.HoraInicio.ShowUpDown = true;
+            this.HoraInicio.Size = new System.Drawing.Size(94, 21);
+            this.HoraInicio.TabIndex = 37;
+            this.HoraInicio.Value = new System.DateTime(2022, 1, 19, 0, 0, 0, 0);
+            // 
             // AdicionarSessaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.HoraInicio);
+            this.Controls.Add(this.DataInicio);
+            this.Controls.Add(this.CBSala);
+            this.Controls.Add(this.CBFilme);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.CBAnimacao);
+            this.Controls.Add(this.CBAudio);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.maskedTextBox2);
+            this.Controls.Add(this.mTBIngresso);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.Cancelar);
             this.Controls.Add(this.Adicionar);
             this.Controls.Add(this.label2);
@@ -292,18 +328,21 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Cancelar;
         private System.Windows.Forms.Button Adicionar;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
+        private System.Windows.Forms.MaskedTextBox mTBIngresso;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox CBAudio;
+        private System.Windows.Forms.ComboBox CBAnimacao;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button FilmesBtn;
         private System.Windows.Forms.Button SessoesBtn;
         private System.Windows.Forms.Button SalasBtn;
+        private System.Windows.Forms.ComboBox CBFilme;
+        private System.Windows.Forms.ComboBox CBSala;
+        private System.Windows.Forms.DateTimePicker DataInicio;
+        private System.Windows.Forms.DateTimePicker HoraInicio;
     }
 }

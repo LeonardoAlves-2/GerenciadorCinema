@@ -75,7 +75,7 @@ namespace GerenciadorDeCinema.Api.Controllers
         }
 
         [HttpDelete]
-        [Route("deletar/{id}")]
+        [Route("remover/{id}")]
         public async Task<IActionResult> Remover([FromRoute] Guid id)
         {
             try

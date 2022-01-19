@@ -66,7 +66,6 @@ namespace GerenciadorDeCinema.Apresentacao.Metodos
         private async void EditarFilme(Guid filmeId)
         {
             Filme filme = new Filme();
-            filme.Id = filmeId;
             filme.Titulo = "";
 
             using (var client = new HttpClient())

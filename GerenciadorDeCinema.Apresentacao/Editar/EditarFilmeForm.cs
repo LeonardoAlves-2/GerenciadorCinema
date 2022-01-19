@@ -12,53 +12,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GerenciadorDeCinema.Apresentacao.Adicionar
+namespace GerenciadorDeCinema.Apresentacao.Editar
 {
-    public partial class AdicionarFilmeForm : Form
+    public partial class EditarFilmeForm : Form
     {
-        private readonly string URI = "https://localhost:5001/filme";
-
+        private IList<Filme> filmeEscolhido;
         public byte[] ImageBytes { get; set; }
 
-        private async void AdicionarFilmeAsync()
-        {
-            Filme filme = new Filme
-            {
-                Imagem = ImageBytes,
-                Titulo = TBTitulo.Text,
-                Descricao = rTBDescricao.Text,
-                Duracao = (int)nUDDuracao.Value
-            };
-
-            using (var client = new HttpClient())
-            {
-                var serialized = JsonConvert.SerializeObject(filme);
-                var content = new StringContent(serialized, Encoding.UTF8, "application/json");
-                var result = await client.PostAsync($"{URI}/adicionar", content);
-                if (result.IsSuccessStatusCode)
-                {
-                    MessageBox.Show($"Filme {TBTitulo.Text} adicionado com sucesso.");
-                }
-                else
-                {
-                    MessageBox.Show("Não foi possível adicionar o filme : " + result.StatusCode + "\n");
-                }
-            }
-        }
-
-        public AdicionarFilmeForm()
+        public EditarFilmeForm()
         {
             InitializeComponent();
+            CBFilmesAsync();
         }
 
-        private void AdicionarFilmeForm_Load(object sender, EventArgs e)
+        private async void CBFilmesAsync()
         {
+            using (var client = new HttpClient())
+            {
+                using (var response = await client.GetAsync("https://localhost:5001/filme/listar"))
+                {
+                    var ProdutoJsonString = await response.Content.ReadAsStringAsync();
+                    var objectFilmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
+                    filmeEscolhido = objectFilmes;
 
-        }
-
-        private void Adicionar_Click(object sender, EventArgs e)
-        {
-            AdicionarFilmeAsync();
+                    foreach (Filme filme in objectFilmes)
+                    {
+                        CBFilme.Items.Add(filme.Titulo);
+                    }
+                }
+            }
         }
 
         private void SalasBtn_Click(object sender, EventArgs e)
@@ -82,18 +64,41 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             newForm.Show();
         }
 
-        private void Cancelar_Click(object sender, EventArgs e)
+        private void EditarFilmeForm_Load(object sender, EventArgs e)
         {
-            var newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
+
+        }
+
+        private void Remover_Click(object sender, EventArgs e)
+        {
+            if (CBFilme.Text?.Length == 0)
+            {
+                MessageBox.Show("Nenhum filme para editar.");
+                return;
+            }
+            CBFilme.Hide();
+            LBFilme.Hide();
+            Editar.Hide();
+
+            button1.Visible = true;
+            LBTitulo.Visible = true;
+            TBTitulo.Visible = true;
+            LBDescricao.Visible = true;
+            rTBDescricao.Visible = true;
+            LBDuracao.Visible = true;
+            nUDDuracao.Visible = true;
+            LBFilme.Visible = true;
+            CBFilme.Visible = true;
+            LBImagem.Visible = true;
+            button1.Visible = true;
+            Salvar.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Selecionar Imagens";
             openFileDialog1.InitialDirectory = @"C:\Users\users\Pictures";
-            
+
             openFileDialog1.Filter = "Images (*.BMP;*.JPG;*.PNG,*.TIFF)|*.BMP;*.JPG;*.PNG;";
             openFileDialog1.CheckFileExists = true;
             openFileDialog1.CheckPathExists = true;
