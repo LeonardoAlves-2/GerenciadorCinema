@@ -17,18 +17,18 @@ namespace GerenciadorDeCinema.Servico.Validators
             _filmeRepositorio = filmeRepositorio;
 
             RuleFor(p => p.Imagem).Cascade(CascadeMode.Stop)
-            .NotEmpty().WithMessage("Campo requirido.");
+            .NotEmpty().WithMessage("Imagem requirida.");
 
             RuleFor(p => p.Titulo).Cascade(CascadeMode.Stop)
-            .NotEmpty().WithMessage("Campo requirido.")
-            .Must(IsUnique).WithMessage("O {PropertyName} já existe.");
+            .NotEmpty().WithMessage("Titulo requirido.")
+            .Must(IsUnique).WithMessage("O titulo já existe.");
 
             RuleFor(p => p.Duracao).Cascade(CascadeMode.Stop)
-            .NotEmpty().WithMessage("Campo requirido.")
-            .GreaterThan(0).WithMessage("A {PropertyName} precisa ser maior que zero.");
+            .NotEmpty().WithMessage("Duração requirida.")
+            .GreaterThan(0).WithMessage("A duração precisa ser maior que zero.");
 
             RuleFor(p => p.Descricao).Cascade(CascadeMode.Stop)
-            .NotEmpty().WithMessage("Campo requirido.");
+            .NotEmpty().WithMessage("Descrição requirida.");
         }
 
         private bool IsUnique(Filme filme, string titulo)

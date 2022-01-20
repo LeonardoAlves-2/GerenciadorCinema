@@ -44,7 +44,7 @@ namespace GerenciadorDeCinema.TesteDeUnidade.Validators
             var resultValidation = validator.ValidarFilme(f);
 
             //Assert
-            resultValidation.Should().Be("Campo requirido.");
+            resultValidation.Should().Be("Titulo requirido.");
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace GerenciadorDeCinema.TesteDeUnidade.Validators
             var resultValidation = validator.ValidarFilme(f);
 
             //Assert
-            resultValidation.Should().Be("Campo requirido.");
+            resultValidation.Should().Be("Imagem requirida.");
         }
 
         [Fact]
@@ -78,7 +78,7 @@ namespace GerenciadorDeCinema.TesteDeUnidade.Validators
             var resultValidation = validator.ValidarFilme(f);
 
             //Assert
-            resultValidation.Should().Be("A Duracao precisa ser maior que zero.");
+            resultValidation.Should().Be("A duração precisa ser maior que zero.");
         }
 
         [Fact]
@@ -100,7 +100,7 @@ namespace GerenciadorDeCinema.TesteDeUnidade.Validators
             var resultValidation = validator.ValidarFilme(f);
 
             //Assert
-            resultValidation.Should().Be("Campo requirido.");
+            resultValidation.Should().Be("Duração requirida.");
         }
 
         [Fact]
@@ -117,7 +117,7 @@ namespace GerenciadorDeCinema.TesteDeUnidade.Validators
             var resultValidation = validator.ValidarFilme(f);
 
             //Assert
-            resultValidation.Should().Be("Campo requirido.");
+            resultValidation.Should().Be("Descrição requirida.");
         }
     }
 }

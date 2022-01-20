@@ -34,7 +34,7 @@ namespace GerenciadorDeCinema.Api.Controllers
             if (loginValido)
                 return Ok();
 
-            return BadRequest("Email ou senha inválidos.");
+            return BadRequest("Usuario ou senha inválidos.");
         }
     }
 }
