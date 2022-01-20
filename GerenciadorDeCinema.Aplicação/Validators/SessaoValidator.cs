@@ -19,15 +19,15 @@ namespace GerenciadorDeCinema.Servico.Validators
             .Must(DataSessaoValidar).WithMessage("A sala já está ocupada neste horário.");
 
             RuleFor(p => p.Animacao).Cascade(CascadeMode.Stop)
-            .IsInEnum().WithMessage("Campo inválido.")
-            .NotEmpty().WithMessage("Campo requirido.");
+            .IsInEnum().WithMessage("Tipo de animação inválido.")
+            .NotEmpty().WithMessage("Tipo de animação requirida.");
 
             RuleFor(p => p.Audio).Cascade(CascadeMode.Stop)
-            .IsInEnum().WithMessage("Campo inválido.")
-            .NotEmpty().WithMessage("Campo requirido.");
+            .IsInEnum().WithMessage("Tipo de áudio inválido.")
+            .NotEmpty().WithMessage("Tipo de áudio requirido.");
 
             RuleFor(p => p.ValorIngresso).Cascade(CascadeMode.Stop)
-            .NotEmpty().WithMessage("Campo requirido.")
+            .NotEmpty().WithMessage("Valor do ingresso requirido.")
             .GreaterThan(0).WithMessage("O valor do ingresso não pode ser menor que R$0,00.");
         }
 

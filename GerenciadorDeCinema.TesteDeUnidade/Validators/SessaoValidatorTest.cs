@@ -76,7 +76,7 @@ namespace GerenciadorDeCinema.TesteDeUnidade.Validators
             var resultValidation = validator.ValidarSessao(s);
 
             //Assert
-            resultValidation.Should().Be("Campo inválido.");
+            resultValidation.Should().Be("Tipo de animação inválido.");
         }
 
         [Fact]
@@ -93,7 +93,7 @@ namespace GerenciadorDeCinema.TesteDeUnidade.Validators
             var resultValidation = validator.ValidarSessao(s);
 
             //Assert
-            resultValidation.Should().Be("Campo inválido.");
+            resultValidation.Should().Be("Tipo de áudio inválido.");
         }
 
         [Fact]
@@ -109,7 +109,7 @@ namespace GerenciadorDeCinema.TesteDeUnidade.Validators
             var resultValidation = validator.ValidarSessao(s);
 
             //Assert
-            resultValidation.Should().Be("Campo requirido.");
+            resultValidation.Should().Be("Valor do ingresso requirido.");
         }
 
         [Fact]
