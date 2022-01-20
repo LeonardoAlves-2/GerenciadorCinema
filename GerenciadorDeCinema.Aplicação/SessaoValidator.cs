@@ -25,7 +25,7 @@ namespace GerenciadorDeCinema.Servico
 
             if (resultValidation.Errors.Any())
             {
-                return String.Join("", resultValidation.Errors);
+                return String.Join("\n", resultValidation.Errors);
             }
 
             return string.Empty;

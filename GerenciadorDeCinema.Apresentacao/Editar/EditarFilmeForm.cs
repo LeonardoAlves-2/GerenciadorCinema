@@ -16,37 +16,38 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
 {
     public partial class EditarFilmeForm : Form
     {
-        private IList<Filme> filmeEscolhido;
         private readonly string URI = "https://localhost:5001/filme";
         public byte[] ImageBytes { get; set; }
+        private readonly Guid _filmeId;
 
-        public EditarFilmeForm()
+        public EditarFilmeForm(Guid filmeId)
         {
+            _filmeId = filmeId;
+            CarregarFilme();
             InitializeComponent();
-            CBFilmesAsync();
         }
 
-        private async void CBFilmesAsync()
+        private async void CarregarFilme()
         {
+            Filme _filme;
             using (var client = new HttpClient())
             {
                 using (var response = await client.GetAsync("https://localhost:5001/filme/listar"))
                 {
                     var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-                    var objectFilmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
-                    filmeEscolhido = objectFilmes;
-
-                    foreach (Filme filme in objectFilmes)
-                    {
-                        CBFilme.Items.Add(filme.Titulo);
-                    }
+                    IList <Filme> filmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
+                    _filme = filmes.FirstOrDefault(c => c.Id.Equals(_filmeId));
                 }
             }
+            TBTitulo.Text = _filme.Titulo;
+            rTBDescricao.Text = _filme.Descricao;
+            nUDDuracao.Value = _filme.Duracao;
+            ImageBytes = _filme.Imagem;
         }
 
         private async void EditarFilme()
         {
-            var filmeId = filmeEscolhido.FirstOrDefault(c => c.Titulo.Equals(CBFilme.Text));
+            var filmeId = _filmeId;
             Filme filme = new Filme
             {
                 Imagem = ImageBytes,
@@ -57,14 +58,14 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
 
             using (var client = new HttpClient())
             {
-                HttpResponseMessage responseMessage = await client.PutAsJsonAsync($"{URI}/editar/{filmeId.Id}", filme);
+                HttpResponseMessage responseMessage = await client.PutAsJsonAsync($"{URI}/editar/{_filmeId}", filme);
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Filme editado");
                 }
                 else
                 {
-                    MessageBox.Show("Falha ao editar o filme : " + responseMessage.StatusCode + "\n" + responseMessage.Content.ReadAsStringAsync().Result);
+                    MessageBox.Show("Falha ao editar o filme : " + responseMessage.StatusCode + "\n Rever:\n" + responseMessage.Content.ReadAsStringAsync().Result);
                 }
             }
         }
@@ -97,33 +98,8 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
 
         private void Remover_Click(object sender, EventArgs e)
         {
-            if (CBFilme.Text?.Length == 0)
-            {
-                MessageBox.Show("Nenhum filme para editar.");
-                return;
-            }
-            else if (CBFilme.Text?.Length != 0)
-            {
-                var filmeS = filmeEscolhido.FirstOrDefault(c => c.Titulo.Equals(CBFilme.Text));
-                CBFilme.Visible = false;
-                LBFilme.Visible = false;
-                Editar.Visible = false;
-
-                LBTitulo.Visible = true;
-                TBTitulo.Visible = true;
-                TBTitulo.Text = filmeS.Titulo;
-                LBDescricao.Visible = true;
-                rTBDescricao.Visible = true;
-                rTBDescricao.Text = filmeS.Descricao;
-                LBDuracao.Visible = true;
-                nUDDuracao.Visible = true;
-                nUDDuracao.Value = filmeS.Duracao;
-                LBImagem.Visible = true;
-                button1.Visible = true;
-                Salvar.Visible = true;
-
-                ImageBytes = filmeS.Imagem;
-            }
+            
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -154,7 +130,6 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
                         ImagemA.Save(mStream, ImagemA.RawFormat);
                         ImageBytes = mStream.ToArray();
                     }
-
                 }
                 catch (Exception)
                 {

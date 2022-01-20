@@ -41,7 +41,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                 }
                 else
                 {
-                    MessageBox.Show("Não foi possível adicionar o filme : " + result.StatusCode + "\n" + result.Content.ReadAsStringAsync().Result);
+                    MessageBox.Show("Não foi possível adicionar o filme : " + result.StatusCode + "\n Erros:\n" + result.Content.ReadAsStringAsync().Result);
                 }
             }
         }
@@ -111,7 +111,8 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                 try
                 {
                     Image ImagemA = Image.FromFile(openFileDialog1.FileName);
-
+                    pictureBox1.Image = ImagemA;
+                    pictureBox1.Visible = true;
                     using (MemoryStream mStream = new MemoryStream())
                     {
                         ImagemA.Save(mStream, ImagemA.RawFormat);

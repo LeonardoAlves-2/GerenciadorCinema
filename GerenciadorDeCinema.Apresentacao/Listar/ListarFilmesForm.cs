@@ -1,7 +1,6 @@
 ﻿using GerenciadorDeCinema.Apresentacao.Adicionar;
 using GerenciadorDeCinema.Apresentacao.Editar;
 using GerenciadorDeCinema.Apresentacao.Entidades;
-using GerenciadorDeCinema.Apresentacao.Remover;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,18 +17,19 @@ namespace GerenciadorDeCinema.Apresentacao
 {
     public partial class ListarFilmesForm : Form
     {
+        IList<Filme> filmes;
         public ListarFilmesForm()
         {
             InitializeComponent();
             ListarFilmesAsync();
         }
 
-        private readonly string URI = "https://localhost:5001/filme/listar";
+        private readonly string URI = "https://localhost:5001/filme";
         private async void ListarFilmesAsync()
         {
             using (var client = new HttpClient())
             {
-                using (var response = await client.GetAsync($"{URI}"))
+                using (var response = await client.GetAsync($"{URI}/listar"))
                 {
                     if (response.IsSuccessStatusCode)
                     {
@@ -40,7 +40,7 @@ namespace GerenciadorDeCinema.Apresentacao
                         dt.Columns.Add("Duração", typeof(int));
 
                         var JsonString = await response.Content.ReadAsStringAsync();
-                        IList<Filme> filmes = JsonConvert.DeserializeObject<Filme[]>(JsonString).ToList();
+                        filmes = JsonConvert.DeserializeObject<Filme[]>(JsonString).ToList();
                         foreach (Filme filme in filmes)
                             dt.Rows.Add(filme.Imagem, filme.Titulo, filme.Descricao, filme.Duracao);
 
@@ -86,18 +86,40 @@ namespace GerenciadorDeCinema.Apresentacao
             newForm.Show();
         }
 
-        private void Remover_Click(object sender, EventArgs e)
+        private async void Remover_Click(object sender, EventArgs e)
         {
-            var newForm = new RemoverFilmesForm();
-            this.Hide();
-            newForm.Show();
+            var selecionada = dataGridView1.CurrentRow;
+            if(selecionada != null)
+            {
+                Filme filme = filmes.FirstOrDefault(c => c.Titulo.Equals(selecionada.Cells[1].Value));
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URI);
+                    HttpResponseMessage responseMessage = await client.DeleteAsync($"{URI}/remover/{filme.Id}");
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Filme removido com sucesso");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falha ao remover o filme  : " + responseMessage.StatusCode + "\n Rever:\n" + responseMessage.Content.ReadAsStringAsync().Result);
+                    }
+                }
+            }
         }
 
         private void Editar_Click(object sender, EventArgs e)
         {
-            var newForm = new EditarFilmeForm();
-            this.Hide();
-            newForm.Show();
+            var selecionada = dataGridView1.CurrentRow;
+            if (selecionada != null)
+            {
+                Filme filme = filmes.FirstOrDefault(c => c.Titulo.Equals(selecionada.Cells[1].Value));
+
+                var newForm = new EditarFilmeForm(filme.Id);
+                this.Hide();
+                newForm.Show();
+            }
         }
     }
 }

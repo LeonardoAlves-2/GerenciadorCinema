@@ -38,13 +38,36 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                 return;
             }
 
+            if (CBFilme.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Filme inválido.");
+                return;
+            }
+
+            if (CBSala.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Sala inválida");
+                return;
+            }
+
             int animacao;
-            if (CBAnimacao.Text.Equals("2d"))
+            if (CBAnimacao.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Tipo de animação inválido.");
+                return;
+            }
+            else if (CBAnimacao.Text.Equals("2d"))
                 animacao = 2;
             else
                 animacao = 3;
+
             int audio;
-            if (CBAudio.Text.Equals("Dublado"))
+            if (CBAudio.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Tipo de áudio inválido.");
+                return;
+            }
+            else if (CBAudio.Text.Equals("Dublado"))
                 audio = 1;
             else
                 audio = 2;
@@ -70,7 +93,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                 }
                 else
                 {
-                    MessageBox.Show("Não foi possível adicionar a sessão : " + result.StatusCode + "\n" + result.Content.ReadAsStringAsync().Result));
+                    MessageBox.Show("Não foi possível adicionar a sessão : " + result.StatusCode + "\n Erros:\n" + result.Content.ReadAsStringAsync().Result);
                 }
             }
         }

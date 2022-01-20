@@ -34,22 +34,21 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.FilmesBtn = new System.Windows.Forms.Button();
             this.SessoesBtn = new System.Windows.Forms.Button();
             this.SalasBtn = new System.Windows.Forms.Button();
-            this.CBFilme = new System.Windows.Forms.ComboBox();
-            this.LBFilme = new System.Windows.Forms.Label();
             this.Cancelar = new System.Windows.Forms.Button();
-            this.Editar = new System.Windows.Forms.Button();
             this.Salvar = new System.Windows.Forms.Button();
-            this.Path = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.nUDDuracao = new System.Windows.Forms.NumericUpDown();
             this.rTBDescricao = new System.Windows.Forms.RichTextBox();
             this.TBTitulo = new System.Windows.Forms.TextBox();
-            this.LBImagem = new System.Windows.Forms.Label();
-            this.LBDuracao = new System.Windows.Forms.Label();
-            this.LBDescricao = new System.Windows.Forms.Label();
-            this.LBTitulo = new System.Windows.Forms.Label();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Path = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDDuracao)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,24 +126,6 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.SalasBtn.UseVisualStyleBackColor = false;
             this.SalasBtn.Click += new System.EventHandler(this.SalasBtn_Click);
             // 
-            // CBFilme
-            // 
-            this.CBFilme.FormattingEnabled = true;
-            this.CBFilme.Location = new System.Drawing.Point(325, 214);
-            this.CBFilme.Name = "CBFilme";
-            this.CBFilme.Size = new System.Drawing.Size(313, 21);
-            this.CBFilme.TabIndex = 26;
-            // 
-            // LBFilme
-            // 
-            this.LBFilme.AutoSize = true;
-            this.LBFilme.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.LBFilme.Location = new System.Drawing.Point(320, 155);
-            this.LBFilme.Name = "LBFilme";
-            this.LBFilme.Size = new System.Drawing.Size(312, 27);
-            this.LBFilme.TabIndex = 25;
-            this.LBFilme.Text = "Qual filme deseja editar?";
-            // 
             // Cancelar
             // 
             this.Cancelar.BackColor = System.Drawing.SystemColors.MenuHighlight;
@@ -153,29 +134,13 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.Cancelar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
             this.Cancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Cancelar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Cancelar.Location = new System.Drawing.Point(371, 413);
+            this.Cancelar.Location = new System.Drawing.Point(440, 413);
             this.Cancelar.Name = "Cancelar";
             this.Cancelar.Size = new System.Drawing.Size(171, 25);
             this.Cancelar.TabIndex = 28;
             this.Cancelar.Text = "Cancelar";
             this.Cancelar.UseVisualStyleBackColor = false;
             this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
-            // 
-            // Editar
-            // 
-            this.Editar.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Editar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Editar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Editar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
-            this.Editar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Editar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Editar.Location = new System.Drawing.Point(617, 413);
-            this.Editar.Name = "Editar";
-            this.Editar.Size = new System.Drawing.Size(171, 25);
-            this.Editar.TabIndex = 27;
-            this.Editar.Text = "Editar";
-            this.Editar.UseVisualStyleBackColor = false;
-            this.Editar.Click += new System.EventHandler(this.Remover_Click);
             // 
             // Salvar
             // 
@@ -191,19 +156,20 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.Salvar.TabIndex = 29;
             this.Salvar.Text = "Salvar";
             this.Salvar.UseVisualStyleBackColor = false;
-            this.Salvar.Visible = false;
             this.Salvar.Click += new System.EventHandler(this.Salvar_Click);
             // 
-            // Path
+            // openFileDialog1
             // 
-            this.Path.AutoSize = true;
-            this.Path.Font = new System.Drawing.Font("Century", 11F);
-            this.Path.Location = new System.Drawing.Point(566, 304);
-            this.Path.Name = "Path";
-            this.Path.Size = new System.Drawing.Size(41, 18);
-            this.Path.TabIndex = 38;
-            this.Path.Text = "Path";
-            this.Path.Visible = false;
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(315, 329);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(153, 63);
+            this.pictureBox1.TabIndex = 38;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // button1
             // 
@@ -213,20 +179,18 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.button1.Font = new System.Drawing.Font("Cascadia Code", 9F);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button1.Location = new System.Drawing.Point(569, 263);
+            this.button1.Location = new System.Drawing.Point(178, 354);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(122, 38);
             this.button1.TabIndex = 37;
             this.button1.Text = "Escolher";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // nUDDuracao
             // 
             this.nUDDuracao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nUDDuracao.Font = new System.Drawing.Font("Cascadia Code", 10F);
-            this.nUDDuracao.Location = new System.Drawing.Point(569, 142);
+            this.nUDDuracao.Location = new System.Drawing.Point(683, 142);
             this.nUDDuracao.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -235,18 +199,16 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.nUDDuracao.Name = "nUDDuracao";
             this.nUDDuracao.Size = new System.Drawing.Size(63, 23);
             this.nUDDuracao.TabIndex = 36;
-            this.nUDDuracao.Visible = false;
             // 
             // rTBDescricao
             // 
             this.rTBDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rTBDescricao.Font = new System.Drawing.Font("Cascadia Code", 10F);
-            this.rTBDescricao.Location = new System.Drawing.Point(178, 263);
+            this.rTBDescricao.Location = new System.Drawing.Point(178, 220);
             this.rTBDescricao.Name = "rTBDescricao";
-            this.rTBDescricao.Size = new System.Drawing.Size(233, 74);
+            this.rTBDescricao.Size = new System.Drawing.Size(568, 93);
             this.rTBDescricao.TabIndex = 35;
             this.rTBDescricao.Text = "";
-            this.rTBDescricao.Visible = false;
             // 
             // TBTitulo
             // 
@@ -255,57 +217,59 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.TBTitulo.Location = new System.Drawing.Point(178, 142);
             this.TBTitulo.MaxLength = 100;
             this.TBTitulo.Name = "TBTitulo";
-            this.TBTitulo.Size = new System.Drawing.Size(174, 23);
+            this.TBTitulo.Size = new System.Drawing.Size(470, 23);
             this.TBTitulo.TabIndex = 34;
-            this.TBTitulo.Visible = false;
             // 
-            // LBImagem
+            // label5
             // 
-            this.LBImagem.AutoSize = true;
-            this.LBImagem.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.LBImagem.Location = new System.Drawing.Point(564, 225);
-            this.LBImagem.Name = "LBImagem";
-            this.LBImagem.Size = new System.Drawing.Size(84, 27);
-            this.LBImagem.TabIndex = 33;
-            this.LBImagem.Text = "Imagem";
-            this.LBImagem.Visible = false;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(173, 316);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(84, 27);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Imagem";
             // 
-            // LBDuracao
+            // label4
             // 
-            this.LBDuracao.AutoSize = true;
-            this.LBDuracao.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.LBDuracao.Location = new System.Drawing.Point(564, 112);
-            this.LBDuracao.Name = "LBDuracao";
-            this.LBDuracao.Size = new System.Drawing.Size(96, 27);
-            this.LBDuracao.TabIndex = 32;
-            this.LBDuracao.Text = "Duração";
-            this.LBDuracao.Visible = false;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(678, 112);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 27);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "Duração";
             // 
-            // LBDescricao
+            // label3
             // 
-            this.LBDescricao.AutoSize = true;
-            this.LBDescricao.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.LBDescricao.Location = new System.Drawing.Point(173, 225);
-            this.LBDescricao.Name = "LBDescricao";
-            this.LBDescricao.Size = new System.Drawing.Size(120, 27);
-            this.LBDescricao.TabIndex = 31;
-            this.LBDescricao.Text = "Descrição";
-            this.LBDescricao.Visible = false;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(173, 182);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 27);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Descrição";
             // 
-            // LBTitulo
+            // label2
             // 
-            this.LBTitulo.AutoSize = true;
-            this.LBTitulo.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.LBTitulo.Location = new System.Drawing.Point(173, 112);
-            this.LBTitulo.Name = "LBTitulo";
-            this.LBTitulo.Size = new System.Drawing.Size(84, 27);
-            this.LBTitulo.TabIndex = 30;
-            this.LBTitulo.Text = "Titulo";
-            this.LBTitulo.Visible = false;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(173, 112);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 27);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Titulo";
             // 
-            // openFileDialog1
+            // Path
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.Path.AutoSize = true;
+            this.Path.Font = new System.Drawing.Font("Century", 7F);
+            this.Path.Location = new System.Drawing.Point(175, 395);
+            this.Path.Name = "Path";
+            this.Path.Size = new System.Drawing.Size(30, 15);
+            this.Path.TabIndex = 39;
+            this.Path.Text = "Path";
+            this.Path.Visible = false;
             // 
             // EditarFilmeForm
             // 
@@ -314,29 +278,28 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.CBFilme);
-            this.Controls.Add(this.LBFilme);
             this.Controls.Add(this.Path);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.nUDDuracao);
             this.Controls.Add(this.rTBDescricao);
             this.Controls.Add(this.TBTitulo);
-            this.Controls.Add(this.LBImagem);
-            this.Controls.Add(this.LBDuracao);
-            this.Controls.Add(this.LBDescricao);
-            this.Controls.Add(this.LBTitulo);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.Salvar);
             this.Controls.Add(this.Cancelar);
-            this.Controls.Add(this.Editar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.MaximizeBox = false;
             this.Name = "EditarFilmeForm";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Filmes";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.EditarFilmeForm_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDDuracao)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -350,20 +313,18 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
         private System.Windows.Forms.Button FilmesBtn;
         private System.Windows.Forms.Button SessoesBtn;
         private System.Windows.Forms.Button SalasBtn;
-        private System.Windows.Forms.ComboBox CBFilme;
-        private System.Windows.Forms.Label LBFilme;
         private System.Windows.Forms.Button Cancelar;
-        private System.Windows.Forms.Button Editar;
         private System.Windows.Forms.Button Salvar;
-        private System.Windows.Forms.Label Path;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.NumericUpDown nUDDuracao;
         private System.Windows.Forms.RichTextBox rTBDescricao;
         private System.Windows.Forms.TextBox TBTitulo;
-        private System.Windows.Forms.Label LBImagem;
-        private System.Windows.Forms.Label LBDuracao;
-        private System.Windows.Forms.Label LBDescricao;
-        private System.Windows.Forms.Label LBTitulo;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Path;
     }
 }

@@ -34,6 +34,8 @@ namespace GerenciadorDeCinema.Apresentacao
             this.TBEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Entrar
@@ -60,6 +62,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.TBSenha.Name = "TBSenha";
             this.TBSenha.Size = new System.Drawing.Size(213, 23);
             this.TBSenha.TabIndex = 17;
+            this.TBSenha.UseSystemPasswordChar = true;
             // 
             // TBEmail
             // 
@@ -78,7 +81,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 27);
             this.label1.TabIndex = 19;
-            this.label1.Text = "Usuario";
+            this.label1.Text = "Usuário";
             // 
             // label2
             // 
@@ -90,20 +93,44 @@ namespace GerenciadorDeCinema.Apresentacao
             this.label2.TabIndex = 20;
             this.label2.Text = "Senha";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Cascadia Code SemiBold", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label3.Location = new System.Drawing.Point(4, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(229, 44);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Gerenciador";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Cascadia Code SemiBold", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.label4.Location = new System.Drawing.Point(21, 53);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(191, 44);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "de Cinema";
+            // 
             // UsuarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(237, 309);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TBEmail);
-            this.Controls.Add(this.TBSenha);
             this.Controls.Add(this.Entrar);
+            this.Controls.Add(this.TBSenha);
             this.MaximizeBox = false;
             this.Name = "UsuarioForm";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.UsuarioForm_Load);
             this.ResumeLayout(false);
@@ -118,5 +145,7 @@ namespace GerenciadorDeCinema.Apresentacao
         private System.Windows.Forms.TextBox TBEmail;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -67,7 +67,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(173, 110);
+            this.label2.Location = new System.Drawing.Point(173, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 27);
             this.label2.TabIndex = 19;
@@ -81,7 +81,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.Cancelar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
             this.Cancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Cancelar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Cancelar.Location = new System.Drawing.Point(371, 413);
+            this.Cancelar.Location = new System.Drawing.Point(440, 413);
             this.Cancelar.Name = "Cancelar";
             this.Cancelar.Size = new System.Drawing.Size(171, 25);
             this.Cancelar.TabIndex = 22;
@@ -131,7 +131,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(650, 110);
+            this.label4.Location = new System.Drawing.Point(173, 88);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 27);
             this.label4.TabIndex = 26;
@@ -141,7 +141,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(650, 214);
+            this.label5.Location = new System.Drawing.Point(402, 212);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 27);
             this.label5.TabIndex = 27;
@@ -151,7 +151,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(448, 110);
+            this.label6.Location = new System.Drawing.Point(402, 142);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(108, 27);
             this.label6.TabIndex = 28;
@@ -161,7 +161,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(448, 214);
+            this.label7.Location = new System.Drawing.Point(552, 142);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 27);
             this.label7.TabIndex = 29;
@@ -173,7 +173,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.CBAudio.Items.AddRange(new object[] {
             "Original",
             "Dublado"});
-            this.CBAudio.Location = new System.Drawing.Point(452, 242);
+            this.CBAudio.Location = new System.Drawing.Point(557, 175);
             this.CBAudio.Name = "CBAudio";
             this.CBAudio.Size = new System.Drawing.Size(126, 21);
             this.CBAudio.TabIndex = 31;
@@ -184,7 +184,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.CBAnimacao.Items.AddRange(new object[] {
             "2d",
             "3d"});
-            this.CBAnimacao.Location = new System.Drawing.Point(453, 142);
+            this.CBAnimacao.Location = new System.Drawing.Point(407, 175);
             this.CBAnimacao.Name = "CBAnimacao";
             this.CBAnimacao.Size = new System.Drawing.Size(126, 21);
             this.CBAnimacao.TabIndex = 32;
@@ -255,17 +255,17 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // CBFilme
             // 
             this.CBFilme.FormattingEnabled = true;
-            this.CBFilme.Location = new System.Drawing.Point(655, 142);
+            this.CBFilme.Location = new System.Drawing.Point(183, 118);
             this.CBFilme.Name = "CBFilme";
-            this.CBFilme.Size = new System.Drawing.Size(126, 21);
+            this.CBFilme.Size = new System.Drawing.Size(500, 21);
             this.CBFilme.TabIndex = 34;
             // 
             // CBSala
             // 
             this.CBSala.FormattingEnabled = true;
-            this.CBSala.Location = new System.Drawing.Point(655, 246);
+            this.CBSala.Location = new System.Drawing.Point(407, 244);
             this.CBSala.Name = "CBSala";
-            this.CBSala.Size = new System.Drawing.Size(126, 21);
+            this.CBSala.Size = new System.Drawing.Size(276, 21);
             this.CBSala.TabIndex = 35;
             // 
             // DataInicio
@@ -273,7 +273,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.DataInicio.CalendarFont = new System.Drawing.Font("Cascadia Code", 10F);
             this.DataInicio.Font = new System.Drawing.Font("Cascadia Code", 9F);
             this.DataInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DataInicio.Location = new System.Drawing.Point(182, 142);
+            this.DataInicio.Location = new System.Drawing.Point(178, 172);
             this.DataInicio.MinDate = new System.DateTime(2022, 1, 1, 0, 0, 0, 0);
             this.DataInicio.Name = "DataInicio";
             this.DataInicio.Size = new System.Drawing.Size(107, 21);
@@ -285,7 +285,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.HoraInicio.CalendarFont = new System.Drawing.Font("Cascadia Code", 10F);
             this.HoraInicio.Font = new System.Drawing.Font("Cascadia Code", 9F);
             this.HoraInicio.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.HoraInicio.Location = new System.Drawing.Point(295, 142);
+            this.HoraInicio.Location = new System.Drawing.Point(291, 172);
             this.HoraInicio.Name = "HoraInicio";
             this.HoraInicio.ShowUpDown = true;
             this.HoraInicio.Size = new System.Drawing.Size(94, 21);
@@ -316,11 +316,11 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.Controls.Add(this.Adicionar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "AdicionarSessaoForm";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Sessões";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdicionarSessaoForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
