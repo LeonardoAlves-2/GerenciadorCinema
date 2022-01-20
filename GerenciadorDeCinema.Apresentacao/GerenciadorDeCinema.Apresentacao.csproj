@@ -179,7 +179,6 @@
     <Compile Include="Listar\ListarSessoesForm.Designer.cs">
       <DependentUpon>ListarSessoesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Metodos\MetodosFilme.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Remover\RemoverFilmesForm.cs">

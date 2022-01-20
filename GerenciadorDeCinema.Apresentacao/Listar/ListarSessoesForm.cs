@@ -20,8 +20,12 @@ namespace GerenciadorDeCinema.Apresentacao
         public ListarSessoesForm()
         {
             InitializeComponent();
+            ListarFilmesESalasAsync();
             ListarSessoesAsync();
         }
+
+        private Filme[] filmes;
+        private Sala[] salas;
 
         private readonly string URI = "https://localhost:5001/sessao/listar";
         private async void ListarSessoesAsync()
@@ -32,13 +36,53 @@ namespace GerenciadorDeCinema.Apresentacao
                 {
                     if (response.IsSuccessStatusCode)
                     {
+                        DataTable dt = new DataTable();
+                        dt.Columns.Add("Início", typeof(DateTime));
+                        dt.Columns.Add("Final", typeof(DateTime));
+                        dt.Columns.Add("Valor do ingresso", typeof(decimal));
+                        dt.Columns.Add("Tipo da animação", typeof(string));
+                        dt.Columns.Add("Tipo do áudio", typeof(string));
+                        dt.Columns.Add("Sala", typeof(string));
+                        dt.Columns.Add("Filme", typeof(string));
+
                         var JsonString = await response.Content.ReadAsStringAsync();
-                        dataGridView1.DataSource = JsonConvert.DeserializeObject<Sessao[]>(JsonString).ToList();
+                        IList<Sessao> sessoes = JsonConvert.DeserializeObject<Sessao[]>(JsonString).ToList();
+                        foreach(Sessao sessao in sessoes)
+                        {
+                            Sala salaEscolhida = salas.FirstOrDefault(c => c.Id.Equals(sessao.SalaId));
+                            Filme filmeEscolhido = filmes.FirstOrDefault(c => c.Id.Equals(sessao.FilmeId));
+                            string Audio;
+                            if (sessao.Audio.Equals(1))
+                                Audio = "Dublado";
+                            else
+                                Audio = "Original";
+
+                            dt.Rows.Add(sessao.Inicio, sessao.Final, sessao.ValorIngresso, $"{sessao.Animacao}d", Audio, salaEscolhida.Nome, filmeEscolhido.Titulo);
+                        }
+
+                        dataGridView1.DataSource = dt;
                     }
                     else
                     {
                         MessageBox.Show("Não foi possível listar as sessões : " + response.StatusCode);
                     }
+                }
+            }
+        }
+
+        private async void ListarFilmesESalasAsync()
+        {
+            using (var client = new HttpClient())
+            {
+                using (var response = await client.GetAsync("https://localhost:5001/filme/listar"))
+                {
+                    var ProdutoJsonString = await response.Content.ReadAsStringAsync();
+                    filmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToArray();
+                }
+                using (var response = await client.GetAsync("https://localhost:5001/sala/"))
+                {
+                    var ProdutoJsonString = await response.Content.ReadAsStringAsync();
+                    salas = JsonConvert.DeserializeObject<Sala[]>(ProdutoJsonString).ToArray();
                 }
             }
         }

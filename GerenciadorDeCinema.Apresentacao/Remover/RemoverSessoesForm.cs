@@ -64,7 +64,7 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
                 }
                 else
                 {
-                    MessageBox.Show("Falha ao remover a sessão  : " + responseMessage.StatusCode);
+                    MessageBox.Show("Falha ao remover a sessão  : " + responseMessage.StatusCode + "\n" + responseMessage.Content.ReadAsStringAsync().Result);
                 }
             }
         }

@@ -70,7 +70,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                 }
                 else
                 {
-                    MessageBox.Show("Não foi possível adicionar a sessão : " + result.StatusCode + "\n");
+                    MessageBox.Show("Não foi possível adicionar a sessão : " + result.StatusCode + "\n" + result.Content.ReadAsStringAsync().Result));
                 }
             }
         }

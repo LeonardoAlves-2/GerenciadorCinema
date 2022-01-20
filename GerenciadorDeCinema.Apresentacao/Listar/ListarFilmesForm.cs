@@ -33,8 +33,18 @@ namespace GerenciadorDeCinema.Apresentacao
                 {
                     if (response.IsSuccessStatusCode)
                     {
+                        DataTable dt = new DataTable();
+                        dt.Columns.Add("Imagem", typeof(byte[]));
+                        dt.Columns.Add("Titulo", typeof(string));
+                        dt.Columns.Add("Descrição", typeof(string));
+                        dt.Columns.Add("Duração", typeof(int));
+
                         var JsonString = await response.Content.ReadAsStringAsync();
-                        dataGridView1.DataSource = JsonConvert.DeserializeObject<Filme[]>(JsonString).ToList();
+                        IList<Filme> filmes = JsonConvert.DeserializeObject<Filme[]>(JsonString).ToList();
+                        foreach (Filme filme in filmes)
+                            dt.Rows.Add(filme.Imagem, filme.Titulo, filme.Descricao, filme.Duracao);
+
+                        dataGridView1.DataSource = dt;
                     }
                     else
                     {

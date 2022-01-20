@@ -64,7 +64,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
                 }
                 else
                 {
-                    MessageBox.Show("Falha ao editar o filme : " + responseMessage.StatusCode);
+                    MessageBox.Show("Falha ao editar o filme : " + responseMessage.StatusCode + "\n" + responseMessage.Content.ReadAsStringAsync().Result);
                 }
             }
         }

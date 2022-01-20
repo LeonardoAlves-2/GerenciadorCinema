@@ -105,6 +105,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.UsuarioForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

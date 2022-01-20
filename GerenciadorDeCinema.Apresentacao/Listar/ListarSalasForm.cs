@@ -24,8 +24,16 @@ namespace GerenciadorDeCinema.Apresentacao
                 {
                     if (response.IsSuccessStatusCode)
                     {
+                        DataTable dt = new DataTable();
+                        dt.Columns.Add("Nome", typeof(string));
+                        dt.Columns.Add("Quantidade de assentos", typeof(int));
+
                         var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-                        dataGridView1.DataSource = JsonConvert.DeserializeObject<Sala[]>(ProdutoJsonString).ToList();
+                        IList<Sala> salas = JsonConvert.DeserializeObject<Sala[]>(ProdutoJsonString).ToList();
+                        foreach (Sala sala in salas)
+                            dt.Rows.Add(new object[] { sala.Nome, sala.QuantidadeDeAssentos });
+
+                        dataGridView1.DataSource = dt;
                     }
                     else
                     {
