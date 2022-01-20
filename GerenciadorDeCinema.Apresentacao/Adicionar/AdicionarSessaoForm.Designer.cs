@@ -319,7 +319,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.Name = "AdicionarSessaoForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AdicionarSessaoForm";
+            this.Text = "Adicionar Sessões";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdicionarSessaoForm_Load);
             this.panel1.ResumeLayout(false);

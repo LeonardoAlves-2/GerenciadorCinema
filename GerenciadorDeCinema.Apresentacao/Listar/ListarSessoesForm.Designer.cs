@@ -172,7 +172,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.Name = "ListarSessoesForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Listar Sessões";
+            this.Text = "Sessões";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ListarSessoesForm_Load);
             this.panel1.ResumeLayout(false);

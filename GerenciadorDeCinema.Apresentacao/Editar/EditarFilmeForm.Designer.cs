@@ -333,7 +333,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.Name = "EditarFilmeForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "EditarFilmeForm";
+            this.Text = "Editar Filmes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.EditarFilmeForm_Load);
             this.panel1.ResumeLayout(false);

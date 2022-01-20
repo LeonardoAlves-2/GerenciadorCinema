@@ -136,7 +136,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.Name = "ListarSalasForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ListarSalasForm";
+            this.Text = "Salas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ListarSalasForm_Load);
             this.panel1.ResumeLayout(false);

@@ -182,7 +182,7 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
             this.Name = "RemoverFilmesForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "RemoverFilmesForm";
+            this.Text = "Remover Filmes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.RemoverFilmesForm_Load);
             this.panel1.ResumeLayout(false);

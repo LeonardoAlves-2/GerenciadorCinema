@@ -180,7 +180,7 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
             this.Name = "RemoverSessoesForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "RemoverSessoesForm";
+            this.Text = "Remover Sessões";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.RemoverSessoesForm_Load);
             this.panel1.ResumeLayout(false);
