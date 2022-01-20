@@ -296,6 +296,8 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.HoraInicio);
             this.Controls.Add(this.DataInicio);
@@ -315,7 +317,10 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AdicionarSessaoForm";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AdicionarSessaoForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdicionarSessaoForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

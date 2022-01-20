@@ -44,9 +44,9 @@ namespace GerenciadorDeCinema.Apresentacao
             this.Entrar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
             this.Entrar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Entrar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Entrar.Location = new System.Drawing.Point(100, 362);
+            this.Entrar.Location = new System.Drawing.Point(12, 256);
             this.Entrar.Name = "Entrar";
-            this.Entrar.Size = new System.Drawing.Size(186, 41);
+            this.Entrar.Size = new System.Drawing.Size(213, 41);
             this.Entrar.TabIndex = 16;
             this.Entrar.Text = "Entrar";
             this.Entrar.UseVisualStyleBackColor = false;
@@ -56,35 +56,35 @@ namespace GerenciadorDeCinema.Apresentacao
             // 
             this.TBSenha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TBSenha.Font = new System.Drawing.Font("Cascadia Code", 10F);
-            this.TBSenha.Location = new System.Drawing.Point(100, 305);
+            this.TBSenha.Location = new System.Drawing.Point(12, 211);
             this.TBSenha.Name = "TBSenha";
-            this.TBSenha.Size = new System.Drawing.Size(186, 23);
+            this.TBSenha.Size = new System.Drawing.Size(213, 23);
             this.TBSenha.TabIndex = 17;
             // 
             // TBEmail
             // 
             this.TBEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TBEmail.Font = new System.Drawing.Font("Cascadia Code", 10F);
-            this.TBEmail.Location = new System.Drawing.Point(100, 242);
+            this.TBEmail.Location = new System.Drawing.Point(12, 135);
             this.TBEmail.Name = "TBEmail";
-            this.TBEmail.Size = new System.Drawing.Size(186, 23);
+            this.TBEmail.Size = new System.Drawing.Size(213, 23);
             this.TBEmail.TabIndex = 18;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(95, 212);
+            this.label1.Location = new System.Drawing.Point(7, 105);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 27);
+            this.label1.Size = new System.Drawing.Size(96, 27);
             this.label1.TabIndex = 19;
-            this.label1.Text = "E-Mail";
+            this.label1.Text = "Usuario";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(95, 275);
+            this.label2.Location = new System.Drawing.Point(7, 181);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 27);
             this.label2.TabIndex = 20;
@@ -94,7 +94,7 @@ namespace GerenciadorDeCinema.Apresentacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 450);
+            this.ClientSize = new System.Drawing.Size(237, 309);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TBEmail);
@@ -103,6 +103,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.MaximizeBox = false;
             this.Name = "UsuarioForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -249,10 +249,10 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // Path
             // 
             this.Path.AutoSize = true;
-            this.Path.Font = new System.Drawing.Font("Century", 11F);
+            this.Path.Font = new System.Drawing.Font("Century", 7F);
             this.Path.Location = new System.Drawing.Point(566, 304);
             this.Path.Name = "Path";
-            this.Path.Size = new System.Drawing.Size(41, 18);
+            this.Path.Size = new System.Drawing.Size(30, 15);
             this.Path.TabIndex = 26;
             this.Path.Text = "Path";
             this.Path.Visible = false;
@@ -268,6 +268,8 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Path);
             this.Controls.Add(this.button1);
@@ -282,10 +284,11 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.Controls.Add(this.Cancelar);
             this.Controls.Add(this.Adicionar);
             this.Controls.Add(this.label1);
-            this.MaximizeBox = false;
             this.Name = "AdicionarFilmeForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AdicionarFilmeForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdicionarFilmeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nUDDuracao)).EndInit();
             this.panel1.ResumeLayout(false);

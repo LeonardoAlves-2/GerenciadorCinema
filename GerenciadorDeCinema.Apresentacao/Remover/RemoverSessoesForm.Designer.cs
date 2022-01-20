@@ -109,7 +109,7 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
             this.panel1.Controls.Add(this.SalasBtn);
             this.panel1.Location = new System.Drawing.Point(-3, -20);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(167, 532);
+            this.panel1.Size = new System.Drawing.Size(167, 474);
             this.panel1.TabIndex = 27;
             // 
             // FilmesBtn
@@ -168,6 +168,8 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Cancelar);
             this.Controls.Add(this.Remover);
@@ -176,7 +178,10 @@ namespace GerenciadorDeCinema.Apresentacao.Remover
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Name = "RemoverSessoesForm";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "RemoverSessoesForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.RemoverSessoesForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -178,6 +178,8 @@ namespace GerenciadorDeCinema.Apresentacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Editar);
             this.Controls.Add(this.Remover);
@@ -188,7 +190,9 @@ namespace GerenciadorDeCinema.Apresentacao
             this.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
             this.Name = "ListarFilmesForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Filmes";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ListarFilmesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
