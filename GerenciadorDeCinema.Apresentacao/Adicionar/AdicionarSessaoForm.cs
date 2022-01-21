@@ -158,39 +158,6 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
 
         }
 
-        private void FilmesBtn_Click(object sender, EventArgs e)
-        {
-            ListarFilmesForm newForm = new ListarFilmesForm();
-            var result = AoFormTrocar();
-            if (result == true)
-            {
-                this.Hide();
-                newForm.Show();
-            }
-        }
-
-        private void SessoesBtn_Click(object sender, EventArgs e)
-        {
-            ListarSessoesForm newForm = new ListarSessoesForm();
-            var result = AoFormTrocar();
-            if (result == true)
-            {
-                this.Hide();
-                newForm.Show();
-            }
-        }
-
-        private void SalasBtn_Click(object sender, EventArgs e)
-        {
-            ListarSalasForm newForm = new ListarSalasForm();
-            var result = AoFormTrocar();
-            if (result == true)
-            {
-                this.Hide();
-                newForm.Show();
-            }
-        }
-
         private void Adicionar_Click(object sender, EventArgs e)
         {
             AdicionarSessaoAsync();
