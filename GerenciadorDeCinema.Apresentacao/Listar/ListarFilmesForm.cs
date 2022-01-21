@@ -35,7 +35,6 @@ namespace GerenciadorDeCinema.Apresentacao
                     if (response.IsSuccessStatusCode)
                     {
                         DataTable dt = new DataTable();
-                        dt.Columns.Add("Imagem", typeof(byte[]));
                         dt.Columns.Add("Titulo", typeof(string));
                         dt.Columns.Add("Descrição", typeof(string));
                         dt.Columns.Add("Duração", typeof(int));
@@ -43,7 +42,7 @@ namespace GerenciadorDeCinema.Apresentacao
                         var JsonString = await response.Content.ReadAsStringAsync();
                         filmes = JsonConvert.DeserializeObject<Filme[]>(JsonString).ToList();
                         foreach (Filme filme in filmes)
-                            dt.Rows.Add(filme.Imagem, filme.Titulo, filme.Descricao, filme.Duracao);
+                            dt.Rows.Add(filme.Titulo, filme.Descricao, filme.Duracao);
 
                         dataGridView1.DataSource = dt;
                     }
@@ -104,7 +103,7 @@ namespace GerenciadorDeCinema.Apresentacao
             var selecionada = dataGridView1.CurrentRow;
             if(selecionada != null)
             {
-                Filme filme = filmes.FirstOrDefault(c => c.Titulo.Equals(selecionada.Cells[1].Value));
+                Filme filme = filmes.FirstOrDefault(c => c.Titulo.Equals(selecionada.Cells[0].Value));
                 var result = MessageBox.Show("Você tem certeza que quer remover o filme?", "Confirmação", MessageBoxButtons.YesNo);
                 if (result != DialogResult.Yes)
                 {
@@ -137,7 +136,7 @@ namespace GerenciadorDeCinema.Apresentacao
             var selecionada = dataGridView1.CurrentRow;
             if (selecionada != null)
             {
-                Filme filme = filmes.FirstOrDefault(c => c.Titulo.Equals(selecionada.Cells[1].Value));
+                Filme filme = filmes.FirstOrDefault(c => c.Titulo.Equals(selecionada.Cells[0].Value));
 
                 var newForm = new EditarFilmeForm(filme.Id);
                 this.Hide();

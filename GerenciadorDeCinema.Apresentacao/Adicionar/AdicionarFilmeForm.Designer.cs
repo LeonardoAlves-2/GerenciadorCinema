@@ -44,7 +44,6 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.SessoesBtn = new System.Windows.Forms.Button();
             this.SalasBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.Path = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.nUDDuracao)).BeginInit();
@@ -71,11 +70,11 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.Adicionar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
             this.Adicionar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Adicionar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Adicionar.Location = new System.Drawing.Point(617, 413);
+            this.Adicionar.Location = new System.Drawing.Point(728, 413);
             this.Adicionar.Name = "Adicionar";
-            this.Adicionar.Size = new System.Drawing.Size(171, 25);
+            this.Adicionar.Size = new System.Drawing.Size(60, 25);
             this.Adicionar.TabIndex = 15;
-            this.Adicionar.Text = "Adicionar";
+            this.Adicionar.Text = "Criar";
             this.Adicionar.UseVisualStyleBackColor = false;
             this.Adicionar.Click += new System.EventHandler(this.Adicionar_Click);
             // 
@@ -87,9 +86,9 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.Cancelar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
             this.Cancelar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Cancelar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Cancelar.Location = new System.Drawing.Point(440, 413);
+            this.Cancelar.Location = new System.Drawing.Point(662, 413);
             this.Cancelar.Name = "Cancelar";
-            this.Cancelar.Size = new System.Drawing.Size(171, 25);
+            this.Cancelar.Size = new System.Drawing.Size(60, 25);
             this.Cancelar.TabIndex = 16;
             this.Cancelar.Text = "Cancelar";
             this.Cancelar.UseVisualStyleBackColor = false;
@@ -98,17 +97,17 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
+            this.label2.Font = new System.Drawing.Font("Cascadia Code", 15F);
             this.label2.Location = new System.Drawing.Point(173, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 27);
             this.label2.TabIndex = 17;
-            this.label2.Text = "Titulo";
+            this.label2.Text = "Título";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
+            this.label3.Font = new System.Drawing.Font("Cascadia Code", 15F);
             this.label3.Location = new System.Drawing.Point(173, 182);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(120, 27);
@@ -118,8 +117,8 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(678, 112);
+            this.label4.Font = new System.Drawing.Font("Cascadia Code", 15F);
+            this.label4.Location = new System.Drawing.Point(564, 112);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(96, 27);
             this.label4.TabIndex = 19;
@@ -128,8 +127,8 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(173, 316);
+            this.label5.Font = new System.Drawing.Font("Cascadia Code", 15F);
+            this.label5.Location = new System.Drawing.Point(657, 112);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 27);
             this.label5.TabIndex = 20;
@@ -142,7 +141,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.TBTitulo.Location = new System.Drawing.Point(178, 142);
             this.TBTitulo.MaxLength = 100;
             this.TBTitulo.Name = "TBTitulo";
-            this.TBTitulo.Size = new System.Drawing.Size(470, 23);
+            this.TBTitulo.Size = new System.Drawing.Size(385, 23);
             this.TBTitulo.TabIndex = 21;
             // 
             // rTBDescricao
@@ -151,7 +150,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.rTBDescricao.Font = new System.Drawing.Font("Cascadia Code", 10F);
             this.rTBDescricao.Location = new System.Drawing.Point(178, 220);
             this.rTBDescricao.Name = "rTBDescricao";
-            this.rTBDescricao.Size = new System.Drawing.Size(568, 93);
+            this.rTBDescricao.Size = new System.Drawing.Size(473, 137);
             this.rTBDescricao.TabIndex = 22;
             this.rTBDescricao.Text = "";
             // 
@@ -159,7 +158,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // 
             this.nUDDuracao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nUDDuracao.Font = new System.Drawing.Font("Cascadia Code", 10F);
-            this.nUDDuracao.Location = new System.Drawing.Point(683, 142);
+            this.nUDDuracao.Location = new System.Drawing.Point(569, 142);
             this.nUDDuracao.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -240,24 +239,13 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.button1.Font = new System.Drawing.Font("Cascadia Code", 9F);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button1.Location = new System.Drawing.Point(178, 354);
+            this.button1.Location = new System.Drawing.Point(661, 319);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(122, 38);
+            this.button1.Size = new System.Drawing.Size(127, 38);
             this.button1.TabIndex = 25;
             this.button1.Text = "Escolher";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // Path
-            // 
-            this.Path.AutoSize = true;
-            this.Path.Font = new System.Drawing.Font("Century", 7F);
-            this.Path.Location = new System.Drawing.Point(175, 395);
-            this.Path.Name = "Path";
-            this.Path.Size = new System.Drawing.Size(30, 15);
-            this.Path.TabIndex = 26;
-            this.Path.Text = "Path";
-            this.Path.Visible = false;
             // 
             // openFileDialog1
             // 
@@ -268,9 +256,9 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(315, 329);
+            this.pictureBox1.Location = new System.Drawing.Point(661, 142);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(153, 63);
+            this.pictureBox1.Size = new System.Drawing.Size(127, 171);
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
@@ -283,7 +271,6 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.Path);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.nUDDuracao);
@@ -300,7 +287,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.Name = "AdicionarFilmeForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Adicionar Filmes";
+            this.Text = "Gerenciador de cinema - Adicionar Filmes";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AoFormClosing);
             this.Load += new System.EventHandler(this.AdicionarFilmeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nUDDuracao)).EndInit();
@@ -327,7 +314,6 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         private System.Windows.Forms.Button SessoesBtn;
         private System.Windows.Forms.Button SalasBtn;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label Path;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

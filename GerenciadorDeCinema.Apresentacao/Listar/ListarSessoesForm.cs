@@ -17,13 +17,10 @@ namespace GerenciadorDeCinema.Apresentacao
 {
     public partial class ListarSessoesForm : Form
     {
-        private IList<Filme> filmes;
-        private IList<Sala> salas;
         private IList<Sessao> sessoes;
         public ListarSessoesForm()
         {
             InitializeComponent();
-            ListarFilmesESalasAsync();
             ListarSessoesAsync();
         }
         private readonly string URISala = ConfigurationManager.AppSettings["myUrlSala"];
@@ -31,6 +28,7 @@ namespace GerenciadorDeCinema.Apresentacao
         private readonly string URI = ConfigurationManager.AppSettings["myUrlSessao"];
         private async void ListarSessoesAsync()
         {
+
             using (var client = new HttpClient())
             {
                 using (var response = await client.GetAsync($"{URI}/listar"))
@@ -46,12 +44,27 @@ namespace GerenciadorDeCinema.Apresentacao
                         dt.Columns.Add("Sala", typeof(string));
                         dt.Columns.Add("Filme", typeof(string));
 
+                        IList<Filme> filmes;
+                        using (var responsefilme = await client.GetAsync($"{URIFilme}/listar"))
+                        {
+                            var ProdutoJsonString = await responsefilme.Content.ReadAsStringAsync();
+                            filmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
+                        }
+
+                        IList<Sala> salas;
+                        using (var responsesala = await client.GetAsync($"{URISala}/"))
+                        {
+                            var ProdutoJsonString = await responsesala.Content.ReadAsStringAsync();
+                            salas = JsonConvert.DeserializeObject<Sala[]>(ProdutoJsonString).ToList();
+                        }
+                        
                         var JsonString = await response.Content.ReadAsStringAsync();
                         sessoes = JsonConvert.DeserializeObject<Sessao[]>(JsonString).ToList();
                         foreach(Sessao sessao in sessoes)
                         {
-                            Sala salaEscolhida = salas.FirstOrDefault(c => c.Id.Equals(sessao.SalaId));
-                            Filme filmeEscolhido = filmes.FirstOrDefault(c => c.Id.Equals(sessao.FilmeId));
+                            var filmeEscolhido = filmes.FirstOrDefault(c => c.Id.Equals(sessao.FilmeId));
+                            var salaEscolhida = salas.FirstOrDefault(c => c.Id.Equals(sessao.SalaId));
+
                             string Audio;
                             if (sessao.Audio.Equals(1))
                                 Audio = "Dublado";
@@ -71,22 +84,6 @@ namespace GerenciadorDeCinema.Apresentacao
             }
         }
 
-        private async void ListarFilmesESalasAsync()
-        {
-            using (var client = new HttpClient())
-            {
-                using (var response = await client.GetAsync($"{URIFilme}/listar"))
-                {
-                    var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-                    filmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
-                }
-                using (var response = await client.GetAsync($"{URISala}/"))
-                {
-                    var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-                    salas = JsonConvert.DeserializeObject<Sala[]>(ProdutoJsonString).ToList();
-                }
-            }
-        }
         private void AoFormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
@@ -148,7 +145,7 @@ namespace GerenciadorDeCinema.Apresentacao
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri(URI);
-                    HttpResponseMessage responseMessage = await client.DeleteAsync($"{URI}/sessao/remover/{sessao.Id}");
+                    HttpResponseMessage responseMessage = await client.DeleteAsync($"{URI}/remover/{sessao.Id}");
                     if (responseMessage.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Sessão removida com sucesso");

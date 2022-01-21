@@ -131,7 +131,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.Name = "UsuarioForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = "Gerenciador de cinema - Login";
             this.Load += new System.EventHandler(this.UsuarioForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

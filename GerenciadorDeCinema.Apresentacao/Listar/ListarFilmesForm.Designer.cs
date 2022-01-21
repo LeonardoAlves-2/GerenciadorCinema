@@ -198,7 +198,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.Name = "ListarFilmesForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Filmes";
+            this.Text = "Gerenciador de cinema - Filmes";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AoFormClosing);
             this.Load += new System.EventHandler(this.ListarFilmesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

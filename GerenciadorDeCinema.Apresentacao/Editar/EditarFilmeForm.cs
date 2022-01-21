@@ -44,6 +44,10 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             rTBDescricao.Text = _filme.Descricao;
             nUDDuracao.Value = _filme.Duracao;
             ImageBytes = _filme.Imagem;
+            using (MemoryStream ms = new MemoryStream(ImageBytes))
+            {
+                pictureBox1.Image = Image.FromStream(ms);
+            }
         }
 
         private async void EditarFilme()
@@ -163,8 +167,6 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
                 string path = System.IO.Path.GetFullPath(openFileDialog1.FileName);
-                Path.Text = path;
-                Path.Visible = true;
 
                 try
                 {

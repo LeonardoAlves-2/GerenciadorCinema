@@ -143,10 +143,6 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                string path = System.IO.Path.GetFullPath(openFileDialog1.FileName);
-                Path.Text = path;
-                Path.Visible = true;
-
                 try
                 {
                     Image ImagemA = Image.FromFile(openFileDialog1.FileName);
