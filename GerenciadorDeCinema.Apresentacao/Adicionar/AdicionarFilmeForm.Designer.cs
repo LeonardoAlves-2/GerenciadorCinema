@@ -177,7 +177,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.panel1.Controls.Add(this.SalasBtn);
             this.panel1.Location = new System.Drawing.Point(-3, -20);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(167, 532);
+            this.panel1.Size = new System.Drawing.Size(167, 476);
             this.panel1.TabIndex = 24;
             // 
             // FilmesBtn
@@ -301,6 +301,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Filmes";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AoFormClosing);
             this.Load += new System.EventHandler(this.AdicionarFilmeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nUDDuracao)).EndInit();
             this.panel1.ResumeLayout(false);

@@ -71,7 +71,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 27);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Inicio";
+            this.label2.Text = "Início";
             // 
             // Cancelar
             // 
@@ -197,7 +197,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.panel1.Controls.Add(this.SalasBtn);
             this.panel1.Location = new System.Drawing.Point(-3, -20);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(167, 532);
+            this.panel1.Size = new System.Drawing.Size(167, 476);
             this.panel1.TabIndex = 33;
             // 
             // FilmesBtn
@@ -321,6 +321,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Sessões";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AoFormClosing);
             this.Load += new System.EventHandler(this.AdicionarSessaoForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

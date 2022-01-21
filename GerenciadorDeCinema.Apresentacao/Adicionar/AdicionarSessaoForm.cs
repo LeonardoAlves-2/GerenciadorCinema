@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -15,7 +16,9 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
 {
     public partial class AdicionarSessaoForm : Form
     {
-        private readonly string URI = "https://localhost:5001/sessao";
+        private readonly string URI = ConfigurationManager.AppSettings["myUrlSessao"];
+        private readonly string URIFilme = ConfigurationManager.AppSettings["myUrlFilme"];
+        private readonly string URISala = ConfigurationManager.AppSettings["myUrlSala"];
         private IList<Filme> filmeEscolhido;
         private IList<Sala> salaEscolhida;
 
@@ -93,7 +96,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                 }
                 else
                 {
-                    MessageBox.Show("Não foi possível adicionar a sessão : " + result.StatusCode + "\n Erros:\n" + result.Content.ReadAsStringAsync().Result);
+                    MessageBox.Show("Não foi possível adicionar a sessão : " + result.StatusCode + "\n Rever:\n" + result.Content.ReadAsStringAsync().Result);
                 }
             }
         }
@@ -102,7 +105,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         {
             using (var client = new HttpClient())
             {
-                using (var response = await client.GetAsync("https://localhost:5001/filme/listar"))
+                using (var response = await client.GetAsync($"{URIFilme}/listar"))
                 {
                     var ProdutoJsonString = await response.Content.ReadAsStringAsync();
                     var objectFilmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
@@ -113,7 +116,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                         CBFilme.Items.Add(filme.Titulo);
                     }
                 }
-                using (var response = await client.GetAsync("https://localhost:5001/sala/"))
+                using (var response = await client.GetAsync($"{URISala}/"))
                 {
                     var ProdutoJsonString = await response.Content.ReadAsStringAsync();
                     var objectSalas = JsonConvert.DeserializeObject<Sala[]>(ProdutoJsonString).ToList();
@@ -123,6 +126,18 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                     {
                         CBSala.Items.Add(sala.Nome);
                     }
+                }
+            }
+        }
+
+        private void AoFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
                 }
             }
         }

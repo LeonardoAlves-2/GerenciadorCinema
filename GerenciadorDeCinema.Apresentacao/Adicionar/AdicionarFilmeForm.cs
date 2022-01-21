@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -16,7 +17,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
 {
     public partial class AdicionarFilmeForm : Form
     {
-        private readonly string URI = "https://localhost:5001/filme";
+        private readonly string URI = ConfigurationManager.AppSettings["myUrlFilme"];
 
         public byte[] ImageBytes { get; set; }
 
@@ -41,7 +42,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                 }
                 else
                 {
-                    MessageBox.Show("Não foi possível adicionar o filme : " + result.StatusCode + "\n Erros:\n" + result.Content.ReadAsStringAsync().Result);
+                    MessageBox.Show("Não foi possível adicionar o filme : " + result.StatusCode + "\n Rever:\n" + result.Content.ReadAsStringAsync().Result);
                 }
             }
         }
@@ -49,6 +50,18 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         public AdicionarFilmeForm()
         {
             InitializeComponent();
+        }
+
+        private void AoFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
 
         private void AdicionarFilmeForm_Load(object sender, EventArgs e)

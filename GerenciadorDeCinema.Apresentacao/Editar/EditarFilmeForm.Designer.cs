@@ -71,7 +71,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.panel1.Controls.Add(this.SalasBtn);
             this.panel1.Location = new System.Drawing.Point(-3, -20);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(167, 532);
+            this.panel1.Size = new System.Drawing.Size(167, 476);
             this.panel1.TabIndex = 23;
             // 
             // FilmesBtn
@@ -185,6 +185,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.button1.TabIndex = 37;
             this.button1.Text = "Escolher";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // nUDDuracao
             // 
@@ -297,6 +298,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Filmes";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AoFormClosing);
             this.Load += new System.EventHandler(this.EditarFilmeForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

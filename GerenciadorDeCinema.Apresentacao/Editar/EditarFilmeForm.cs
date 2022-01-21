@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -16,7 +17,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
 {
     public partial class EditarFilmeForm : Form
     {
-        private readonly string URI = "https://localhost:5001/filme";
+        private readonly string URI = ConfigurationManager.AppSettings["myUrlFilme"];
         public byte[] ImageBytes { get; set; }
         private readonly Guid _filmeId;
 
@@ -32,7 +33,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             Filme _filme;
             using (var client = new HttpClient())
             {
-                using (var response = await client.GetAsync("https://localhost:5001/filme/listar"))
+                using (var response = await client.GetAsync($"{URI}/listar"))
                 {
                     var ProdutoJsonString = await response.Content.ReadAsStringAsync();
                     IList <Filme> filmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
@@ -91,6 +92,17 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             newForm.Show();
         }
 
+        private void AoFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
         private void EditarFilmeForm_Load(object sender, EventArgs e)
         {
 
@@ -100,6 +112,18 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
         {
             
             
+        }
+
+        private void Salvar_Click(object sender, EventArgs e)
+        {
+            EditarFilme();
+        }
+
+        private void Cancelar_Click(object sender, EventArgs e)
+        {
+            var newForm = new ListarFilmesForm();
+            this.Hide();
+            newForm.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -136,18 +160,6 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
                     throw;
                 }
             }
-        }
-
-        private void Salvar_Click(object sender, EventArgs e)
-        {
-            EditarFilme();
-        }
-
-        private void Cancelar_Click(object sender, EventArgs e)
-        {
-            var newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
         }
     }
 }

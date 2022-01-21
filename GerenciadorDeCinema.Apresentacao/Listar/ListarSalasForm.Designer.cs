@@ -58,7 +58,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.panel1.Controls.Add(this.SalasBtn);
             this.panel1.Location = new System.Drawing.Point(-3, -20);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(167, 532);
+            this.panel1.Size = new System.Drawing.Size(167, 476);
             this.panel1.TabIndex = 20;
             // 
             // FilmesBtn
@@ -142,6 +142,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Salas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AoFormClosing);
             this.Load += new System.EventHandler(this.ListarSalasForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

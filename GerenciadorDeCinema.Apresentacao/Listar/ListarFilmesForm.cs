@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace GerenciadorDeCinema.Apresentacao
             ListarFilmesAsync();
         }
 
-        private readonly string URI = "https://localhost:5001/filme";
+        private readonly string URI = ConfigurationManager.AppSettings["myUrlFilme"];
         private async void ListarFilmesAsync()
         {
             using (var client = new HttpClient())
@@ -50,6 +51,18 @@ namespace GerenciadorDeCinema.Apresentacao
                     {
                         MessageBox.Show("Não foi possível listar os filmes : " + response.StatusCode);
                     }
+                }
+            }
+        }
+
+        private void AoFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
                 }
             }
         }
@@ -92,6 +105,11 @@ namespace GerenciadorDeCinema.Apresentacao
             if(selecionada != null)
             {
                 Filme filme = filmes.FirstOrDefault(c => c.Titulo.Equals(selecionada.Cells[1].Value));
+                var result = MessageBox.Show("Você tem certeza que quer remover o filme?", "Confirmação", MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes)
+                {
+                    return;
+                }
 
                 using (var client = new HttpClient())
                 {
@@ -107,6 +125,11 @@ namespace GerenciadorDeCinema.Apresentacao
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Selecione pelo menos uma linha para deletar");
+            }
+            ListarFilmesAsync();
         }
 
         private void Editar_Click(object sender, EventArgs e)
@@ -120,6 +143,11 @@ namespace GerenciadorDeCinema.Apresentacao
                 this.Hide();
                 newForm.Show();
             }
+            else
+            {
+                MessageBox.Show("Selecione pelo menos uma linha para editar");
+            }
+            ListarFilmesAsync();
         }
     }
 }
