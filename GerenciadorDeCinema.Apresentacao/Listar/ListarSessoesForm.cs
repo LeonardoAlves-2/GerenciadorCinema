@@ -1,10 +1,10 @@
 ﻿using GerenciadorDeCinema.Apresentacao.Adicionar;
 using GerenciadorDeCinema.Apresentacao.Entidades;
-using GerenciadorDeCinema.Apresentacao.Remover;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -17,22 +17,21 @@ namespace GerenciadorDeCinema.Apresentacao
 {
     public partial class ListarSessoesForm : Form
     {
+        private IList<Sessao> sessoes;
         public ListarSessoesForm()
         {
             InitializeComponent();
-            ListarFilmesESalasAsync();
             ListarSessoesAsync();
         }
-
-        private Filme[] filmes;
-        private Sala[] salas;
-
-        private readonly string URI = "https://localhost:5001/sessao/listar";
+        private readonly string URISala = ConfigurationManager.AppSettings["myUrlSala"];
+        private readonly string URIFilme = ConfigurationManager.AppSettings["myUrlFilme"];
+        private readonly string URI = ConfigurationManager.AppSettings["myUrlSessao"];
         private async void ListarSessoesAsync()
         {
+
             using (var client = new HttpClient())
             {
-                using (var response = await client.GetAsync($"{URI}"))
+                using (var response = await client.GetAsync($"{URI}/listar"))
                 {
                     if (response.IsSuccessStatusCode)
                     {
@@ -45,12 +44,27 @@ namespace GerenciadorDeCinema.Apresentacao
                         dt.Columns.Add("Sala", typeof(string));
                         dt.Columns.Add("Filme", typeof(string));
 
+                        IList<Filme> filmes;
+                        using (var responsefilme = await client.GetAsync($"{URIFilme}/listar"))
+                        {
+                            var ProdutoJsonString = await responsefilme.Content.ReadAsStringAsync();
+                            filmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
+                        }
+
+                        IList<Sala> salas;
+                        using (var responsesala = await client.GetAsync($"{URISala}/"))
+                        {
+                            var ProdutoJsonString = await responsesala.Content.ReadAsStringAsync();
+                            salas = JsonConvert.DeserializeObject<Sala[]>(ProdutoJsonString).ToList();
+                        }
+                        
                         var JsonString = await response.Content.ReadAsStringAsync();
-                        IList<Sessao> sessoes = JsonConvert.DeserializeObject<Sessao[]>(JsonString).ToList();
+                        sessoes = JsonConvert.DeserializeObject<Sessao[]>(JsonString).ToList();
                         foreach(Sessao sessao in sessoes)
                         {
-                            Sala salaEscolhida = salas.FirstOrDefault(c => c.Id.Equals(sessao.SalaId));
-                            Filme filmeEscolhido = filmes.FirstOrDefault(c => c.Id.Equals(sessao.FilmeId));
+                            var filmeEscolhido = filmes.FirstOrDefault(c => c.Id.Equals(sessao.FilmeId));
+                            var salaEscolhida = salas.FirstOrDefault(c => c.Id.Equals(sessao.SalaId));
+
                             string Audio;
                             if (sessao.Audio.Equals(1))
                                 Audio = "Dublado";
@@ -70,19 +84,14 @@ namespace GerenciadorDeCinema.Apresentacao
             }
         }
 
-        private async void ListarFilmesESalasAsync()
+        private void AoFormClosing(object sender, FormClosingEventArgs e)
         {
-            using (var client = new HttpClient())
+            if (e.CloseReason == CloseReason.UserClosing)
             {
-                using (var response = await client.GetAsync("https://localhost:5001/filme/listar"))
+                var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes)
                 {
-                    var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-                    filmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToArray();
-                }
-                using (var response = await client.GetAsync("https://localhost:5001/sala/"))
-                {
-                    var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-                    salas = JsonConvert.DeserializeObject<Sala[]>(ProdutoJsonString).ToArray();
+                    e.Cancel = true;
                 }
             }
         }
@@ -120,11 +129,43 @@ namespace GerenciadorDeCinema.Apresentacao
             newForm.Show();
         }
 
-        private void Remover_Click(object sender, EventArgs e)
+        private async void Remover_Click(object sender, EventArgs e)
         {
-            var newForm = new RemoverSessoesForm();
-            this.Hide();
-            newForm.Show();
+            var selecionada = dataGridView1.CurrentRow;
+            if (selecionada != null)
+            {
+
+                Sessao sessao = sessoes.FirstOrDefault(c => c.Inicio.Equals(selecionada.Cells[0].Value));
+                var result = MessageBox.Show("Você quer remover a sessão?", "Confirmação", MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(URI);
+                    HttpResponseMessage responseMessage = await client.DeleteAsync($"{URI}/remover/{sessao.Id}");
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Sessão removida com sucesso");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falha ao remover a sessão \nRever:\n" + responseMessage.Content.ReadAsStringAsync().Result);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione pelo menos uma linha para deletar");
+            }
+            ListarSessoesAsync();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

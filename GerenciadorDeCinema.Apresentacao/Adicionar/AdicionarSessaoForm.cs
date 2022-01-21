@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -15,7 +16,9 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
 {
     public partial class AdicionarSessaoForm : Form
     {
-        private readonly string URI = "https://localhost:5001/sessao";
+        private readonly string URI = ConfigurationManager.AppSettings["myUrlSessao"];
+        private readonly string URIFilme = ConfigurationManager.AppSettings["myUrlFilme"];
+        private readonly string URISala = ConfigurationManager.AppSettings["myUrlSala"];
         private IList<Filme> filmeEscolhido;
         private IList<Sala> salaEscolhida;
 
@@ -38,13 +41,36 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                 return;
             }
 
+            if (CBFilme.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Filme inválido.");
+                return;
+            }
+
+            if (CBSala.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Sala inválida");
+                return;
+            }
+
             int animacao;
-            if (CBAnimacao.Text.Equals("2d"))
+            if (CBAnimacao.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Tipo de animação inválido.");
+                return;
+            }
+            else if (CBAnimacao.Text.Equals("2d"))
                 animacao = 2;
             else
                 animacao = 3;
+
             int audio;
-            if (CBAudio.Text.Equals("Dublado"))
+            if (CBAudio.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Tipo de áudio inválido.");
+                return;
+            }
+            else if (CBAudio.Text.Equals("Dublado"))
                 audio = 1;
             else
                 audio = 2;
@@ -70,7 +96,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                 }
                 else
                 {
-                    MessageBox.Show("Não foi possível adicionar a sessão : " + result.StatusCode + "\n" + result.Content.ReadAsStringAsync().Result));
+                    MessageBox.Show("Não foi possível adicionar a sessão \nRever:\n" + result.Content.ReadAsStringAsync().Result);
                 }
             }
         }
@@ -79,7 +105,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         {
             using (var client = new HttpClient())
             {
-                using (var response = await client.GetAsync("https://localhost:5001/filme/listar"))
+                using (var response = await client.GetAsync($"{URIFilme}/listar"))
                 {
                     var ProdutoJsonString = await response.Content.ReadAsStringAsync();
                     var objectFilmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
@@ -90,7 +116,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                         CBFilme.Items.Add(filme.Titulo);
                     }
                 }
-                using (var response = await client.GetAsync("https://localhost:5001/sala/"))
+                using (var response = await client.GetAsync($"{URISala}/"))
                 {
                     var ProdutoJsonString = await response.Content.ReadAsStringAsync();
                     var objectSalas = JsonConvert.DeserializeObject<Sala[]>(ProdutoJsonString).ToList();
@@ -104,6 +130,29 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             }
         }
 
+        private void AoFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private bool AoFormTrocar()
+        {
+            var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
         private void AdicionarSessaoForm_Load(object sender, EventArgs e)
         {
 
@@ -112,22 +161,34 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         private void FilmesBtn_Click(object sender, EventArgs e)
         {
             ListarFilmesForm newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void SessoesBtn_Click(object sender, EventArgs e)
         {
             ListarSessoesForm newForm = new ListarSessoesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void SalasBtn_Click(object sender, EventArgs e)
         {
             ListarSalasForm newForm = new ListarSalasForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void Adicionar_Click(object sender, EventArgs e)
@@ -138,8 +199,12 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         private void Cancelar_Click(object sender, EventArgs e)
         {
             ListarSessoesForm newForm = new ListarSessoesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
     }
 }

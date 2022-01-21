@@ -44,12 +44,18 @@ namespace GerenciadorDeCinema.Apresentacao
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ScrollBar;
-            this.dataGridView1.Location = new System.Drawing.Point(216, 147);
+            this.dataGridView1.Location = new System.Drawing.Point(170, 56);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(572, 291);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.ShowCellErrors = false;
+            this.dataGridView1.ShowEditingIcon = false;
+            this.dataGridView1.ShowRowErrors = false;
+            this.dataGridView1.Size = new System.Drawing.Size(618, 351);
             this.dataGridView1.TabIndex = 0;
             // 
             // label1
@@ -71,7 +77,7 @@ namespace GerenciadorDeCinema.Apresentacao
             this.panel1.Controls.Add(this.SalasBtn);
             this.panel1.Location = new System.Drawing.Point(-3, -20);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(167, 532);
+            this.panel1.Size = new System.Drawing.Size(167, 476);
             this.panel1.TabIndex = 21;
             // 
             // FilmesBtn
@@ -134,11 +140,11 @@ namespace GerenciadorDeCinema.Apresentacao
             this.CriarNovo.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
             this.CriarNovo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.CriarNovo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.CriarNovo.Location = new System.Drawing.Point(617, 54);
+            this.CriarNovo.Location = new System.Drawing.Point(596, 413);
             this.CriarNovo.Name = "CriarNovo";
-            this.CriarNovo.Size = new System.Drawing.Size(171, 25);
+            this.CriarNovo.Size = new System.Drawing.Size(60, 25);
             this.CriarNovo.TabIndex = 22;
-            this.CriarNovo.Text = "Criar novo";
+            this.CriarNovo.Text = "Novo";
             this.CriarNovo.UseVisualStyleBackColor = false;
             this.CriarNovo.Click += new System.EventHandler(this.CriarNovo_Click);
             // 
@@ -150,9 +156,9 @@ namespace GerenciadorDeCinema.Apresentacao
             this.Remover.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
             this.Remover.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Remover.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Remover.Location = new System.Drawing.Point(617, 116);
+            this.Remover.Location = new System.Drawing.Point(728, 413);
             this.Remover.Name = "Remover";
-            this.Remover.Size = new System.Drawing.Size(171, 25);
+            this.Remover.Size = new System.Drawing.Size(60, 25);
             this.Remover.TabIndex = 23;
             this.Remover.Text = "Remover";
             this.Remover.UseVisualStyleBackColor = false;
@@ -166,9 +172,9 @@ namespace GerenciadorDeCinema.Apresentacao
             this.Editar.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
             this.Editar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Editar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Editar.Location = new System.Drawing.Point(617, 85);
+            this.Editar.Location = new System.Drawing.Point(662, 413);
             this.Editar.Name = "Editar";
-            this.Editar.Size = new System.Drawing.Size(171, 25);
+            this.Editar.Size = new System.Drawing.Size(60, 25);
             this.Editar.TabIndex = 24;
             this.Editar.Text = "Editar";
             this.Editar.UseVisualStyleBackColor = false;
@@ -188,11 +194,12 @@ namespace GerenciadorDeCinema.Apresentacao
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Cascadia Code", 8.25F);
+            this.MaximizeBox = false;
             this.Name = "ListarFilmesForm";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Filmes";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Gerenciador de cinema - Filmes";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AoFormClosing);
             this.Load += new System.EventHandler(this.ListarFilmesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);

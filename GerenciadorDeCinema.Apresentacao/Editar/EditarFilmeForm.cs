@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -16,37 +17,46 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
 {
     public partial class EditarFilmeForm : Form
     {
-        private IList<Filme> filmeEscolhido;
-        private readonly string URI = "https://localhost:5001/filme";
+        private readonly string URI = ConfigurationManager.AppSettings["myUrlFilme"];
         public byte[] ImageBytes { get; set; }
+        private readonly Guid _filmeId;
 
-        public EditarFilmeForm()
+        public EditarFilmeForm(Guid filmeId)
         {
+            _filmeId = filmeId;
+            CarregarFilme();
             InitializeComponent();
-            CBFilmesAsync();
         }
 
-        private async void CBFilmesAsync()
+        private async void CarregarFilme()
         {
+            Filme _filme;
             using (var client = new HttpClient())
             {
-                using (var response = await client.GetAsync("https://localhost:5001/filme/listar"))
+                using (var response = await client.GetAsync($"{URI}/listar"))
                 {
                     var ProdutoJsonString = await response.Content.ReadAsStringAsync();
-                    var objectFilmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
-                    filmeEscolhido = objectFilmes;
-
-                    foreach (Filme filme in objectFilmes)
-                    {
-                        CBFilme.Items.Add(filme.Titulo);
-                    }
+                    IList <Filme> filmes = JsonConvert.DeserializeObject<Filme[]>(ProdutoJsonString).ToList();
+                    _filme = filmes.FirstOrDefault(c => c.Id.Equals(_filmeId));
                 }
             }
+            TBTitulo.Text = _filme.Titulo;
+            rTBDescricao.Text = _filme.Descricao;
+            nUDDuracao.Value = _filme.Duracao;
+            ImageBytes = _filme.Imagem;
+            using (MemoryStream ms = new MemoryStream(ImageBytes))
+            {
+                pictureBox1.Image = Image.FromStream(ms);
+            }
+            panel2.Visible = false;
+            label8.Visible = false;
+            label7.Visible = false;
+            label6.Visible = false;
         }
 
         private async void EditarFilme()
         {
-            var filmeId = filmeEscolhido.FirstOrDefault(c => c.Titulo.Equals(CBFilme.Text));
+            var filmeId = _filmeId;
             Filme filme = new Filme
             {
                 Imagem = ImageBytes,
@@ -57,14 +67,14 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
 
             using (var client = new HttpClient())
             {
-                HttpResponseMessage responseMessage = await client.PutAsJsonAsync($"{URI}/editar/{filmeId.Id}", filme);
+                HttpResponseMessage responseMessage = await client.PutAsJsonAsync($"{URI}/editar/{_filmeId}", filme);
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Filme editado");
                 }
                 else
                 {
-                    MessageBox.Show("Falha ao editar o filme : " + responseMessage.StatusCode + "\n" + responseMessage.Content.ReadAsStringAsync().Result);
+                    MessageBox.Show("Falha ao editar o filme \nRever:\n" + responseMessage.Content.ReadAsStringAsync().Result);
                 }
             }
         }
@@ -72,22 +82,56 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
         private void SalasBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarSalasForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void FilmesBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void SessoesBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarSessoesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
+        }
+
+        private void AoFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private bool AoFormTrocar()
+        {
+            var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes)
+            {
+                return false;
+            }
+            return true;
         }
 
         private void EditarFilmeForm_Load(object sender, EventArgs e)
@@ -95,38 +139,23 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
 
         }
 
-        private void Remover_Click(object sender, EventArgs e)
+        private void Salvar_Click(object sender, EventArgs e)
         {
-            if (CBFilme.Text?.Length == 0)
-            {
-                MessageBox.Show("Nenhum filme para editar.");
-                return;
-            }
-            else if (CBFilme.Text?.Length != 0)
-            {
-                var filmeS = filmeEscolhido.FirstOrDefault(c => c.Titulo.Equals(CBFilme.Text));
-                CBFilme.Visible = false;
-                LBFilme.Visible = false;
-                Editar.Visible = false;
+            EditarFilme();
+        }
 
-                LBTitulo.Visible = true;
-                TBTitulo.Visible = true;
-                TBTitulo.Text = filmeS.Titulo;
-                LBDescricao.Visible = true;
-                rTBDescricao.Visible = true;
-                rTBDescricao.Text = filmeS.Descricao;
-                LBDuracao.Visible = true;
-                nUDDuracao.Visible = true;
-                nUDDuracao.Value = filmeS.Duracao;
-                LBImagem.Visible = true;
-                button1.Visible = true;
-                Salvar.Visible = true;
-
-                ImageBytes = filmeS.Imagem;
+        private void Cancelar_Click(object sender, EventArgs e)
+        {
+            var newForm = new ListarFilmesForm();
+            var result = AoFormTrocar();
+            if(result == true)
+            {
+                this.Hide();
+                newForm.Show();
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Selecionar Imagens";
             openFileDialog1.InitialDirectory = @"C:\Users\users\Pictures";
@@ -142,8 +171,6 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
                 string path = System.IO.Path.GetFullPath(openFileDialog1.FileName);
-                Path.Text = path;
-                Path.Visible = true;
 
                 try
                 {
@@ -154,25 +181,16 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
                         ImagemA.Save(mStream, ImagemA.RawFormat);
                         ImageBytes = mStream.ToArray();
                     }
-
+                    panel2.Visible = false;
+                    label8.Visible = false;
+                    label7.Visible = false;
+                    label6.Visible = false;
                 }
                 catch (Exception)
                 {
                     throw;
                 }
             }
-        }
-
-        private void Salvar_Click(object sender, EventArgs e)
-        {
-            EditarFilme();
-        }
-
-        private void Cancelar_Click(object sender, EventArgs e)
-        {
-            var newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
         }
     }
 }

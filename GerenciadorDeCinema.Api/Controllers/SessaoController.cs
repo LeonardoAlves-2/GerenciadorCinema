@@ -36,6 +36,16 @@ namespace GerenciadorDeCinema.Api.Controllers
             try
             {
                 var sessoes = _sessaoService.ListarSessoes();
+/*
+                IList<Sessao> sessoesPassadas = sessoes.ToList();
+                foreach (Sessao sessao in sessoes)
+                {
+                    if(sessao.Final < DateTime.UtcNow)
+                    {
+                         _sessaoService.Remover(sessao);
+                    }
+                }
+*/
 
                 return Ok(sessoes);
             }

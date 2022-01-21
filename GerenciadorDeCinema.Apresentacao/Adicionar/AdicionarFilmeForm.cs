@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -16,7 +17,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
 {
     public partial class AdicionarFilmeForm : Form
     {
-        private readonly string URI = "https://localhost:5001/filme";
+        private readonly string URI = ConfigurationManager.AppSettings["myUrlFilme"];
 
         public byte[] ImageBytes { get; set; }
 
@@ -41,7 +42,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                 }
                 else
                 {
-                    MessageBox.Show("Não foi possível adicionar o filme : " + result.StatusCode + "\n" + result.Content.ReadAsStringAsync().Result);
+                    MessageBox.Show("Não foi possível adicionar o filme\n Rever:\n" + result.Content.ReadAsStringAsync().Result);
                 }
             }
         }
@@ -49,6 +50,18 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         public AdicionarFilmeForm()
         {
             InitializeComponent();
+        }
+
+        private void AoFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+                if (result != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
 
         private void AdicionarFilmeForm_Load(object sender, EventArgs e)
@@ -61,39 +74,65 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             AdicionarFilmeAsync();
         }
 
+        private bool AoFormTrocar()
+        {
+            var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes)
+            {
+                return false;
+            }
+            return true;
+        }
+
         private void SalasBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarSalasForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void FilmesBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void SessoesBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarSessoesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void Cancelar_Click(object sender, EventArgs e)
         {
             var newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Selecionar Imagens";
             openFileDialog1.InitialDirectory = @"C:\Users\users\Pictures";
-            
+
             openFileDialog1.Filter = "Images (*.BMP;*.JPG;*.PNG,*.TIFF)|*.BMP;*.JPG;*.PNG;";
             openFileDialog1.CheckFileExists = true;
             openFileDialog1.CheckPathExists = true;
@@ -104,19 +143,20 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             DialogResult dr = openFileDialog1.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
-                string path = System.IO.Path.GetFullPath(openFileDialog1.FileName);
-                Path.Text = path;
-                Path.Visible = true;
-
                 try
                 {
                     Image ImagemA = Image.FromFile(openFileDialog1.FileName);
-
+                    pictureBox1.Image = ImagemA;
+                    pictureBox1.Visible = true;
                     using (MemoryStream mStream = new MemoryStream())
                     {
                         ImagemA.Save(mStream, ImagemA.RawFormat);
                         ImageBytes = mStream.ToArray();
                     }
+                    panel2.Visible = false;
+                    label8.Visible = false;
+                    label7.Visible = false;
+                    label6.Visible = false;
 
                 }
                 catch (Exception)

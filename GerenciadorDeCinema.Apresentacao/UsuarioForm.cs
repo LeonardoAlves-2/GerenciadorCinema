@@ -40,7 +40,7 @@ namespace GerenciadorDeCinema.Apresentacao
                 }
                 else
                 {
-                    MessageBox.Show("Usuario não encontrado : " + result.StatusCode + "\n" + result.Content.ReadAsStringAsync().Result);
+                    MessageBox.Show("Usuario não encontrado");
                 }
             }
         }
