@@ -74,32 +74,58 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             AdicionarFilmeAsync();
         }
 
+        private bool AoFormTrocar()
+        {
+            var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes)
+            {
+                return false;
+            }
+            return true;
+        }
+
         private void SalasBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarSalasForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void FilmesBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void SessoesBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarSessoesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void Cancelar_Click(object sender, EventArgs e)
         {
             var newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

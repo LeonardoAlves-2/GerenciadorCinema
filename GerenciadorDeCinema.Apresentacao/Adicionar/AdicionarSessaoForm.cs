@@ -142,6 +142,17 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             }
         }
 
+        private bool AoFormTrocar()
+        {
+            var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
         private void AdicionarSessaoForm_Load(object sender, EventArgs e)
         {
 
@@ -150,22 +161,34 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         private void FilmesBtn_Click(object sender, EventArgs e)
         {
             ListarFilmesForm newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void SessoesBtn_Click(object sender, EventArgs e)
         {
             ListarSessoesForm newForm = new ListarSessoesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void SalasBtn_Click(object sender, EventArgs e)
         {
             ListarSalasForm newForm = new ListarSalasForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void Adicionar_Click(object sender, EventArgs e)
@@ -176,8 +199,12 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         private void Cancelar_Click(object sender, EventArgs e)
         {
             ListarSessoesForm newForm = new ListarSessoesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
     }
 }

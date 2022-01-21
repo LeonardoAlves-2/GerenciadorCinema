@@ -98,6 +98,7 @@ namespace GerenciadorDeCinema.Apresentacao
                 }
             }
         }
+
         private void ListarSessoesForm_Load(object sender, EventArgs e)
         {
 

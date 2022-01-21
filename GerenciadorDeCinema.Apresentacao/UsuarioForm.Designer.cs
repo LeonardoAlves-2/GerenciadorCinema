@@ -30,8 +30,8 @@ namespace GerenciadorDeCinema.Apresentacao
         private void InitializeComponent()
         {
             this.Entrar = new System.Windows.Forms.Button();
-            this.TBSenha = new System.Windows.Forms.TextBox();
             this.TBEmail = new System.Windows.Forms.TextBox();
+            this.TBSenha = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,16 +54,6 @@ namespace GerenciadorDeCinema.Apresentacao
             this.Entrar.UseVisualStyleBackColor = false;
             this.Entrar.Click += new System.EventHandler(this.Entrar_Click);
             // 
-            // TBSenha
-            // 
-            this.TBSenha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TBSenha.Font = new System.Drawing.Font("Cascadia Code", 10F);
-            this.TBSenha.Location = new System.Drawing.Point(12, 211);
-            this.TBSenha.Name = "TBSenha";
-            this.TBSenha.Size = new System.Drawing.Size(213, 23);
-            this.TBSenha.TabIndex = 17;
-            this.TBSenha.UseSystemPasswordChar = true;
-            // 
             // TBEmail
             // 
             this.TBEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -71,7 +61,17 @@ namespace GerenciadorDeCinema.Apresentacao
             this.TBEmail.Location = new System.Drawing.Point(12, 135);
             this.TBEmail.Name = "TBEmail";
             this.TBEmail.Size = new System.Drawing.Size(213, 23);
-            this.TBEmail.TabIndex = 18;
+            this.TBEmail.TabIndex = 17;
+            // 
+            // TBSenha
+            // 
+            this.TBSenha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TBSenha.Font = new System.Drawing.Font("Cascadia Code", 10F);
+            this.TBSenha.Location = new System.Drawing.Point(12, 211);
+            this.TBSenha.Name = "TBSenha";
+            this.TBSenha.Size = new System.Drawing.Size(213, 23);
+            this.TBSenha.TabIndex = 18;
+            this.TBSenha.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -120,12 +120,12 @@ namespace GerenciadorDeCinema.Apresentacao
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(237, 309);
+            this.Controls.Add(this.Entrar);
+            this.Controls.Add(this.TBEmail);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.TBEmail);
-            this.Controls.Add(this.Entrar);
             this.Controls.Add(this.TBSenha);
             this.MaximizeBox = false;
             this.Name = "UsuarioForm";
@@ -141,8 +141,8 @@ namespace GerenciadorDeCinema.Apresentacao
         #endregion
 
         private System.Windows.Forms.Button Entrar;
-        private System.Windows.Forms.TextBox TBSenha;
         private System.Windows.Forms.TextBox TBEmail;
+        private System.Windows.Forms.TextBox TBSenha;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

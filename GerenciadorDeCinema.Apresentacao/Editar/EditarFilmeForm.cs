@@ -74,22 +74,34 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
         private void SalasBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarSalasForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void FilmesBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void SessoesBtn_Click(object sender, EventArgs e)
         {
             var newForm = new ListarSessoesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if (result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void AoFormClosing(object sender, FormClosingEventArgs e)
@@ -103,15 +115,20 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
                 }
             }
         }
+
+        private bool AoFormTrocar()
+        {
+            var result = MessageBox.Show(this, "Você tem certeza que deseja sair?", "Confirmação", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes)
+            {
+                return false;
+            }
+            return true;
+        }
+
         private void EditarFilmeForm_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void Remover_Click(object sender, EventArgs e)
-        {
-            
-            
         }
 
         private void Salvar_Click(object sender, EventArgs e)
@@ -122,8 +139,12 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
         private void Cancelar_Click(object sender, EventArgs e)
         {
             var newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
+            var result = AoFormTrocar();
+            if(result == true)
+            {
+                this.Hide();
+                newForm.Show();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
