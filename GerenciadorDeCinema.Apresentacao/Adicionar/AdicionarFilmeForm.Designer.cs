@@ -43,12 +43,16 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.FilmesBtn = new System.Windows.Forms.Button();
             this.SessoesBtn = new System.Windows.Forms.Button();
             this.SalasBtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nUDDuracao)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -165,7 +169,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             0,
             0});
             this.nUDDuracao.Name = "nUDDuracao";
-            this.nUDDuracao.Size = new System.Drawing.Size(63, 23);
+            this.nUDDuracao.Size = new System.Drawing.Size(82, 23);
             this.nUDDuracao.TabIndex = 23;
             // 
             // panel1
@@ -231,22 +235,6 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.SalasBtn.UseVisualStyleBackColor = false;
             this.SalasBtn.Click += new System.EventHandler(this.SalasBtn_Click);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Cascadia Code", 9F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button1.Location = new System.Drawing.Point(661, 319);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 38);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "Escolher";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
@@ -258,10 +246,53 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             // 
             this.pictureBox1.Location = new System.Drawing.Point(661, 142);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(127, 171);
+            this.pictureBox1.Size = new System.Drawing.Size(127, 215);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Enabled = false;
+            this.panel2.Location = new System.Drawing.Point(662, 142);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(127, 215);
+            this.panel2.TabIndex = 29;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Cascadia Code", 10F);
+            this.label8.Location = new System.Drawing.Point(29, 107);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 18);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "a imagem";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Cascadia Code", 10F);
+            this.label7.Location = new System.Drawing.Point(1, 89);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(128, 18);
+            this.label7.TabIndex = 30;
+            this.label7.Text = "para selecionar";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Cascadia Code", 10F);
+            this.label6.Location = new System.Drawing.Point(14, 71);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 18);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "Clique aqui";
             // 
             // AdicionarFilmeForm
             // 
@@ -270,8 +301,8 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.nUDDuracao);
             this.Controls.Add(this.rTBDescricao);
@@ -293,6 +324,8 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             ((System.ComponentModel.ISupportInitialize)(this.nUDDuracao)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,8 +346,11 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
         private System.Windows.Forms.Button FilmesBtn;
         private System.Windows.Forms.Button SessoesBtn;
         private System.Windows.Forms.Button SalasBtn;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }

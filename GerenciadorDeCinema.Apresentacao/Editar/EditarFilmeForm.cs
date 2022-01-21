@@ -48,6 +48,10 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             {
                 pictureBox1.Image = Image.FromStream(ms);
             }
+            panel2.Visible = false;
+            label8.Visible = false;
+            label7.Visible = false;
+            label6.Visible = false;
         }
 
         private async void EditarFilme()
@@ -151,7 +155,7 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Selecionar Imagens";
             openFileDialog1.InitialDirectory = @"C:\Users\users\Pictures";
@@ -177,6 +181,10 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
                         ImagemA.Save(mStream, ImagemA.RawFormat);
                         ImageBytes = mStream.ToArray();
                     }
+                    panel2.Visible = false;
+                    label8.Visible = false;
+                    label7.Visible = false;
+                    label6.Visible = false;
                 }
                 catch (Exception)
                 {

@@ -128,11 +128,11 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Selecionar Imagens";
             openFileDialog1.InitialDirectory = @"C:\Users\users\Pictures";
-            
+
             openFileDialog1.Filter = "Images (*.BMP;*.JPG;*.PNG,*.TIFF)|*.BMP;*.JPG;*.PNG;";
             openFileDialog1.CheckFileExists = true;
             openFileDialog1.CheckPathExists = true;
@@ -153,6 +153,10 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                         ImagemA.Save(mStream, ImagemA.RawFormat);
                         ImageBytes = mStream.ToArray();
                     }
+                    panel2.Visible = false;
+                    label8.Visible = false;
+                    label7.Visible = false;
+                    label6.Visible = false;
 
                 }
                 catch (Exception)
