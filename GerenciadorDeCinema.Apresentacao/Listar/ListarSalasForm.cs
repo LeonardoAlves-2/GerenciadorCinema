@@ -50,27 +50,6 @@ namespace GerenciadorDeCinema.Apresentacao
             ListarSalasAsync();
         }
 
-        private void SalasBtn_Click(object sender, EventArgs e)
-        {
-            var newForm = new ListarSalasForm();
-            this.Hide();
-            newForm.Show();
-        }
-
-        private void FilmesBtn_Click(object sender, EventArgs e)
-        {
-            var newForm = new ListarFilmesForm();
-            this.Hide();
-            newForm.Show();
-        }
-
-        private void SessoesBtn_Click(object sender, EventArgs e)
-        {
-            var newForm = new ListarSessoesForm();
-            this.Hide();
-            newForm.Show();
-        }
-
         private void AoFormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)

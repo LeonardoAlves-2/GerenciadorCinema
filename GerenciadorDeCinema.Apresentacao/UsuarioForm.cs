@@ -34,7 +34,7 @@ namespace GerenciadorDeCinema.Apresentacao
                 var result = await client.PostAsync("https://localhost:5001/login", content);
                 if (result.IsSuccessStatusCode)
                 {
-                    var newForm = new ListarSalasForm();
+                    var newForm = new Principal();
                     this.Hide();
                     newForm.Show();
                 }

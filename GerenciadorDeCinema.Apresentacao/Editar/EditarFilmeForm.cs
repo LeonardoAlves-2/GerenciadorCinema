@@ -79,39 +79,6 @@ namespace GerenciadorDeCinema.Apresentacao.Editar
             }
         }
 
-        private void SalasBtn_Click(object sender, EventArgs e)
-        {
-            var newForm = new ListarSalasForm();
-            var result = AoFormTrocar();
-            if (result == true)
-            {
-                this.Hide();
-                newForm.Show();
-            }
-        }
-
-        private void FilmesBtn_Click(object sender, EventArgs e)
-        {
-            var newForm = new ListarFilmesForm();
-            var result = AoFormTrocar();
-            if (result == true)
-            {
-                this.Hide();
-                newForm.Show();
-            }
-        }
-
-        private void SessoesBtn_Click(object sender, EventArgs e)
-        {
-            var newForm = new ListarSessoesForm();
-            var result = AoFormTrocar();
-            if (result == true)
-            {
-                this.Hide();
-                newForm.Show();
-            }
-        }
-
         private void AoFormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
