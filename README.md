@@ -2,7 +2,7 @@
 Este projeto é uma parte de um gerenciador de um cinema, nele você pode criar, editar, remover e listar filmes, e criar e remover sessões.
 
 # Como configurar
-Este projeto foi feito com SQL Server, então para configurar, é preciso ir ao AppSettings.json que está na pasta GerenciadorDeCinema.Api, e mudar a connection string para a que deseja usar.
+Este projeto foi feito com SQL Server, então para configurar, é preciso ir ao AppSettings.json que está na pasta GerenciadorDeCinema.Api, e mudar a connection string para a que deseja usar, as variáveis de ambiente que controlam as URL's estão no App.config na pasta do GerenciadorDeCinema.Apresentação.
 As credênciais para entrar no sistema são:
  - Usuário: admin@cinema.com
  - Senha: admin43
