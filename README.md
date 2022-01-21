@@ -4,7 +4,7 @@ Este projeto é uma parte de um gerenciador de um cinema, nele você pode criar,
 # Como configurar
 Este projeto foi feito com SQL Server, então para configurar, é preciso ir ao AppSettings.json que está na pasta GerenciadorDeCinema.Api, e mudar a connection string para a que deseja usar.
 As credênciais para entrar no sistema são:
- - Usuario: admin@cinema.com
+ - Usuário: admin@cinema.com
  - Senha: admin43
 
 # Divisão
