@@ -104,7 +104,7 @@ namespace GerenciadorDeCinema.Apresentacao
             if(selecionada != null)
             {
                 Filme filme = filmes.FirstOrDefault(c => c.Titulo.Equals(selecionada.Cells[0].Value));
-                var result = MessageBox.Show("Você tem certeza que quer remover o filme?", "Confirmação", MessageBoxButtons.YesNo);
+                var result = MessageBox.Show("Você quer remover o filme?", "Confirmação", MessageBoxButtons.YesNo);
                 if (result != DialogResult.Yes)
                 {
                     return;
@@ -120,7 +120,7 @@ namespace GerenciadorDeCinema.Apresentacao
                     }
                     else
                     {
-                        MessageBox.Show("Falha ao remover o filme  : " + responseMessage.StatusCode + "\n Rever:\n" + responseMessage.Content.ReadAsStringAsync().Result);
+                        MessageBox.Show("Falha ao remover o filme \nRever:\n" + responseMessage.Content.ReadAsStringAsync().Result);
                     }
                 }
             }

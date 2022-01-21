@@ -42,7 +42,7 @@ namespace GerenciadorDeCinema.Apresentacao.Adicionar
                 }
                 else
                 {
-                    MessageBox.Show("Não foi possível adicionar o filme : " + result.StatusCode + "\n Rever:\n" + result.Content.ReadAsStringAsync().Result);
+                    MessageBox.Show("Não foi possível adicionar o filme\n Rever:\n" + result.Content.ReadAsStringAsync().Result);
                 }
             }
         }

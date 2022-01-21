@@ -123,11 +123,11 @@ namespace GerenciadorDeCinema.Apresentacao
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ScrollBar;
-            this.dataGridView1.Location = new System.Drawing.Point(178, 56);
+            this.dataGridView1.Location = new System.Drawing.Point(170, 56);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(610, 351);
+            this.dataGridView1.Size = new System.Drawing.Size(618, 351);
             this.dataGridView1.TabIndex = 21;
             // 
             // Remover

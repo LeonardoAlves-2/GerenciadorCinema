@@ -38,7 +38,7 @@ namespace GerenciadorDeCinema.Apresentacao
                     }
                     else
                     {
-                        MessageBox.Show("Não foi possível listar as salas : " + response.StatusCode);
+                        MessageBox.Show("Não foi possível listar as salas");
                     }
                 }
             }

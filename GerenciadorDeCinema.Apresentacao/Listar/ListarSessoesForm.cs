@@ -136,7 +136,7 @@ namespace GerenciadorDeCinema.Apresentacao
             {
 
                 Sessao sessao = sessoes.FirstOrDefault(c => c.Inicio.Equals(selecionada.Cells[0].Value));
-                var result = MessageBox.Show("Você tem certeza que quer remover a sessão?", "Confirmação", MessageBoxButtons.YesNo);
+                var result = MessageBox.Show("Você quer remover a sessão?", "Confirmação", MessageBoxButtons.YesNo);
                 if (result != DialogResult.Yes)
                 {
                     return;
@@ -152,7 +152,7 @@ namespace GerenciadorDeCinema.Apresentacao
                     }
                     else
                     {
-                        MessageBox.Show("Falha ao remover a sessão  : " + responseMessage.StatusCode + "\n Rever:\n" + responseMessage.Content.ReadAsStringAsync().Result);
+                        MessageBox.Show("Falha ao remover a sessão \nRever:\n" + responseMessage.Content.ReadAsStringAsync().Result);
                     }
                 }
             }
